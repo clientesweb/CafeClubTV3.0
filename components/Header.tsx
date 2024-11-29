@@ -1,36 +1,63 @@
-'use client';  // Marca este archivo como un componente de cliente
+'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
-  const installPWA = () => {
-    if (window.DeferredPrompt) {
-      window.DeferredPrompt.prompt();
-      window.DeferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
-        // Explicitly defining the type of choiceResult
-        console.log(choiceResult.outcome);
-      });
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      setDeferredPrompt(e);
+      // Update UI to show the install button
+      setShowInstallButton(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const installPWA = async () => {
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      // We no longer need the prompt. Clear it up.
+      setDeferredPrompt(null);
+      // Hide the install button
+      setShowInstallButton(false);
     }
   };
 
   return (
     <header className="container mx-auto px-4 py-4 flex justify-between items-center">
       {/* Botón de instalar PWA */}
-      <button
-        id="installButton"
-        onClick={installPWA}
-        className="bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base flex items-center gap-2 transition-all duration-300 ease-in-out"
-        aria-label="Instalar la aplicación"
-      >
-        <i className="fas fa-download text-lg sm:text-xl"></i>
-        Instalar
-      </button>
+      {showInstallButton && (
+        <button
+          id="installButton"
+          onClick={installPWA}
+          className="bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base flex items-center gap-2 transition-all duration-300 ease-in-out"
+          aria-label="Instalar la aplicación"
+        >
+          <i className="fas fa-download text-lg sm:text-xl"></i>
+          Instalar
+        </button>
+      )}
 
       {/* Logo centrado */}
       <div className="flex justify-center flex-grow">
         <Image
-          src="images/Icon512x512.png"
+          src="/images/Icon512x512.png"
           alt="CafeClub TV Logo"
           width={64}
           height={64}
@@ -56,3 +83,4 @@ export default function Header() {
     </header>
   );
 }
+
