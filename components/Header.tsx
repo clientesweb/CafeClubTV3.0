@@ -2,8 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Header() {
+  // Función para instalar la PWA
   const installPWA = () => {
-    if (window.DeferredPrompt) {
+    if (typeof window !== 'undefined' && window.DeferredPrompt) {
       window.DeferredPrompt.prompt();
       window.DeferredPrompt.userChoice.then((choiceResult) => {
         console.log(choiceResult.outcome);
@@ -27,7 +28,7 @@ export default function Header() {
       {/* Logo centrado */}
       <div className="flex justify-center flex-grow">
         <Image
-          src="images/Icon512x512.png"
+          src="/images/Icon512x512.png"
           alt="CafeClub TV Logo"
           width={64}
           height={64}
@@ -46,7 +47,7 @@ export default function Header() {
         <Link href="https://twitter.com/CafeClub_Lat?s=08" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
           <i className="fab fa-twitter text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
         </Link>
-        <Link href="https://youtube.com/c/CafeClubCanalTv" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
+        <Link href="https://youtube.com/c/CafeClubCanalTv" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
           <i className="fab fa-youtube text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
         </Link>
       </div>
