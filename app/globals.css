@@ -40,6 +40,12 @@ footer {
 .hero-slide img {
   object-fit: cover;
   object-position: center;
+  filter: brightness(70%); /* added to darken the image for better text visibility */
+  transition: transform 0.3s ease;
+}
+
+.hero-slide:hover img {
+  transform: scale(1.1); /* added zoom effect when hovering over hero images */
 }
 
 .hero-dot {
@@ -47,6 +53,23 @@ footer {
 }
 
 .hero-dot.active {
+  opacity: 1;
+}
+
+/* Hero text effects */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.hero-text.visible {
   opacity: 1;
 }
 
@@ -273,4 +296,3 @@ footer {
   background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
   transform: rotate(30deg);
 }
-
