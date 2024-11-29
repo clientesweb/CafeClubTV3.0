@@ -11,6 +11,15 @@ module.exports = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
       },
+      animation: {
+        scroll: 'scroll var(--animation-duration, 30s) linear infinite',
+      },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-1 * var(--scroll-width, 100%)))' },
+        },
+      },
     },
   },
   plugins: [],
