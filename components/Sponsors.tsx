@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const sponsors = [
-  { id: 1, src: '/images/logo1.png', alt: 'Sponsor 1' },
-  { id: 2, src: '/images/logo2.png', alt: 'Sponsor 2' },
-  { id: 3, src: '/images/logo3.png', alt: 'Sponsor 3' },
-  { id: 4, src: '/images/logo4.png', alt: 'Sponsor 4' },
-  { id: 5, src: '/images/logo5.png', alt: 'Sponsor 5' },
-  { id: 6, src: '/images/logo6.png', alt: 'Sponsor 6' },
+  { id: 1, src: '/images/sponsor.png', alt: 'Sponsor 1' },
+  { id: 2, src: '/images/sponsor2.png', alt: 'Sponsor 2' },
+  { id: 3, src: '/images/sponsor3.png', alt: 'Sponsor 3' },
+  { id: 4, src: '/images/sponsor4.png', alt: 'Sponsor 4' },
+  { id: 5, src: '/images/sponsor5.png', alt: 'Sponsor 5' },
+  { id: 6, src: '/images/sponsor6.png', alt: 'Sponsor 6' },
 ]
 
 export default function Sponsors() {
