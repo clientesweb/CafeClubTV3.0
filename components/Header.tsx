@@ -1,3 +1,5 @@
+'use client';  // Marca este archivo como un componente de cliente
+
 import Image from 'next/image';
 import Link from 'next/link';
 
