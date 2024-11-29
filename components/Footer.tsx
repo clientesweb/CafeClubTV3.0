@@ -18,7 +18,7 @@ export default function Footer() {
               priority // Esta opción mejora el rendimiento de la imagen clave
             />
             <p className="text-gray-200 text-sm sm:text-base">
-              CafeClub TV es tu destino para todo lo relacionado con el café. Descubre, aprende y disfruta del mundo del café con nosotros.
+              Canal internacional 100% digital. Programas variados sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas.
             </p>
           </div>
 
