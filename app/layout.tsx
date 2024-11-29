@@ -74,7 +74,7 @@ export default function RootLayout({
               "sameAs": [
                 "https://www.facebook.com/CafeClubRadio/",
                 "https://twitter.com/CafeClub_Lat?s=08",
-                "https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep",
+                "https://www.instagram.com/@cafeclubtv",
                 "https://youtube.com/c/CafeClubCanalTv"
               ],
               "address": {
