@@ -34,14 +34,25 @@ export default function FeaturedPrograms() {
       <div className="container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Parrilla de Programas</h2>
         <div className="program-scroll-container overflow-x-auto">
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 gap-4 md:gap-8">
             {programs.map((program, index) => (
-              <div key={index} className="flex-shrink-0 w-64 sm:w-80 md:w-96">
-                <Image src={program.image} alt={program.title} width={384} height={216} className="w-full h-36 sm:h-44 md:h-52 object-cover rounded-lg" />
-                <div className="mt-2 sm:mt-3">
-                  <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2">{program.title}</h3>
-                  <p className="text-gray-700 text-sm sm:text-base">{program.schedule}</p>
-                  <Link href={program.link} className="mt-2 sm:mt-3 inline-block bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-1 sm:py-2 px-3 sm:px-4 rounded text-sm sm:text-base">
+              <div key={index} className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
+                <Image 
+                  src={program.image} 
+                  alt={program.title} 
+                  width={384} 
+                  height={216} 
+                  className="w-full h-44 sm:h-52 object-cover rounded-t-xl" 
+                  loading="lazy" 
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg sm:text-xl mb-2 text-[var(--primary-color)]">{program.title}</h3>
+                  <p className="text-gray-700 text-sm sm:text-base mb-2">{program.schedule}</p>
+                  <Link 
+                    href={program.link} 
+                    className="inline-block bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base transition-all duration-200 ease-in-out"
+                    aria-label={`Ver programa ${program.title}`}
+                  >
                     Ver programa
                   </Link>
                 </div>
@@ -53,4 +64,3 @@ export default function FeaturedPrograms() {
     </section>
   )
 }
-
