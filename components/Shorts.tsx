@@ -5,17 +5,27 @@ import { useEffect, useState, useRef } from 'react'
 const shortsPlaylistId = 'PLZ_v3bWMqpjFa0xI11mahmOCxPk_1TK2s'
 const apiKey = 'AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0'
 
+interface Short {
+  id: string;
+  title: string;
+  videoId: string;
+}
+
 export default function Shorts() {
-  const [shorts, setShorts] = useState([])
-  const shortsContainerRef = useRef(null)
+  const [shorts, setShorts] = useState<Short[]>([])
+  const shortsContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const fetchShorts = async () => {
       try {
         const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${shortsPlaylistId}&key=${apiKey}&order=date`)
         const data = await response.json()
-        const sortedItems = data.items.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt))
-        const recentShorts = sortedItems.slice(0, 5)
+        const sortedItems = data.items.sort((a: any, b: any) => new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime())
+        const recentShorts = sortedItems.slice(0, 5).map((item: any) => ({
+          id: item.id,
+          title: item.snippet.title,
+          videoId: item.snippet.resourceId.videoId
+        }))
         setShorts(recentShorts)
       } catch (error) {
         console.error('Error fetching shorts:', error)
@@ -25,7 +35,7 @@ export default function Shorts() {
     fetchShorts()
   }, [])
 
-  const scrollShorts = (direction) => {
+  const scrollShorts = (direction: 'left' | 'right') => {
     if (shortsContainerRef.current) {
       const scrollAmount = direction === 'left' ? -315 : 315
       shortsContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
@@ -38,11 +48,12 @@ export default function Shorts() {
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Shorts</h2>
         <div className="shorts-carousel-container relative">
           <div id="shorts-container" ref={shortsContainerRef} className="flex overflow-x-auto snap-x snap-mandatory">
-            {shorts.map((short, index) => (
-              <div key={index} className="short-video flex-shrink-0 w-[80%] max-w-[315px] mr-4 snap-center">
+            {shorts.map((short) => (
+              <div key={short.id} className="short-video flex-shrink-0 w-[80%] max-w-[315px] mr-4 snap-center">
                 <div className="short-wrapper relative w-full pb-[177.78%]">
                   <iframe
-                    src={`https://www.youtube.com/embed/${short.snippet.resourceId.videoId}?autoplay=0&controls=1&mute=0&loop=1&playlist=${short.snippet.resourceId.videoId}`}
+                    src={`https://www.youtube.com/embed/${short.videoId}?autoplay=0&controls=1&mute=0&loop=1&playlist=${short.videoId}`}
+                    title={short.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -53,18 +64,18 @@ export default function Shorts() {
             ))}
           </div>
           <button
-            id="prev-short"
             onClick={() => scrollShorts('left')}
             className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none"
+            aria-label="Previous short"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button
-            id="next-short"
             onClick={() => scrollShorts('right')}
             className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none"
+            aria-label="Next short"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
