@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const slides = [
   {
@@ -36,23 +37,32 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative h-screen max-h-[1080px] overflow-hidden">
-      <div className="h-full flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+      <div className="h-full flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {slides.map((slide, index) => (
           <div key={index} className="relative h-full w-full flex-shrink-0">
             <Image src={slide.image} alt={slide.title} layout="fill" objectFit="cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70"></div>
-            <div className="absolute inset-0 flex items-center justify-start px-4 sm:px-8 md:px-16 lg:px-24">
-              <div className="text-left text-white max-w-2xl">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">{slide.title}</h2>
+            <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60"></div>
+            <div className="absolute inset-0 flex items-center justify-start px-8 lg:px-24">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 1 }}
+                className="text-left text-white max-w-2xl"
+              >
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">{slide.title}</h2>
                 <p className="text-lg sm:text-xl md:text-2xl mb-6">{slide.description}</p>
-                <button className="bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  className="bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out"
+                >
                   {slide.buttonText}
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </div>
           </div>
         ))}
       </div>
+
       <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-4">
         {slides.map((_, index) => (
           <button
@@ -67,4 +77,3 @@ export default function Hero() {
     </section>
   )
 }
-
