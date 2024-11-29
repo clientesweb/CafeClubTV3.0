@@ -12,19 +12,19 @@ const programs = [
     title: 'Hola Gutis!',
     image: '/images/programa2.jpg',
     schedule: 'Miércoles 12:00 PM',
-    link: 'https://www.youtube.com/playlist?list=TU_PLAYLIST_ID'
+    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGamAX8f5SVv451mwHq_bQq&si=UBK9lpQB5p_uiKKQ'
   },
   {
     title: 'OM Talks',
     image: '/images/programa4.jpg',
     schedule: 'Miércoles 22:00 PM',
-    link: 'https://www.youtube.com/playlist?list=TU_PLAYLIST_ID'
+    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjEU5H15CbmplsuGxtY66OwJ&si=zbPRRJs1JGwnvYif'
   },
   {
     title: 'Cafeteros',
     image: '/images/programa3.jpg',
-    schedule: 'Jueves 20:00 PM',
-    link: 'https://www.youtube.com/playlist?list=TU_PLAYLIST_ID'
+    schedule: 'Lunes y Miércoles 10:00 AM',
+    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGGJD55fn6RP4lNo1sZZSEP&si=LIM6bdVNZmtG4EQY'
   }
 ]
 
