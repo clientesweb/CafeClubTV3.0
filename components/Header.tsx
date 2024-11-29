@@ -9,7 +9,7 @@ export default function Header() {
         Instalar
       </button>
       
-      <Image src="/images/Icon512x512.png" alt="CafeClub TV Logo" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" />
+      <Image src="images/Icon512x512.png" alt="CafeClub TV Logo" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" />
       
       <div className="flex gap-2 sm:gap-4 items-center">
         <Link href="https://www.facebook.com/CafeClubRadio/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-[var(--primary-color)]">
