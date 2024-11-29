@@ -47,9 +47,9 @@ export default function Shorts() {
       <div className="container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Shorts</h2>
         <div className="shorts-carousel-container relative">
-          <div id="shorts-container" ref={shortsContainerRef} className="flex overflow-x-auto snap-x snap-mandatory">
+          <div id="shorts-container" ref={shortsContainerRef} className="flex overflow-x-auto snap-x snap-mandatory gap-4">
             {shorts.map((short) => (
-              <div key={short.id} className="short-video flex-shrink-0 w-[80%] max-w-[315px] mr-4 snap-center">
+              <div key={short.id} className="short-video flex-shrink-0 w-[80%] max-w-[315px] snap-center">
                 <div className="short-wrapper relative w-full pb-[177.78%]">
                   <iframe
                     src={`https://www.youtube.com/embed/${short.videoId}?autoplay=0&controls=1&mute=0&loop=1&playlist=${short.videoId}`}
@@ -57,16 +57,19 @@ export default function Shorts() {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    loading="lazy"
+                    className="absolute top-0 left-0 w-full h-full rounded-xl transition-transform duration-300 transform hover:scale-105"
+                    aria-label={`Video: ${short.title}`}
                   ></iframe>
                 </div>
+                <p className="mt-2 text-sm text-center text-gray-700">{short.title}</p>
               </div>
             ))}
           </div>
           <button
             onClick={() => scrollShorts('left')}
-            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none"
-            aria-label="Previous short"
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 focus:outline-none"
+            aria-label="Scroll to previous short"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -74,8 +77,8 @@ export default function Shorts() {
           </button>
           <button
             onClick={() => scrollShorts('right')}
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none"
-            aria-label="Next short"
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 focus:outline-none"
+            aria-label="Scroll to next short"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -86,4 +89,3 @@ export default function Shorts() {
     </section>
   )
 }
-
