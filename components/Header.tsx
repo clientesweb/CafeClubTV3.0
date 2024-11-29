@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
-  // Función para instalar la PWA
   const installPWA = () => {
-    if (typeof window !== 'undefined' && window.DeferredPrompt) {
+    if (window.DeferredPrompt) {
       window.DeferredPrompt.prompt();
-      window.DeferredPrompt.userChoice.then((choiceResult) => {
+      window.DeferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+        // Explicitly defining the type of choiceResult
         console.log(choiceResult.outcome);
       });
     }
@@ -28,7 +28,7 @@ export default function Header() {
       {/* Logo centrado */}
       <div className="flex justify-center flex-grow">
         <Image
-          src="/images/Icon512x512.png"
+          src="images/Icon512x512.png"
           alt="CafeClub TV Logo"
           width={64}
           height={64}
@@ -47,10 +47,10 @@ export default function Header() {
         <Link href="https://twitter.com/CafeClub_Lat?s=08" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
           <i className="fab fa-twitter text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
         </Link>
-        <Link href="https://youtube.com/c/CafeClubCanalTv" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <Link href="https://youtube.com/c/CafeClubCanalTv" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
           <i className="fab fa-youtube text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
         </Link>
       </div>
     </header>
-  )
+  );
 }
