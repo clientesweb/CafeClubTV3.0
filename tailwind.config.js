@@ -13,7 +13,6 @@ module.exports = {
       },
       animation: {
         scroll: 'scroll var(--animation-duration, 30s) linear infinite',
-        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         scroll: {
@@ -21,13 +20,7 @@ module.exports = {
           '100%': { transform: 'translateX(calc(-1 * var(--scroll-width, 100%)))' },
         },
       },
-      transitionProperty: {
-        'max-height': 'max-height',
-      },
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
+  plugins: [],
 }
-
