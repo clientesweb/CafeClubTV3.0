@@ -23,7 +23,8 @@ export default function Sponsors() {
     return () => clearInterval(interval)
   }, [])
 
-  const moveSponsors = (direction) => {
+  // Definir el tipo del parámetro 'direction'
+  const moveSponsors = (direction: 'prev' | 'next') => {
     if (direction === 'next') {
       setSponsorIndex((prevIndex) => (prevIndex + 1) % sponsors.length)
     } else {
@@ -66,4 +67,3 @@ export default function Sponsors() {
     </section>
   )
 }
-
