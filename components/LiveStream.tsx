@@ -41,11 +41,11 @@ export default function LiveStream() {
   }, [])
 
   return (
-    <section id="live-stream" className="py-8 sm:py-12 md:py-16 bg-[var(--primary-color)] text-white">
+    <section id="live-stream" className="py-8 sm:py-12 md:py-16 bg-gradient-to-r from-[#4e9af1] to-[#1e3c72] text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Transmisión en Vivo</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center text-shadow-lg">Transmisión en Vivo</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          <div className="lg:col-span-2 aspect-video bg-black w-full">
+          <div className="lg:col-span-2 aspect-video bg-black w-full shadow-lg rounded-lg overflow-hidden">
             {mainVideoId && (
               <iframe
                 width="100%"
@@ -54,26 +54,31 @@ export default function LiveStream() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                className="transition-transform duration-300 ease-in-out"
               ></iframe>
             )}
           </div>
-          <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-2 sm:space-y-3">
+          <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-2 sm:space-y-3 flex flex-col items-center">
             {playlistItems.map((item, index) => (
               <div
                 key={index}
-                className="playlist-video cursor-pointer"
+                className="playlist-video cursor-pointer group transform transition duration-300 hover:scale-105 hover:shadow-xl"
                 onClick={() => setMainVideoId(item.snippet.resourceId.videoId)}
               >
-                <img
-                  src={item.snippet.thumbnails.medium.url}
-                  alt={item.snippet.title}
-                  className="w-24 h-auto object-cover rounded-md"
-                />
-                <p className="text-sm">{item.snippet.title}</p>
+                <div className="relative">
+                  <img
+                    src={item.snippet.thumbnails.medium.url}
+                    alt={item.snippet.title}
+                    className="w-24 h-auto object-cover rounded-md group-hover:opacity-80 transition-opacity duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300 rounded-md"></div>
+                </div>
+                <p className="text-sm text-center mt-2">{item.snippet.title}</p>
               </div>
             ))}
           </div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black opacity-60"></div>
       </div>
     </section>
   )
