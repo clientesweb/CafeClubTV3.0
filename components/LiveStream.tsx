@@ -5,8 +5,22 @@ import { useEffect, useState } from 'react'
 const livePlaylistId = 'PLZ_v3bWMqpjEYZDAFLI-0GuAH4BpA5PiL'
 const apiKey = 'AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0'
 
+interface PlaylistItem {
+  snippet: {
+    title: string
+    thumbnails: {
+      medium: {
+        url: string
+      }
+    }
+    resourceId: {
+      videoId: string
+    }
+  }
+}
+
 export default function LiveStream() {
-  const [playlistItems, setPlaylistItems] = useState([])
+  const [playlistItems, setPlaylistItems] = useState<PlaylistItem[]>([])
   const [mainVideoId, setMainVideoId] = useState('')
 
   useEffect(() => {
@@ -64,4 +78,3 @@ export default function LiveStream() {
     </section>
   )
 }
-
