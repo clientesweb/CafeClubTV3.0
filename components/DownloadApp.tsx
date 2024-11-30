@@ -57,35 +57,25 @@ export default function DownloadApp() {
           </div>
 
           {/* Imagen mockup de la app */}
-          <div className="md:w-1/2 relative">
-            <Image
-              src="/images/mockup.jpg"
-              alt="Mockup de la aplicación CafeClub TV"
-              width={500}
-              height={500}
-              className="max-w-full h-auto rounded-3xl shadow-2xl"
-              priority
-            />
-            <Image
-              src="https://img.freepik.com/free-vector/realistic-coffee-time-background-with-coffee-cup_79603-1652.jpg"
-              alt="Característica 1 de la app"
-              width={200}
-              height={200}
-              className="absolute top-1/4 -left-8 w-1/3 rounded-xl shadow-lg"
-            />
-            <Image
-              src="https://img.freepik.com/free-vector/coffee-love-foam-with-beans-cartoon-icon-illustration_138676-2575.jpg"
-              alt="Característica 2 de la app"
-              width={200}
-              height={200}
-              className="absolute bottom-1/4 -right-8 w-1/3 rounded-xl shadow-lg"
-            />
-            <div className="absolute -top-4 -right-4 bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded-full transform rotate-12">
-              ¡Nuevo!
+          <div className="md:w-1/2 relative mt-12 md:mt-0">
+            <div className="relative inline-block">
+              <Image
+                src="/images/mockup.jpg"
+                alt="Mockup de la aplicación CafeClub TV"
+                width={500}
+                height={500}
+                className="max-w-full h-auto rounded-3xl shadow-2xl"
+                priority
+              />
+              <div className="absolute -top-4 -right-4 bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded-full transform rotate-12">
+                ¡Nuevo!
+              </div>
             </div>
+            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-full opacity-20 blur-3xl"></div>
           </div>
         </div>
       </div>
     </section>
   )
 }
+
