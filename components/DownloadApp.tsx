@@ -24,7 +24,7 @@ export default function DownloadApp() {
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <a
-                href="/android/CafeClubTV.apk"
+                href="https://cafeclubtv.com/android/CafeClubTV.apk"
                 className="inline-block transition-all transform hover:scale-105"
                 aria-label="Descargar APK de CafeClub TV"
                 role="button"
