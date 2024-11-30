@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { ChevronUp, ChevronDown, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/Button'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const shortsPlaylistId = 'PLZ_v3bWMqpjFa0xI11mahmOCxPk_1TK2s'
 const apiKey = 'AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0'
@@ -93,66 +94,73 @@ export default function Shorts() {
                 </div>
               ))}
             </div>
-            <button
+            <Button
               onClick={() => scrollShorts('left')}
-              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 focus:outline-none"
+              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3"
               aria-label="Scroll to previous short"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => scrollShorts('right')}
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 focus:outline-none"
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3"
               aria-label="Scroll to next short"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
       </section>
 
-      {isFullScreen && (
-        <div className="fixed inset-0 bg-black z-50">
-          <div className="relative w-full h-full">
-            <iframe
-              src={`https://www.youtube.com/embed/${shorts[currentIndex].videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${shorts[currentIndex].videoId}`}
-              title={shorts[currentIndex].title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
-            <div className="absolute top-4 left-4 text-white text-xl font-bold">
-              {shorts[currentIndex].title}
+      <AnimatePresence>
+        {isFullScreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black z-50"
+          >
+            <div className="relative w-full h-full">
+              <iframe
+                src={`https://www.youtube.com/embed/${shorts[currentIndex].videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${shorts[currentIndex].videoId}`}
+                title={shorts[currentIndex].title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+              <div className="absolute top-4 left-4 text-white text-xl font-bold">
+                {shorts[currentIndex].title}
+              </div>
+              <Button
+                className="absolute top-4 right-4 text-white"
+                onClick={() => setIsFullScreen(false)}
+                aria-label="Cerrar pantalla completa"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+              <Button
+                className="absolute top-1/2 left-4 transform -translate-y-1/2"
+                onClick={() => handleFullScreenScroll('up')}
+                disabled={currentIndex === 0}
+              >
+                <ChevronUp className="h-6 w-6" />
+              </Button>
+              <Button
+                className="absolute top-1/2 right-4 transform -translate-y-1/2"
+                onClick={() => handleFullScreenScroll('down')}
+                disabled={currentIndex === shorts.length - 1}
+              >
+                <ChevronDown className="h-6 w-6" />
+              </Button>
             </div>
-            <Button
-              className="absolute top-4 right-4 text-white"
-              onClick={() => setIsFullScreen(false)}
-              aria-label="Cerrar pantalla completa"
-            >
-              <X className="h-6 w-6" />
-            </Button>
-            <Button
-              className="absolute top-1/2 left-4 transform -translate-y-1/2"
-              onClick={() => handleFullScreenScroll('up')}
-              disabled={currentIndex === 0}
-            >
-              <ChevronUp className="h-6 w-6" />
-            </Button>
-            <Button
-              className="absolute top-1/2 right-4 transform -translate-y-1/2"
-              onClick={() => handleFullScreenScroll('down')}
-              disabled={currentIndex === shorts.length - 1}
-            >
-              <ChevronDown className="h-6 w-6" />
-            </Button>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
