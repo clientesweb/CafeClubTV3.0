@@ -60,7 +60,7 @@ export default function Shorts() {
           const scrollPosition = fullScreenContainerRef.current.scrollTop
           const videoHeight = fullScreenContainerRef.current.clientHeight
           const newIndex = Math.round(scrollPosition / videoHeight)
-          if (newIndex !== currentIndex) {
+          if (newIndex !== currentIndex && newIndex >= 0 && newIndex < shorts.length) {
             setCurrentIndex(newIndex)
           }
         }
@@ -73,7 +73,7 @@ export default function Shorts() {
         }
       }
     }
-  }, [isFullScreen, currentIndex])
+  }, [isFullScreen, currentIndex, shorts.length])
 
   return (
     <>
@@ -137,19 +137,21 @@ export default function Shorts() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-50 overflow-y-auto"
+            className="fixed inset-0 bg-black z-50 overflow-y-auto snap-y snap-mandatory"
             ref={fullScreenContainerRef}
           >
             {shorts.map((short, index) => (
               <div key={short.id} className="relative w-full h-screen snap-start">
-                <iframe
-                  src={`https://www.youtube.com/embed/${short.videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${short.videoId}`}
-                  title={short.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
+                {index === currentIndex && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${short.videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${short.videoId}`}
+                    title={short.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                )}
                 <div className="absolute top-4 left-4 text-white text-xl font-bold">
                   {short.title}
                 </div>
