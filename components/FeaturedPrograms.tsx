@@ -25,6 +25,12 @@ const programs = [
     image: '/images/programa3.jpg',
     schedule: 'Lunes y Miércoles 10:00 AM',
     link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGGJD55fn6RP4lNo1sZZSEP&si=3ZphX4i3eR8abpes'
+  },
+  {
+    title: 'Café COACHING con Miriam Rojas',
+    image: '/images/programa5.jpg', // Asegúrate de tener esta imagen en tu proyecto
+    schedule: 'Lunes 20:00 PM',
+    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjFxAFBsSb6EGJipJIRJT1x5&si=I10PfA73ad8Eb0LG'
   }
 ]
 
