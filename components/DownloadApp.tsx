@@ -24,14 +24,15 @@ export default function DownloadApp() {
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <a
-                href="CafeClubTV.apk"
+                href="/android/CafeClubTV.apk"
                 className="inline-block transition-all transform hover:scale-105"
-                aria-label="Descargar en Google Play"
+                aria-label="Descargar APK de CafeClub TV"
                 role="button"
+                download
               >
                 <Image
                   src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
-                  alt="Descargar en Google Play"
+                  alt="Descargar APK de CafeClub TV"
                   width={200}
                   height={74}
                   className="h-14 w-auto"
@@ -41,12 +42,12 @@ export default function DownloadApp() {
               <a
                 href="#"
                 className="inline-block transition-all transform hover:scale-105"
-                aria-label="Descargar en App Store"
+                aria-label="Próximamente en App Store"
                 role="button"
               >
                 <Image
                   src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
-                  alt="Descargar en App Store"
+                  alt="Próximamente en App Store"
                   width={120}
                   height={40}
                   className="h-14 w-auto"
