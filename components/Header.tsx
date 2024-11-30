@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <header className="container mx-auto px-4 py-4">
       <div className="flex justify-between items-center">
-        {/* Botón de instalar PWA (siempre visible) */}
+        {/* Botón de instalar PWA */}
         <button
           id="installButton"
           onClick={installPWA}
@@ -43,32 +43,32 @@ export default function Header() {
           Instalar
         </button>
 
+        {/* Logo centrado */}
+        <div className="flex justify-center">
+          <Image
+            src="/images/Icon512x512.png"
+            alt="CafeClub TV Logo"
+            width={64}
+            height={64}
+            className="w-12 h-12 sm:w-16 sm:h-16"
+          />
+        </div>
+
         {/* Redes sociales con iconos modernos */}
-        <div className="flex gap-3 sm:gap-5 items-center">
+        <div className="flex gap-3 sm:gap-4 items-center">
           <Link href="https://www.facebook.com/CafeClubRadio/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <i className="fab fa-facebook-f text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+            <i className="fab fa-facebook-f text-base sm:text-lg text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
           </Link>
           <Link href="https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <i className="fab fa-instagram text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+            <i className="fab fa-instagram text-base sm:text-lg text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
           </Link>
           <Link href="https://twitter.com/CafeClub_Lat?s=08" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i className="fab fa-twitter text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+            <i className="fab fa-twitter text-base sm:text-lg text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
           </Link>
           <Link href="https://youtube.com/c/CafeClubCanalTv" target="_blank" rel="noopener noreferrer" aria-label="Youtube">
-            <i className="fab fa-youtube text-lg sm:text-xl text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+            <i className="fab fa-youtube text-base sm:text-lg text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
           </Link>
         </div>
-      </div>
-
-      {/* Logo centrado */}
-      <div className="flex justify-center mt-4">
-        <Image
-          src="/images/Icon512x512.png"
-          alt="CafeClub TV Logo"
-          width={64}
-          height={64}
-          className="w-16 h-16 sm:w-20 sm:h-20"
-        />
       </div>
     </header>
   );
