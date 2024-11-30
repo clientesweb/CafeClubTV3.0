@@ -9,7 +9,7 @@ export default function GanaCashPage() {
           {/* Logo Section */}
           <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mb-8">
             <Image
-              src="/ganacash.png"
+              src="images/ganacash.png"
               alt="GanaCash Logo"
               width={1200}
               height={400}
