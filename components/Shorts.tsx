@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { ChevronUp, ChevronDown, X } from 'lucide-react'
-import { Button } from '@/components/Button'
+import { X } from 'lucide-react'
+import { Button } from './Button'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const shortsPlaylistId = 'PLZ_v3bWMqpjFa0xI11mahmOCxPk_1TK2s'
@@ -19,6 +19,7 @@ export default function Shorts() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFullScreen, setIsFullScreen] = useState(false)
   const shortsContainerRef = useRef<HTMLDivElement>(null)
+  const fullScreenContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const fetchShorts = async () => {
@@ -47,18 +48,32 @@ export default function Shorts() {
     }
   }
 
-  const handleFullScreenScroll = (direction: 'up' | 'down') => {
-    if (direction === 'up' && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    } else if (direction === 'down' && currentIndex < shorts.length - 1) {
-      setCurrentIndex(currentIndex + 1)
-    }
-  }
-
   const toggleFullScreen = (index: number) => {
     setIsFullScreen(!isFullScreen)
     setCurrentIndex(index)
   }
+
+  useEffect(() => {
+    if (isFullScreen && fullScreenContainerRef.current) {
+      const handleScroll = () => {
+        if (fullScreenContainerRef.current) {
+          const scrollPosition = fullScreenContainerRef.current.scrollTop
+          const videoHeight = fullScreenContainerRef.current.clientHeight
+          const newIndex = Math.round(scrollPosition / videoHeight)
+          if (newIndex !== currentIndex) {
+            setCurrentIndex(newIndex)
+          }
+        }
+      }
+
+      fullScreenContainerRef.current.addEventListener('scroll', handleScroll)
+      return () => {
+        if (fullScreenContainerRef.current) {
+          fullScreenContainerRef.current.removeEventListener('scroll', handleScroll)
+        }
+      }
+    }
+  }, [isFullScreen, currentIndex])
 
   return (
     <>
@@ -97,7 +112,7 @@ export default function Shorts() {
             <Button
               onClick={() => scrollShorts('left')}
               className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3"
-              aria-label="Scroll to previous short"
+              aria-label="Desplazarse al short anterior"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -106,7 +121,7 @@ export default function Shorts() {
             <Button
               onClick={() => scrollShorts('right')}
               className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-3"
-              aria-label="Scroll to next short"
+              aria-label="Desplazarse al siguiente short"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -122,42 +137,31 @@ export default function Shorts() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-50"
+            className="fixed inset-0 bg-black z-50 overflow-y-auto"
+            ref={fullScreenContainerRef}
           >
-            <div className="relative w-full h-full">
-              <iframe
-                src={`https://www.youtube.com/embed/${shorts[currentIndex].videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${shorts[currentIndex].videoId}`}
-                title={shorts[currentIndex].title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
-              <div className="absolute top-4 left-4 text-white text-xl font-bold">
-                {shorts[currentIndex].title}
+            {shorts.map((short, index) => (
+              <div key={short.id} className="relative w-full h-screen snap-start">
+                <iframe
+                  src={`https://www.youtube.com/embed/${short.videoId}?autoplay=1&controls=0&mute=0&loop=1&playlist=${short.videoId}`}
+                  title={short.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+                <div className="absolute top-4 left-4 text-white text-xl font-bold">
+                  {short.title}
+                </div>
               </div>
-              <Button
-                className="absolute top-4 right-4 text-white"
-                onClick={() => setIsFullScreen(false)}
-                aria-label="Cerrar pantalla completa"
-              >
-                <X className="h-6 w-6" />
-              </Button>
-              <Button
-                className="absolute top-1/2 left-4 transform -translate-y-1/2"
-                onClick={() => handleFullScreenScroll('up')}
-                disabled={currentIndex === 0}
-              >
-                <ChevronUp className="h-6 w-6" />
-              </Button>
-              <Button
-                className="absolute top-1/2 right-4 transform -translate-y-1/2"
-                onClick={() => handleFullScreenScroll('down')}
-                disabled={currentIndex === shorts.length - 1}
-              >
-                <ChevronDown className="h-6 w-6" />
-              </Button>
-            </div>
+            ))}
+            <Button
+              className="fixed top-4 right-4 text-white"
+              onClick={() => setIsFullScreen(false)}
+              aria-label="Cerrar pantalla completa"
+            >
+              <X className="h-6 w-6" />
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>
