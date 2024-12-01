@@ -1,4 +1,4 @@
-import { Construction, Coins, Timer } from 'lucide-react'
+import { Construction, Coins, Timer, Eye } from 'lucide-react'
 import Image from "next/image"
 
 export default function GanaCashPage() {
@@ -21,29 +21,36 @@ export default function GanaCashPage() {
           {/* Coming Soon Title */}
           <div className="relative">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-pulse">
-              Próximamente
+              ¡Muy Pronto: Gana Cash con CaféClub!
             </h1>
             <div className="absolute -inset-1 bg-yellow-400/20 blur-xl rounded-full -z-10" />
           </div>
 
+          {/* Main Content */}
+          <div className="max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl mb-6">
+              Con Gana Cash, acumula minutos viendo el canal CaféClub y participa para ganar dinero en efectivo. Disfruta de nuestros contenidos y convierte tu tiempo en recompensas reales.
+            </p>
+            <p className="text-lg sm:text-xl mb-6">
+              ¿No quieres esperar? También puedes participar directamente en la ruleta haciendo tu aporte al canal y empezar a ganar de inmediato.
+            </p>
+            <p className="text-lg sm:text-xl font-semibold">
+              ¡La oportunidad de disfrutar y ganar dinero en efectivo llega MUY PRONTO! Mantente conectado para no perderte esta emocionante experiencia con CaféClub.
+            </p>
+          </div>
+
           {/* Features Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto mt-8 sm:mt-12">
             <div className="bg-white/5 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white/10 hover:border-yellow-400/50 transition-colors">
-              <Construction className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 mx-auto text-yellow-400" />
-              <h2 className="text-lg sm:text-xl font-semibold mb-2">En Construcción</h2>
-              <p className="text-sm sm:text-base text-gray-300">Estamos trabajando para traerte la mejor experiencia de premios</p>
+              <Eye className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 mx-auto text-yellow-400" />
+              <h2 className="text-lg sm:text-xl font-semibold mb-2">Acumula Minutos</h2>
+              <p className="text-sm sm:text-base text-gray-300">Gana mientras disfrutas del contenido de CaféClub</p>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white/10 hover:border-yellow-400/50 transition-colors">
               <Coins className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 mx-auto text-yellow-400" />
-              <h2 className="text-lg sm:text-xl font-semibold mb-2">Grandes Premios</h2>
-              <p className="text-sm sm:text-base text-gray-300">Prepárate para ganar increíbles recompensas en efectivo</p>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white/10 hover:border-yellow-400/50 transition-colors sm:col-span-2 lg:col-span-1">
-              <Timer className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 mx-auto text-yellow-400" />
-              <h2 className="text-lg sm:text-xl font-semibold mb-2">Muy Pronto</h2>
-              <p className="text-sm sm:text-base text-gray-300">Estate atento a nuestro lanzamiento</p>
+              <h2 className="text-lg sm:text-xl font-semibold mb-2">Gana Efectivo</h2>
+              <p className="text-sm sm:text-base text-gray-300">Convierte tu tiempo en recompensas reales</p>
             </div>
           </div>
 
