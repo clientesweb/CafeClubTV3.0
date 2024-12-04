@@ -36,7 +36,7 @@ const programs = [
     title: 'Café Ole',
     image: '/images/programa6.jpg', // Make sure to add this image to your project
     schedule: 'Lunes 16:00 PM',
-    link: 'https://youtube.com/your_cafe_ole_playlist_link' // Replace with the actual YouTube playlist link
+    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGcaIqVFVvXDoHSCQyXwTYh&si=Twc6ZBj-bLWgW57N' // Replace with the actual YouTube playlist link
   }
 ]
 
