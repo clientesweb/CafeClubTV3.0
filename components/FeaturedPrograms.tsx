@@ -28,9 +28,15 @@ const programs = [
   },
   {
     title: 'Café COACHING con Miriam Rojas',
-    image: '/images/programa5.jpg', // Asegúrate de tener esta imagen en tu proyecto
+    image: '/images/programa5.jpg',
     schedule: 'Lunes 20:00 PM',
     link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjFxAFBsSb6EGJipJIRJT1x5&si=I10PfA73ad8Eb0LG'
+  },
+  {
+    title: 'Café Ole',
+    image: '/images/programa6.jpg', // Make sure to add this image to your project
+    schedule: 'Lunes 16:00 PM',
+    link: 'https://youtube.com/your_cafe_ole_playlist_link' // Replace with the actual YouTube playlist link
   }
 ]
 
@@ -70,3 +76,4 @@ export default function FeaturedPrograms() {
     </section>
   )
 }
+
