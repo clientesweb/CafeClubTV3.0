@@ -19,8 +19,8 @@ const slides = [
   },
   {
     image: '/images/hero3.png',
-    title: 'Únete: Cafetería Virtual',
-    description: 'Conéctate desde cualquier lugar y fortalece relaciones en un espacio innovador.',
+    title: 'Franquicia CafeClubTV®: ¡lleva nuestra pasión a tu país!',
+    description: '¡Ahora puedes tener tu propia franquicia con una App exclusiva y contenido personalizado para tus espectadores!.',
     buttonText: 'Contáctanos'
   }
 ]
