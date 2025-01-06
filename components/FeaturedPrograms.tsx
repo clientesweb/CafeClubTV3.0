@@ -3,12 +3,6 @@ import Link from 'next/link'
 
 const programs = [
   {
-    title: 'Consultorio Para el Alma',
-    image: '/images/programa1.jpg',
-    schedule: 'Martes 10:00 AM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjE3sjXw23_QF8NAfh5TiS-F&si=6qINBQ22xG02jLR5'
-  },
-  {
     title: 'Hola Gutis!',
     image: '/images/programa2.jpg',
     schedule: 'Miércoles 12:00 PM',
