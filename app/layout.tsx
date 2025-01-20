@@ -1,38 +1,35 @@
-import "./globals.css"
-import { Inter } from "next/font/google"
-import Script from "next/script"
+import './globals.css'
+import { Inter } from 'next/font/google'
+import Script from 'next/script'
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
-  description:
-    "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-  keywords:
-    "videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador",
-  robots: "index, follow",
+  title: 'CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists',
+  description: 'Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.',
+  keywords: 'videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador',
+  robots: 'index, follow',
   openGraph: {
-    title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
-    description: "Disfruta de entretenimiento de calidad con nuestros videos y playlists",
-    url: "https://www.cafeclubtv.com",
-    site_name: "CafeClubTV",
+    title: 'CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists',
+    description: 'Disfruta de entretenimiento de calidad con nuestros videos y playlists',
+    url: 'https://www.cafeclubtv.com',
+    site_name: 'CafeClubTV',
     images: [
       {
-        url: "/images/Icon512x512.png",
+        url: '/images/Icon512x512.png',
         width: 512,
         height: 512,
-        alt: "CafeClubTV Logo",
-      },
+        alt: 'CafeClubTV Logo',
+      }
     ],
-    locale: "es_ES",
+    locale: 'es_ES',
   },
   twitter: {
-    card: "summary_large_image",
-    site: "@CafeClub_Lat",
-    title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
-    description:
-      "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-    image: "/images/Icon512x512.png",
+    card: 'summary_large_image',
+    site: '@CafeClub_Lat',
+    title: 'CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists',
+    description: 'Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.',
+    image: '/images/Icon512x512.png',
   },
 }
 
@@ -52,18 +49,13 @@ export default function RootLayout({
         <link rel="icon" href="/images/Icon512x512.png" sizes="32x32" type="image/png" />
         <link rel="apple-touch-icon" href="/images/Icon512x512.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta
-          name="description"
-          content="Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad."
-        />
+        <meta name="description" content="Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad." />
         <meta name="author" content="CafeClubTV" />
         <meta name="publisher" content="CafeClubTV" />
-        <meta
-          name="keywords"
-          content="videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador"
-        />
+        <meta name="keywords" content="videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador" />
         <meta name="robots" content="index, follow" />
-
+        
+        {/* Datos estructurados de SEO local */}
         <script type="application/ld+json">
           {`
             {
@@ -97,14 +89,12 @@ export default function RootLayout({
           `}
         </script>
 
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
-          strategy="lazyOnload"
-        />
-        <Script src="https://www.youtube.com/iframe_api" strategy="lazyOnload" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" strategy="afterInteractive" />
+        <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>{children}</body>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        {children}
+      </body>
     </html>
   )
 }
-
