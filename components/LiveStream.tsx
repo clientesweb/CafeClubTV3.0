@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 const livePlaylistId = "PLZ_v3bWMqpjEYZDAFLI-0GuAH4BpA5PiL"
-const apiKey = "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
+const apiKey = ""
 
 interface PlaylistItem {
   snippet: {
