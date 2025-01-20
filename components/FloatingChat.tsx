@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -9,25 +9,31 @@ export default function FloatingChat() {
   const [isClient, setIsClient] = useState(false)
   const [showNotification, setShowNotification] = useState(false)
 
-  useEffect(() => {
-    setIsClient(true)
-    const showTimer = setTimeout(() => {
-      setShowNotification(true)
-    }, 3000) // Mostrar notificación después de 3 segundos
-
-    return () => clearTimeout(showTimer)
+  const handleCloseNotification = useCallback(() => {
+    setShowNotification(false)
   }, [])
 
   useEffect(() => {
-    if (!isClient) return
+    setIsClient(true)
+    let showTimer: NodeJS.Timeout
 
-    let hideTimer: NodeJS.Timeout
-
-    if (showNotification) {
-      hideTimer = setTimeout(() => {
-        setShowNotification(false)
-      }, 5000) // Cerrar notificación automáticamente después de 5 segundos
+    if (typeof window !== "undefined") {
+      showTimer = setTimeout(() => {
+        setShowNotification(true)
+      }, 3000)
     }
+
+    return () => {
+      if (showTimer) clearTimeout(showTimer)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isClient || !showNotification) return
+
+    const hideTimer = setTimeout(() => {
+      setShowNotification(false)
+    }, 5000)
 
     return () => clearTimeout(hideTimer)
   }, [showNotification, isClient])
@@ -38,7 +44,7 @@ export default function FloatingChat() {
 
   return (
     <div id="floating-chat" className="fixed right-4 bottom-24 flex flex-col gap-2 items-end">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showNotification && (
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.3 }}
@@ -48,7 +54,7 @@ export default function FloatingChat() {
           >
             <p className="text-sm text-gray-800 font-medium">Próximamente disfrutarás de los mejores premios</p>
             <button
-              onClick={() => setShowNotification(false)}
+              onClick={handleCloseNotification}
               className="absolute top-1 right-1 text-gray-500 hover:text-gray-700"
               aria-label="Cerrar notificación"
             >
@@ -68,12 +74,13 @@ export default function FloatingChat() {
           width={40}
           height={40}
           className="w-8 h-8 sm:w-10 sm:h-10"
+          priority
         />
         <span className="sr-only">Ir a GanaCash</span>
         {showNotification && (
           <span className="absolute top-0 right-0 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500" />
           </span>
         )}
       </Link>
@@ -90,6 +97,7 @@ export default function FloatingChat() {
           width={40}
           height={40}
           className="w-8 h-8 sm:w-10 sm:h-10"
+          priority
         />
         <span className="sr-only">Chat en WhatsApp</span>
       </Link>
