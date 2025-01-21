@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
-const livePlaylistId = 'PLZ_v3bWMqpjG6JuT_PLwL-8JXWIqhpW03'
-const apiKey = 'AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0'
+const livePlaylistId = "PLZ_v3bWMqpjG6JuT_PLwL-8JXWIqhpW03"
+const apiKey = "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
 
 interface PlaylistItem {
   snippet: {
@@ -21,19 +21,23 @@ interface PlaylistItem {
 
 export default function LiveStream() {
   const [playlistItems, setPlaylistItems] = useState<PlaylistItem[]>([])
-  const [mainVideoId, setMainVideoId] = useState('')
+  const [mainVideoId, setMainVideoId] = useState("")
 
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${livePlaylistId}&key=${apiKey}`)
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${livePlaylistId}&key=${apiKey}&order=date`,
+        )
         const data = await response.json()
-        setPlaylistItems(data.items)
-        if (data.items.length > 0) {
-          setMainVideoId(data.items[0].snippet.resourceId.videoId)
+        // Invertir el orden de los items para mostrar los más recientes primero
+        const reversedItems = data.items.reverse()
+        setPlaylistItems(reversedItems)
+        if (reversedItems.length > 0) {
+          setMainVideoId(reversedItems[0].snippet.resourceId.videoId)
         }
       } catch (error) {
-        console.error('Error fetching playlist:', error)
+        console.error("Error fetching playlist:", error)
       }
     }
 
@@ -67,7 +71,7 @@ export default function LiveStream() {
                 aria-label={`Ver video: ${item.snippet.title}`}
               >
                 <img
-                  src={item.snippet.thumbnails.medium.url}
+                  src={item.snippet.thumbnails.medium.url || "/placeholder.svg"}
                   alt={item.snippet.title}
                   className="w-16 h-16 object-cover rounded-md"
                 />
@@ -80,3 +84,4 @@ export default function LiveStream() {
     </section>
   )
 }
+
