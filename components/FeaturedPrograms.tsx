@@ -1,37 +1,43 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image"
+import Link from "next/link"
 
 const programs = [
   {
-    title: 'Hola Gutis!',
-    image: '/images/programa2.jpg',
-    schedule: 'Miércoles 12:00 PM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGamAX8f5SVv451mwHq_bQq&si=VA--l8LRYg8dvxbW'
+    title: "Hola Gutis!",
+    image: "/images/programa2.jpg",
+    schedule: "Miércoles 12:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGamAX8f5SVv451mwHq_bQq&si=VA--l8LRYg8dvxbW",
   },
   {
-    title: 'OM Talks',
-    image: '/images/programa4.jpg',
-    schedule: 'Miércoles 22:00 PM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjEU5H15CbmplsuGxtY66OwJ&si=lZFY_KZ5mNvz3SoH'
+    title: "Café con Music",
+    image: "/images/programa7.jpg",
+    schedule: "Jueves 14:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGxVyk1uBjUqMySYkbi6e3j&si=cdKZ--gAbwcB1ZxY",
   },
   {
-    title: 'Cafeteros',
-    image: '/images/programa3.jpg',
-    schedule: 'Lunes y Miércoles 10:00 AM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGGJD55fn6RP4lNo1sZZSEP&si=3ZphX4i3eR8abpes'
+    title: "Cafeteros",
+    image: "/images/programa3.jpg",
+    schedule: "Lunes y Miércoles 10:00 AM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGGJD55fn6RP4lNo1sZZSEP&si=3ZphX4i3eR8abpes",
   },
   {
-    title: 'Café COACHING con Miriam Rojas',
-    image: '/images/programa5.jpg',
-    schedule: 'Lunes 20:00 PM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjFxAFBsSb6EGJipJIRJT1x5&si=I10PfA73ad8Eb0LG'
+    title: "OM Talks",
+    image: "/images/programa4.jpg",
+    schedule: "Miércoles 22:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjEU5H15CbmplsuGxtY66OwJ&si=lZFY_KZ5mNvz3SoH",
   },
   {
-    title: 'Café Ole',
-    image: '/images/programa6.jpg', // Make sure to add this image to your project
-    schedule: 'Lunes 16:00 PM',
-    link: 'https://youtube.com/playlist?list=PLZ_v3bWMqpjGcaIqVFVvXDoHSCQyXwTYh&si=Twc6ZBj-bLWgW57N' // Replace with the actual YouTube playlist link
-  }
+    title: "Café COACHING con Miriam Rojas",
+    image: "/images/programa5.jpg",
+    schedule: "Lunes 20:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjFxAFBsSb6EGJipJIRJT1x5&si=I10PfA73ad8Eb0LG",
+  },
+  {
+    title: "Café Ole",
+    image: "/images/programa6.jpg",
+    schedule: "Lunes 16:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGcaIqVFVvXDoHSCQyXwTYh&si=Twc6ZBj-bLWgW57N",
+  },
 ]
 
 export default function FeaturedPrograms() {
@@ -42,20 +48,23 @@ export default function FeaturedPrograms() {
         <div className="program-scroll-container overflow-x-auto">
           <div className="flex space-x-4 gap-4 md:gap-8">
             {programs.map((program, index) => (
-              <div key={index} className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
-                <Image 
-                  src={program.image} 
-                  alt={program.title} 
-                  width={384} 
-                  height={216} 
-                  className="w-full h-44 sm:h-52 object-cover rounded-t-xl" 
-                  loading="lazy" 
+              <div
+                key={index}
+                className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"
+              >
+                <Image
+                  src={program.image || "/placeholder.svg"}
+                  alt={program.title}
+                  width={384}
+                  height={216}
+                  className="w-full h-44 sm:h-52 object-cover rounded-t-xl"
+                  loading="lazy"
                 />
                 <div className="p-4">
                   <h3 className="font-semibold text-lg sm:text-xl mb-2 text-[var(--primary-color)]">{program.title}</h3>
                   <p className="text-gray-700 text-sm sm:text-base mb-2">{program.schedule}</p>
-                  <Link 
-                    href={program.link} 
+                  <Link
+                    href={program.link}
                     className="inline-block bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base transition-all duration-200 ease-in-out"
                     aria-label={`Ver programa ${program.title}`}
                   >
@@ -70,3 +79,4 @@ export default function FeaturedPrograms() {
     </section>
   )
 }
+
