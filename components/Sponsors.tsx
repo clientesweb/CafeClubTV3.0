@@ -10,7 +10,7 @@ const sponsors = [
   { id: 4, src: '/images/sponsor4.png', alt: 'Sponsor 4' },
   { id: 5, src: '/images/sponsor5.png', alt: 'Sponsor 5' },
   { id: 6, src: '/images/sponsor6.png', alt: 'Sponsor 6' },
-  { id: 7, src: '/images/sponsor6.png', alt: 'Sponsor 7' },
+  { id: 7, src: '/images/sponsor7.png', alt: 'Sponsor 7' },
 ]
 
 export default function Sponsors() {
