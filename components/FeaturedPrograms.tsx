@@ -3,6 +3,12 @@ import Link from "next/link"
 
 const programs = [
   {
+    title: "DE LEY!",
+    image: "/images/programa1.jpg",
+    schedule: "Jueves 20:00 PM",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjEXDXovYZECqH1qxi8ymnTe&si=VKIYygF-jj2_PJ3l",
+  },
+  {
     title: "Hola Gutis!",
     image: "/images/programa2.jpg",
     schedule: "Miércoles 12:00 PM",
