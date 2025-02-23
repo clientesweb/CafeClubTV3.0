@@ -16,6 +16,7 @@ interface PlaylistItem {
     resourceId: {
       videoId: string
     }
+    publishedAt: string // Añadimos esta propiedad para ordenar por fecha
   }
 }
 
@@ -26,24 +27,33 @@ export default function LiveStream() {
   const fetchPlaylist = useCallback(async () => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${livePlaylistId}&key=${apiKey}&orderBy=date`,
+        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${livePlaylistId}&key=${apiKey}`,
       )
       const data = await response.json()
-      // No necesitamos reverse() ya que orderBy=date ya los trae ordenados del más reciente al más antiguo
-      setPlaylistItems(data.items)
-      // Establecer el video más reciente como principal si no hay uno seleccionado
-      if (data.items.length > 0 && !mainVideoId) {
-        setMainVideoId(data.items[0].snippet.resourceId.videoId)
+
+      // Ordenar por fecha de publicación (más reciente primero) y tomar los últimos 5
+      const sortedItems = data.items
+        .sort(
+          (a: PlaylistItem, b: PlaylistItem) =>
+            new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime(),
+        )
+        .slice(0, 5)
+
+      setPlaylistItems(sortedItems)
+
+      // Siempre establecer el video más reciente como principal
+      if (sortedItems.length > 0) {
+        setMainVideoId(sortedItems[0].snippet.resourceId.videoId)
       }
     } catch (error) {
       console.error("Error fetching playlist:", error)
     }
-  }, [mainVideoId])
+  }, [])
 
   useEffect(() => {
     fetchPlaylist()
-    // Actualizar la lista cada 5 minutos para obtener nuevos videos
-    const interval = setInterval(fetchPlaylist, 5 * 60 * 1000)
+    // Actualizar la lista cada 15 minutos
+    const interval = setInterval(fetchPlaylist, 15 * 60 * 1000)
 
     return () => clearInterval(interval)
   }, [fetchPlaylist])
@@ -69,7 +79,7 @@ export default function LiveStream() {
           <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-4 sm:space-y-6">
             {playlistItems.map((item, index) => (
               <div
-                key={index}
+                key={item.snippet.resourceId.videoId}
                 className={`playlist-video flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-3 rounded-lg transition-all ${
                   item.snippet.resourceId.videoId === mainVideoId ? "bg-gray-700" : ""
                 }`}
@@ -81,7 +91,10 @@ export default function LiveStream() {
                   alt={item.snippet.title}
                   className="w-16 h-16 object-cover rounded-md"
                 />
-                <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
+                  <p className="text-xs text-gray-400">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
+                </div>
               </div>
             ))}
           </div>
