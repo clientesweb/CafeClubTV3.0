@@ -1,9 +1,9 @@
-import Image from 'next/image'
+import Image from "next/image"
 
 export default function AdBanner() {
   return (
-    <section 
-      id="ad-banner" 
+    <section
+      id="ad-banner"
       className="relative h-64 sm:h-96 overflow-hidden rounded-lg shadow-xl"
       aria-labelledby="banner-title"
       role="banner"
@@ -12,10 +12,10 @@ export default function AdBanner() {
       <Image
         src="/images/banner.jpg"
         alt="Banner publicitario para ganar dinero jugando a la ruleta"
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="100vw"
         priority // Para cargar la imagen de manera más rápida
-        className="opacity-80"
+        className="object-cover opacity-80"
       />
 
       {/* Superposición con un toque oscuro para resaltar el texto */}
@@ -39,3 +39,4 @@ export default function AdBanner() {
     </section>
   )
 }
+
