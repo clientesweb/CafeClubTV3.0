@@ -29,24 +29,25 @@ const slides = [
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Preload images to avoid flickering
     const preloadImages = async () => {
       try {
         await Promise.all(
           slides.map((slide) => {
             return new Promise<void>((resolve, reject) => {
-              const img = document.createElement("img")
+              const img = new Image()
               img.src = slide.image
               img.onload = () => resolve()
-              img.onerror = reject
+              img.onerror = (e) => reject(new Error(`Failed to load image: ${slide.image}`))
             })
           }),
         )
         setIsLoading(false)
       } catch (error) {
         console.error("Error preloading images:", error)
+        setError(error instanceof Error ? error.message : "An unknown error occurred")
         setIsLoading(false)
       }
     }
@@ -60,6 +61,17 @@ export default function Hero() {
   }, [])
 
   const currentSlideContent = useMemo(() => slides[currentSlide], [currentSlide])
+
+  if (error) {
+    return (
+      <section className="relative h-screen max-h-[1080px] bg-gray-900 flex items-center justify-center">
+        <div className="text-white text-center">
+          <h2 className="text-2xl font-bold mb-4">Error</h2>
+          <p>{error}</p>
+        </div>
+      </section>
+    )
+  }
 
   if (isLoading) {
     return (
