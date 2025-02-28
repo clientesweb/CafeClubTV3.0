@@ -28,8 +28,31 @@ const slides = [
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Preload images to avoid flickering
+    const preloadImages = async () => {
+      try {
+        await Promise.all(
+          slides.map((slide) => {
+            return new Promise((resolve, reject) => {
+              const img = new Image()
+              img.src = slide.image
+              img.onload = resolve
+              img.onerror = reject
+            })
+          }),
+        )
+        setIsLoading(false)
+      } catch (error) {
+        console.error("Error preloading images:", error)
+        setIsLoading(false)
+      }
+    }
+
+    preloadImages()
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 5000)
@@ -37,6 +60,14 @@ export default function Hero() {
   }, [])
 
   const currentSlideContent = useMemo(() => slides[currentSlide], [currentSlide])
+
+  if (isLoading) {
+    return (
+      <section className="relative h-screen max-h-[1080px] bg-gray-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-white"></div>
+      </section>
+    )
+  }
 
   return (
     <section id="hero" className="relative h-screen max-h-[1080px] overflow-hidden">
