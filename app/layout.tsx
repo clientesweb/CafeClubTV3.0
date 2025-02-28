@@ -66,65 +66,44 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
 
         {/* Datos estructurados de SEO local */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: `
-              {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "CafeClubTV",
-                "url": "https://www.cafeclubtv.com",
-                "logo": "https://www.cafeclubtv.com/images/Icon512x512.png",
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": "+593978606269",
-                  "contactType": "Customer Service",
-                  "areaServed": "EC",
-                  "availableLanguage": "Spanish"
-                },
-                "sameAs": [
-                  "https://www.facebook.com/CafeClubRadio/",
-                  "https://twitter.com/CafeClub_Lat?s=08",
-                  "https://www.instagram.com/@cafeclubtv",
-                  "https://youtube.com/c/CafeClubCanalTv"
-                ],
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "Mystic Pointe Drive",
-                  "addressLocality": "Miami/Aventura",
-                  "addressRegion": "FL",
-                  "postalCode": "33180",
-                  "addressCountry": "US"
-                }
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "CafeClubTV",
+              "url": "https://www.cafeclubtv.com",
+              "logo": "https://www.cafeclubtv.com/images/Icon512x512.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+593978606269",
+                "contactType": "Customer Service",
+                "areaServed": "EC",
+                "availableLanguage": "Spanish"
+              },
+              "sameAs": [
+                "https://www.facebook.com/CafeClubRadio/",
+                "https://twitter.com/CafeClub_Lat?s=08",
+                "https://www.instagram.com/@cafeclubtv",
+                "https://youtube.com/c/CafeClubCanalTv"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mystic Pointe Drive",
+                "addressLocality": "Miami/Aventura",
+                "addressRegion": "FL",
+                "postalCode": "33180",
+                "addressCountry": "US"
               }
-            `,
-          }}
-        />
+            }
+          `}
+        </script>
 
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
           strategy="afterInteractive"
         />
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
-
-        {/* Service Worker Registration */}
-        <Script id="register-sw" strategy="afterInteractive">
-          {`
-            if ('serviceWorker' in navigator) {
-              window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js').then(
-                  function(registration) {
-                    console.log('Service Worker registration successful with scope: ', registration.scope);
-                  },
-                  function(err) {
-                    console.log('Service Worker registration failed: ', err);
-                  }
-                );
-              });
-            }
-          `}
-        </Script>
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>{children}</body>
     </html>
