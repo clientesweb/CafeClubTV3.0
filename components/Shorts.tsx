@@ -5,7 +5,7 @@ import { X } from 'lucide-react'
 import { Button } from './Button'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const shortsPlaylistId = 'PLZ_v3bWMqpjFa0xI11mahmOCxPk_1TK2s'
+const shortsPlaylistId = ''
 const apiKey = 'AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0'
 
 interface Short {
