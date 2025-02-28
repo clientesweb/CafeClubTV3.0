@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react"
 
-const livePlaylistId = "PLZ_v3bWMqpjG6JuT_PLwL-8JXWIqhpW03"
+const livePlaylistId = ""
 const apiKey = "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
 
 interface PlaylistItem {
@@ -16,35 +16,20 @@ interface PlaylistItem {
     resourceId: {
       videoId: string
     }
-    publishedAt: string
+    publishedAt: string // Añadimos esta propiedad para ordenar por fecha
   }
 }
 
 export default function LiveStream() {
   const [playlistItems, setPlaylistItems] = useState<PlaylistItem[]>([])
   const [mainVideoId, setMainVideoId] = useState("")
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   const fetchPlaylist = useCallback(async () => {
     try {
-      setIsLoading(true)
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${livePlaylistId}&key=${apiKey}`,
       )
-
-      if (!response.ok) {
-        throw new Error(`Error fetching playlist: ${response.status}`)
-      }
-
       const data = await response.json()
-
-      if (!data.items || data.items.length === 0) {
-        setPlaylistItems([])
-        setMainVideoId("")
-        setError("No se encontraron videos en la lista de reproducción")
-        return
-      }
 
       // Ordenar por fecha de publicación (más reciente primero) y tomar los últimos 5
       const sortedItems = data.items
@@ -60,13 +45,8 @@ export default function LiveStream() {
       if (sortedItems.length > 0) {
         setMainVideoId(sortedItems[0].snippet.resourceId.videoId)
       }
-
-      setError(null)
     } catch (error) {
       console.error("Error fetching playlist:", error)
-      setError("Error al cargar los videos. Por favor, intenta más tarde.")
-    } finally {
-      setIsLoading(false)
     }
   }, [])
 
@@ -82,66 +62,43 @@ export default function LiveStream() {
     <section id="live-stream" className="py-8 sm:py-12 md:py-16 bg-[var(--primary-color)] text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">Transmisión en Vivo</h2>
-
-        {error && (
-          <div className="text-center p-4 bg-red-800 bg-opacity-50 rounded-lg mb-6">
-            <p>{error}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 aspect-video bg-black w-full rounded-lg shadow-xl">
+            {mainVideoId && (
+              <iframe
+                title="Live Stream"
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${mainVideoId}?autoplay=1&modestbranding=1`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
-        )}
-
-        {isLoading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 aspect-video bg-black w-full rounded-lg shadow-xl">
-              {mainVideoId ? (
-                <iframe
-                  title="Live Stream"
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${mainVideoId}?autoplay=0&modestbranding=1`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <div className="flex justify-center items-center h-full">
-                  <p>No hay videos disponibles en este momento</p>
+          <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-4 sm:space-y-6">
+            {playlistItems.map((item, index) => (
+              <div
+                key={item.snippet.resourceId.videoId}
+                className={`playlist-video flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-3 rounded-lg transition-all ${
+                  item.snippet.resourceId.videoId === mainVideoId ? "bg-gray-700" : ""
+                }`}
+                onClick={() => setMainVideoId(item.snippet.resourceId.videoId)}
+                aria-label={`Ver video: ${item.snippet.title}`}
+              >
+                <img
+                  src={item.snippet.thumbnails.medium.url || "/placeholder.svg"}
+                  alt={item.snippet.title}
+                  className="w-16 h-16 object-cover rounded-md"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
+                  <p className="text-xs text-gray-400">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
                 </div>
-              )}
-            </div>
-            <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-4 sm:space-y-6">
-              {playlistItems.length > 0 ? (
-                playlistItems.map((item) => (
-                  <div
-                    key={item.snippet.resourceId.videoId}
-                    className={`playlist-video flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-3 rounded-lg transition-all ${
-                      item.snippet.resourceId.videoId === mainVideoId ? "bg-gray-700" : ""
-                    }`}
-                    onClick={() => setMainVideoId(item.snippet.resourceId.videoId)}
-                    aria-label={`Ver video: ${item.snippet.title}`}
-                  >
-                    <img
-                      src={item.snippet.thumbnails.medium.url || "/placeholder.svg"}
-                      alt={item.snippet.title}
-                      className="w-16 h-16 object-cover rounded-md"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
-                      <p className="text-xs text-gray-400">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-center p-4">
-                  <p>No hay videos en la lista de reproducción</p>
-                </div>
-              )}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </section>
   )
