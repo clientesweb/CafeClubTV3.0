@@ -36,10 +36,10 @@ export default function Hero() {
       try {
         await Promise.all(
           slides.map((slide) => {
-            return new Promise((resolve, reject) => {
+            return new Promise<void>((resolve, reject) => {
               const img = new Image()
               img.src = slide.image
-              img.onload = resolve
+              img.onload = () => resolve()
               img.onerror = reject
             })
           }),
