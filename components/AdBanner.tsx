@@ -12,10 +12,10 @@ export default function AdBanner() {
       <Image
         src="/images/banner.jpg"
         alt="Banner publicitario para ganar dinero jugando a la ruleta"
-        fill
-        sizes="100vw"
+        layout="fill"
+        objectFit="cover"
         priority // Para cargar la imagen de manera más rápida
-        className="object-cover opacity-80"
+        className="opacity-80"
       />
 
       {/* Superposición con un toque oscuro para resaltar el texto */}
