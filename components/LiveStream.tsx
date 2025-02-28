@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react"
 
-const livePlaylistId = ""
+const livePlaylistId = "PLZ_v3bWMqpjG6JuT_PLwL-8JXWIqhpW03"
 const apiKey = "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
 
 interface PlaylistItem {
