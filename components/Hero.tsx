@@ -37,7 +37,7 @@ export default function Hero() {
         await Promise.all(
           slides.map((slide) => {
             return new Promise<void>((resolve, reject) => {
-              const img = new Image(1, 1) // Provide width and height arguments
+              const img = document.createElement("img")
               img.src = slide.image
               img.onload = () => resolve()
               img.onerror = reject
