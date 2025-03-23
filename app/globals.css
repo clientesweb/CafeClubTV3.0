@@ -2,18 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* Brand colors */
+    --brand: 357 97% 32%;
+    --brand-dark: 357 97% 25%;
+    --brand-light: 357 97% 40%;
+    --brand-foreground: 0 0% 100%;
+
+    --gold: 36 100% 50%;
+    --gold-dark: 36 100% 40%;
+
+    --secondary-brand: 0 0% 13%;
+    --secondary-brand-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    /* Brand colors in dark mode */
+    --brand: 357 97% 40%;
+    --brand-dark: 357 97% 32%;
+    --brand-light: 357 97% 50%;
+
+    --gold: 36 100% 55%;
+    --gold-dark: 36 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+/* Fonts */
 :root {
-  --primary-color: #8B0000;
-  --secondary-color: #6B0000;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  padding-bottom: 60px;
+/* Custom styles */
+.font-sans {
+  font-family: var(--font-sans);
 }
 
-footer {
-  padding-bottom: 80px;
+.font-heading {
+  font-family: var(--font-heading);
 }
 
 /* Hero section styles */
@@ -40,12 +144,12 @@ footer {
 .hero-slide img {
   object-fit: cover;
   object-position: center;
-  filter: brightness(70%); /* added to darken the image for better text visibility */
-  transition: transform 0.3s ease;
+  filter: brightness(70%);
+  transition: transform 0.5s ease;
 }
 
 .hero-slide:hover img {
-  transform: scale(1.1); /* added zoom effect when hovering over hero images */
+  transform: scale(1.05);
 }
 
 .hero-dot {
@@ -56,299 +160,123 @@ footer {
   opacity: 1;
 }
 
-/* Hero text effects */
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  transition: opacity 0.5s ease-in-out;
-  opacity: 0;
-}
-
-.hero-text.visible {
-  opacity: 1;
-}
-
-/* Rest of your existing styles */
+/* Animations */
 .fade-in {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out forwards;
 }
 
-.fade-in.visible {
-  opacity: 1;
-}
-
-.program-scroll-container {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.program-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-#video-playlist {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1);
-}
-
-#video-playlist::-webkit-scrollbar {
-  width: 6px;
-}
-
-#video-playlist::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-#video-playlist::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-}
-
-.playlist-video {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.3s ease;
-}
-
-.playlist-video:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.playlist-video img {
-  width: 120px;
-  height: 67px;
-  object-fit: cover;
-  border-radius: 0.25rem;
-}
-
-.playlist-video p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-/* Estilos actualizados para la sección de shorts */
-.shorts-carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-#shorts-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding-bottom: 10px;
-}
-
-#shorts-container::-webkit-scrollbar {
-  display: none;
-}
-
-.short-video {
-  flex: 0 0 auto;
-  width: 80%;
-  max-width: 315px;
-  margin-right: 16px;
-  scroll-snap-align: center;
-}
-
-.short-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 177.78%;
-}
-
-.short-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-}
-
-#prev-short,
-#next-short {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.5);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 10;
-}
-
-#prev-short {
-  left: 10px;
-}
-
-#next-short {
-  right: 10px;
-}
-
-@media (min-width: 640px) {
-  .short-video {
-    width: 315px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 639px) {
-  .shorts-carousel-container {
-    max-width: 100%;
+.slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.8s ease-in-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
   }
-
-  #shorts-container {
-    padding-left: 10%;
-  }
-}
-
-/* Updated sponsors styles for infinite scroll */
-#sponsors {
-  overflow: hidden;
-}
-
-.animate-scroll {
-  display: flex;
-  animation: scroll var(--animation-duration, 30s) linear infinite;
-}
-
-@keyframes scroll {
-  0% {
+  to {
+    opacity: 1;
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(calc(-1 * var(--scroll-width, 100%)));
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-#sponsors .flex > div {
-  flex-shrink: 0;
+/* Scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--brand)) rgba(0, 0, 0, 0.1);
 }
 
-#sponsors img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-@media (max-width: 640px) {
-  #sponsors .flex > div {
-    width: 100%;
-  }
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
-@media (min-width: 641px) and (max-width: 768px) {
-  #sponsors .flex > div {
-    width: 50%;
-  }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--brand));
+  border-radius: 3px;
 }
 
-@media (min-width: 769px) {
-  #sponsors .flex > div {
-    width: 25%;
-  }
-}
-
-#download-app {
-  overflow: hidden;
-}
-
-#download-app .container {
-  position: relative;
-}
-
-#download-app .container::before {
-  content: '';
+/* Accessibility improvements */
+.sr-only {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
-  transform: rotate(30deg);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-/* Header styles */
-header {
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
+.focus-visible:focus {
+  outline: 2px solid hsl(var(--brand));
+  outline-offset: 2px;
 }
 
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header .container button {
-  display: flex;
-  align-items: center;
-  background-color: var(--primary-color);
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: hsl(var(--brand));
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
 }
 
-header .container button:hover {
-  background-color: var(--secondary-color);
+.skip-to-content:focus {
+  top: 0;
 }
 
-header .container button i {
-  margin-right: 0.5rem;
-}
-
-header .container .social-icons a {
-  color: #333;
-  transition: color 0.3s ease;
-  margin-left: 1rem;
-}
-
-header .container .social-icons a:hover {
-  color: var(--primary-color);
-}
-
-/* Adjustments for icons in header */
-header .container .social-icons i {
-  font-size: 1.25rem;
-}
-
-/* Mobile responsiveness for header */
-@media (max-width: 640px) {
-  header .container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header .container button {
-    margin-bottom: 1rem;
+/* Responsive adjustments */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
+/* Sponsors animation */
 @layer utilities {
   .animate-scroll {
     animation: scroll var(--animation-duration, 30s) linear infinite;
