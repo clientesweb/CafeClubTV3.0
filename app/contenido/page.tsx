@@ -8,6 +8,15 @@ import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
 import ContentHero from "@/components/ContentHero"
 import AdBanner from "@/components/AdBanner"
+import { getMetadata } from "@/lib/get-metadata"
+
+export const metadata = getMetadata({
+  title: "Programación y Contenido | CafeClubTV",
+  description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
+  url: "/contenido",
+  image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-contenido-og-Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+  keywords: "programas de TV, contenido digital, transmisión en vivo, shorts, CafeClubTV, entretenimiento",
+})
 
 export default function ContenidoPage() {
   return (
