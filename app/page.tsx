@@ -1,15 +1,16 @@
 import TopBanner from "../components/TopBanner"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
-import FeaturedPrograms from "../components/FeaturedPrograms"
+import AboutUs from "../components/AboutUs"
 import LiveStream from "../components/LiveStream"
-import Shorts from "../components/Shorts"
-import AdBanner from "../components/AdBanner"
 import Sponsors from "../components/Sponsors"
+import AdBanner from "../components/AdBanner"
 import DownloadApp from "../components/DownloadApp"
+import CommercialProposals from "../components/CommercialProposals"
 import Footer from "../components/Footer"
 import BottomNav from "../components/BottomNav"
 import FloatingChat from "../components/FloatingChat"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -18,15 +19,47 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <Hero />
-        <FeaturedPrograms />
-        <LiveStream />
-        <Shorts />
-        <AdBanner />
+        <AboutUs />
+
+        {/* Contenedor grande para LiveStream */}
+        <section className="py-8 sm:py-12 md:py-16 bg-gray-100">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">En Vivo</h2>
+            <div className="max-w-5xl mx-auto">
+              <LiveStream showPlaylist={false} />
+
+              {/* Botón para explorar más */}
+              <div className="mt-8 text-center">
+                <Link
+                  href="/contenido"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+                >
+                  Programación completa
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 ml-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <CommercialProposals />
         <Sponsors />
+        <AdBanner />
         <DownloadApp />
       </main>
       <Footer />
-      <BottomNav />
+      <BottomNav activeItem="home" />
       <FloatingChat />
     </>
   )
