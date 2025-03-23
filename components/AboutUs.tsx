@@ -94,7 +94,7 @@ export default function AboutUs() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-brand text-white shadow-lg"
+                    ? "bg-[#B01E23] text-white shadow-lg"
                     : "bg-accent text-foreground hover:bg-accent/80"
                 }`}
               >
@@ -138,7 +138,7 @@ export default function AboutUs() {
                       className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
                       aria-label="Reproducir video"
                     >
-                      <Play className="w-8 h-8 text-brand ml-1" />
+                      <Play className="w-8 h-8 text-[#B01E23] ml-1" />
                     </motion.button>
                   </div>
                 </>
@@ -177,8 +177,8 @@ export default function AboutUs() {
                     { year: "2023", event: "Lanzamiento de la aplicación móvil y sistema de franquicias" },
                   ].map((item, index) => (
                     <div key={index} className="ml-6 relative">
-                      <div className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-brand"></div>
-                      <div className="font-bold text-brand">{item.year}</div>
+                      <div className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-[#B01E23]"></div>
+                      <div className="font-bold text-[#B01E23]">{item.year}</div>
                       <div className="text-muted-foreground">{item.event}</div>
                     </div>
                   ))}
@@ -222,7 +222,7 @@ export default function AboutUs() {
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     className="flex items-start gap-3 p-4 rounded-lg bg-accent hover:bg-accent/80 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#B01E23]/10 flex items-center justify-center text-[#B01E23] flex-shrink-0">
                       {value.icon}
                     </div>
                     <div>
@@ -236,7 +236,7 @@ export default function AboutUs() {
 
             {/* Estadísticas */}
             <div>
-              <div className="bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-gradient-to-br from-[#B01E23] to-[#8B0000] rounded-2xl p-8 text-white shadow-xl">
                 <h3 className="text-2xl font-bold mb-6 text-center font-heading">CafeClub TV en Números</h3>
                 <div className="grid grid-cols-2 gap-6">
                   {stats.map((stat, index) => (
@@ -305,13 +305,13 @@ export default function AboutUs() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold">{member.name}</h3>
-                    <p className="text-brand font-medium mb-3">{member.role}</p>
+                    <p className="text-[#B01E23] font-medium mb-3">{member.role}</p>
                     <p className="text-muted-foreground text-sm">{member.bio}</p>
                     <div className="mt-4 flex gap-3">
-                      <a href="#" className="text-muted-foreground hover:text-brand transition-colors">
+                      <a href="#" className="text-muted-foreground hover:text-[#B01E23] transition-colors">
                         <i className="fab fa-linkedin text-lg"></i>
                       </a>
-                      <a href="#" className="text-muted-foreground hover:text-brand transition-colors">
+                      <a href="#" className="text-muted-foreground hover:text-[#B01E23] transition-colors">
                         <i className="fab fa-twitter text-lg"></i>
                       </a>
                     </div>
@@ -327,7 +327,7 @@ export default function AboutUs() {
                 Siempre estamos buscando talentos apasionados para unirse a nuestra familia. Si te apasionan los medios
                 digitales y quieres formar parte de algo grande, ¡contáctanos!
               </p>
-              <Button variant="brand" asChild>
+              <Button variant="default" asChild className="bg-[#B01E23] hover:bg-[#8B0000] text-white">
                 <a
                   href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20unirme%20al%20equipo%20de%20CafeClub%20TV"
                   target="_blank"
