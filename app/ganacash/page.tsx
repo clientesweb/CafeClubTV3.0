@@ -3,16 +3,42 @@ import Image from "next/image"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
-import { getMetadata } from "@/lib/get-metadata"
+import { absoluteUrl } from "@/lib/utils"
 
-export const metadata = getMetadata({
+export const metadata = {
   title: "GanaCash - Gana premios en efectivo | CafeClubTV",
   description:
     "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
-  url: "/ganacash",
-  image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
   keywords: "premios, dinero en efectivo, ruleta, juegos, recompensas, CafeClubTV, ganar dinero",
-})
+  openGraph: {
+    title: "GanaCash - Gana premios en efectivo | CafeClubTV",
+    description:
+      "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
+    url: absoluteUrl("/ganacash"),
+    siteName: "CafeClubTV",
+    images: [
+      {
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+        width: 1200,
+        height: 630,
+        alt: "GanaCash - Gana premios en efectivo | CafeClubTV",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@CafeClub_Lat",
+    title: "GanaCash - Gana premios en efectivo | CafeClubTV",
+    description:
+      "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg"],
+  },
+  alternates: {
+    canonical: "/ganacash",
+  },
+}
 
 export default function GanaCashPage() {
   return (
