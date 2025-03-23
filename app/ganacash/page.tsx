@@ -3,7 +3,6 @@ import Image from "next/image"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
-import { absoluteUrl } from "@/lib/utils"
 
 export const metadata = {
   title: "GanaCash - Gana premios en efectivo | CafeClubTV",
@@ -14,7 +13,7 @@ export const metadata = {
     title: "GanaCash - Gana premios en efectivo | CafeClubTV",
     description:
       "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
-    url: absoluteUrl("/ganacash"),
+    url: "https://www.cafeclubtv.com/ganacash",
     siteName: "CafeClubTV",
     images: [
       {
