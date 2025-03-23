@@ -99,12 +99,16 @@ export default function Shorts() {
 
           {isLoading ? (
             <div className="flex justify-center items-center min-h-[300px]">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#B01E23]"></div>
             </div>
           ) : error ? (
             <div className="text-center p-6 bg-red-500/10 rounded-lg">
               <p>{error}</p>
-              <Button variant="brand" onClick={() => window.location.reload()} className="mt-4">
+              <Button
+                variant="default"
+                onClick={() => window.location.reload()}
+                className="mt-4 bg-[#B01E23] hover:bg-[#8B0000] text-white"
+              >
                 Reintentar
               </Button>
             </div>
