@@ -4,6 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Check, ArrowRight, Tv, Globe, Video, Users, Star, Zap } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function CommercialProposals() {
   const [activeTab, setActiveTab] = useState("publicidad")
@@ -169,11 +170,11 @@ export default function CommercialProposals() {
   const content = tabContent[activeTab as keyof typeof tabContent]
 
   return (
-    <section className="py-16 bg-white">
+    <section id="commercial-proposals" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Propuestas Comerciales</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-heading">Propuestas Comerciales</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Descubre las diferentes formas de colaborar con CafeClub TV y hacer crecer tu negocio
           </p>
 
@@ -185,8 +186,8 @@ export default function CommercialProposals() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-[var(--primary-color)] text-white shadow-lg"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-brand text-white shadow-lg"
+                    : "bg-accent text-foreground hover:bg-accent/80"
                 }`}
               >
                 {tab.label}
@@ -212,7 +213,7 @@ export default function CommercialProposals() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
               <div className="p-6">
-                <h3 className="text-white text-2xl font-bold">{content.title}</h3>
+                <h3 className="text-white text-2xl font-bold font-heading">{content.title}</h3>
                 <p className="text-white/80">{content.description}</p>
               </div>
             </div>
@@ -220,14 +221,14 @@ export default function CommercialProposals() {
 
           {/* Contenido */}
           <div>
-            <h3 className="text-2xl font-bold mb-6">{content.title}</h3>
-            <p className="text-gray-600 mb-8">{content.description}</p>
+            <h3 className="text-2xl font-bold mb-6 font-heading">{content.title}</h3>
+            <p className="text-muted-foreground mb-8">{content.description}</p>
 
             {/* Características */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {content.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[var(--primary-color)]/10 flex items-center justify-center text-[var(--primary-color)]">
+                  <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
                     {feature.icon}
                   </div>
                   <span className="font-medium">{feature.text}</span>
@@ -244,20 +245,20 @@ export default function CommercialProposals() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   className={`border rounded-xl p-4 relative ${
-                    plan.popular ? "border-[var(--primary-color)] shadow-lg" : "border-gray-200"
+                    plan.popular ? "border-brand shadow-lg" : "border-border"
                   }`}
                 >
                   {plan.popular && (
-                    <span className="absolute -top-3 right-4 bg-[var(--primary-color)] text-white text-xs px-3 py-1 rounded-full">
+                    <span className="absolute -top-3 right-4 bg-brand text-white text-xs px-3 py-1 rounded-full">
                       Popular
                     </span>
                   )}
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h4 className="font-bold text-lg">{plan.name}</h4>
-                      <p className="text-2xl font-bold text-[var(--primary-color)]">{plan.price}</p>
+                      <p className="text-2xl font-bold text-brand">{plan.price}</p>
                     </div>
-                    <button className="text-[var(--primary-color)] hover:text-[var(--secondary-color)] transition-colors">
+                    <button className="text-brand hover:text-brand-dark transition-colors">
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
@@ -265,7 +266,7 @@ export default function CommercialProposals() {
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <span className="text-sm text-muted-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -275,15 +276,16 @@ export default function CommercialProposals() {
 
             {/* CTA */}
             <div className="mt-8 text-center">
-              <a
-                href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20saber%20más%20sobre%20las%20propuestas%20comerciales"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold rounded-lg transition-all duration-300 ease-in-out"
-              >
-                Solicitar información
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
+              <Button variant="brand" asChild>
+                <a
+                  href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20saber%20más%20sobre%20las%20propuestas%20comerciales"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Solicitar información
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>
