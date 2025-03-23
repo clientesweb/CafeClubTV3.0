@@ -1,9 +1,20 @@
 import type React from "react"
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { Inter, Playfair_Display } from "next/font/google"
 import Script from "next/script"
+import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+})
 
 export const metadata = {
   title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
@@ -19,13 +30,14 @@ export const metadata = {
     site_name: "CafeClubTV",
     images: [
       {
-        url: "/images/Icon512x512.png",
-        width: 512,
-        height: 512,
-        alt: "CafeClubTV Logo",
+        url: "/images/cafeclubtv-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CafeClubTV",
       },
     ],
     locale: "es_ES",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
@@ -33,8 +45,9 @@ export const metadata = {
     title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
     description:
       "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-    image: "/images/Icon512x512.png",
+    image: "/images/cafeclubtv-og.jpg",
   },
+  metadataBase: new URL("https://www.cafeclubtv.com"),
 }
 
 export default function RootLayout({
@@ -43,15 +56,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#8B0000" />
-        <meta name="msapplication-navbutton-color" content="#8B0000" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#8B0000" />
-        <link rel="icon" href="/images/Icon512x512.png" sizes="32x32" type="image/png" />
-        <link rel="apple-touch-icon" href="/images/Icon512x512.png" />
+        <meta name="theme-color" content="#9D0208" />
+        <meta name="msapplication-navbutton-color" content="#9D0208" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#9D0208" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
@@ -73,7 +86,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "CafeClubTV",
               "url": "https://www.cafeclubtv.com",
-              "logo": "https://www.cafeclubtv.com/images/Icon512x512.png",
+              "logo": "https://www.cafeclubtv.com/images/logo.png",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+593978606269",
@@ -105,7 +118,11 @@ export default function RootLayout({
         />
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>{children}</body>
+      <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
