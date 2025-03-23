@@ -49,9 +49,9 @@ const programs = [
 
 export default function FeaturedPrograms() {
   return (
-    <section id="featured-programs" className="py-12 sm:py-16 md:py-20 bg-white dark:bg-secondary-brand">
+    <section id="featured-programs" className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-center font-heading text-cafe-red dark:text-white">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-center font-heading text-[#B01E23] dark:text-white">
           Parrilla de Programas
         </h2>
         <div className="overflow-x-auto custom-scrollbar">
@@ -59,7 +59,7 @@ export default function FeaturedPrograms() {
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white dark:bg-secondary-brand shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out border border-gray-100 dark:border-white/10"
+                className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out border border-gray-100 dark:border-white/10"
               >
                 <Image
                   src={program.image || "/placeholder.svg"}
@@ -70,11 +70,11 @@ export default function FeaturedPrograms() {
                   loading="lazy"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2 text-cafe-red dark:text-white">
+                  <h3 className="font-semibold text-lg sm:text-xl mb-2 text-[#B01E23] dark:text-white">
                     {program.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base mb-4">{program.schedule}</p>
-                  <Button variant="brand" asChild className="w-full">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-4">{program.schedule}</p>
+                  <Button variant="default" asChild className="w-full bg-[#B01E23] hover:bg-[#8B0000] text-white">
                     <Link href={program.link} aria-label={`Ver programa ${program.title}`}>
                       Ver programa
                     </Link>
