@@ -76,7 +76,7 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
   }, [fetchPlaylist])
 
   return (
-    <section id="live-stream" className={showPlaylist ? "py-8 sm:py-12 md:py-16 bg-cafe-red text-white" : ""}>
+    <section id="live-stream" className={showPlaylist ? "py-8 sm:py-12 md:py-16 bg-[#B01E23] text-white" : ""}>
       <div className="container mx-auto px-4">
         {showPlaylist && (
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center font-heading">Transmisión en Vivo</h2>
@@ -91,7 +91,7 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
             <p>{error}</p>
             <button
               onClick={fetchPlaylist}
-              className="mt-4 px-4 py-2 bg-white text-cafe-red rounded-md hover:bg-white/90 transition-colors"
+              className="mt-4 px-4 py-2 bg-white text-[#B01E23] rounded-md hover:bg-white/90 transition-colors"
             >
               Reintentar
             </button>
