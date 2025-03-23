@@ -4,6 +4,7 @@ import { useState, useRef } from "react"
 import Image from "next/image"
 import { motion, useInView } from "framer-motion"
 import { Award, Users, Globe, Tv, Heart, TrendingUp, Play } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("historia")
@@ -73,13 +74,13 @@ export default function AboutUs() {
   }
 
   return (
-    <section id="about-us" className="py-16 bg-white overflow-hidden">
+    <section id="about-us" className="py-16 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Encabezado */}
         <div className="text-center mb-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Sobre Nosotros</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 font-heading">Sobre Nosotros</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               CafeClub TV es un canal internacional 100% digital con programación variada y de calidad para todos los
               gustos
             </p>
@@ -93,8 +94,8 @@ export default function AboutUs() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-[var(--primary-color)] text-white shadow-lg"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-brand text-white shadow-lg"
+                    : "bg-accent text-foreground hover:bg-accent/80"
                 }`}
               >
                 {tab.label}
@@ -137,7 +138,7 @@ export default function AboutUs() {
                       className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
                       aria-label="Reproducir video"
                     >
-                      <Play className="w-8 h-8 text-[var(--primary-color)] ml-1" />
+                      <Play className="w-8 h-8 text-brand ml-1" />
                     </motion.button>
                   </div>
                 </>
@@ -146,8 +147,8 @@ export default function AboutUs() {
 
             {/* Texto de historia */}
             <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <h3 className="text-2xl font-bold mb-6">Nuestra Historia</h3>
-              <div className="space-y-4 text-gray-600">
+              <h3 className="text-2xl font-bold mb-6 font-heading">Nuestra Historia</h3>
+              <div className="space-y-4 text-muted-foreground">
                 <p>
                   CafeClub TV nació en 2018 como un proyecto innovador para llevar contenido de calidad a audiencias de
                   habla hispana en todo el mundo. Lo que comenzó como un pequeño estudio en Guayaquil, Ecuador,
@@ -167,7 +168,7 @@ export default function AboutUs() {
 
               {/* Línea de tiempo */}
               <div className="mt-8 relative">
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-border"></div>
                 <div className="space-y-6">
                   {[
                     { year: "2018", event: "Fundación de CafeClub TV en Guayaquil" },
@@ -176,9 +177,9 @@ export default function AboutUs() {
                     { year: "2023", event: "Lanzamiento de la aplicación móvil y sistema de franquicias" },
                   ].map((item, index) => (
                     <div key={index} className="ml-6 relative">
-                      <div className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-[var(--primary-color)]"></div>
-                      <div className="font-bold text-[var(--primary-color)]">{item.year}</div>
-                      <div className="text-gray-600">{item.event}</div>
+                      <div className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-brand"></div>
+                      <div className="font-bold text-brand">{item.year}</div>
+                      <div className="text-muted-foreground">{item.event}</div>
                     </div>
                   ))}
                 </div>
@@ -193,8 +194,8 @@ export default function AboutUs() {
             {/* Texto de misión y visión */}
             <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-4">Nuestra Misión</h3>
-                <p className="text-gray-600">
+                <h3 className="text-2xl font-bold mb-4 font-heading">Nuestra Misión</h3>
+                <p className="text-muted-foreground">
                   Crear y distribuir contenido de alta calidad que informe, entretenga e inspire a nuestra audiencia
                   global, ofreciendo una plataforma para que voces diversas puedan compartir sus historias y conectar
                   con espectadores de todo el mundo hispanohablante.
@@ -202,8 +203,8 @@ export default function AboutUs() {
               </div>
 
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-4">Nuestra Visión</h3>
-                <p className="text-gray-600">
+                <h3 className="text-2xl font-bold mb-4 font-heading">Nuestra Visión</h3>
+                <p className="text-muted-foreground">
                   Ser la plataforma líder de contenido digital en español, reconocida por la calidad de nuestra
                   programación, la innovación tecnológica y el impacto positivo en nuestras comunidades, expandiendo
                   nuestra presencia a todos los países de habla hispana.
@@ -211,7 +212,7 @@ export default function AboutUs() {
               </div>
 
               {/* Valores */}
-              <h3 className="text-2xl font-bold mb-4">Nuestros Valores</h3>
+              <h3 className="text-2xl font-bold mb-4 font-heading">Nuestros Valores</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {values.map((value, index) => (
                   <motion.div
@@ -219,14 +220,14 @@ export default function AboutUs() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
-                    className="flex items-start gap-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                    className="flex items-start gap-3 p-4 rounded-lg bg-accent hover:bg-accent/80 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[var(--primary-color)]/10 flex items-center justify-center text-[var(--primary-color)] flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand flex-shrink-0">
                       {value.icon}
                     </div>
                     <div>
                       <h4 className="font-bold">{value.title}</h4>
-                      <p className="text-sm text-gray-600">{value.description}</p>
+                      <p className="text-sm text-muted-foreground">{value.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -235,8 +236,8 @@ export default function AboutUs() {
 
             {/* Estadísticas */}
             <div>
-              <div className="bg-gradient-to-br from-[var(--primary-color)] to-[var(--secondary-color)] rounded-2xl p-8 text-white shadow-xl">
-                <h3 className="text-2xl font-bold mb-6 text-center">CafeClub TV en Números</h3>
+              <div className="bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-8 text-white shadow-xl">
+                <h3 className="text-2xl font-bold mb-6 text-center font-heading">CafeClub TV en Números</h3>
                 <div className="grid grid-cols-2 gap-6">
                   {stats.map((stat, index) => (
                     <motion.div
@@ -280,7 +281,7 @@ export default function AboutUs() {
         {/* Contenido de Equipo */}
         {activeTab === "equipo" && (
           <div>
-            <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
               Nuestro equipo está formado por profesionales apasionados y creativos dedicados a ofrecer la mejor
               experiencia de contenido digital.
             </p>
@@ -292,7 +293,7 @@ export default function AboutUs() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2, duration: 0.5 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                  className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   <div className="relative h-64 w-full">
                     <Image
@@ -304,13 +305,13 @@ export default function AboutUs() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold">{member.name}</h3>
-                    <p className="text-[var(--primary-color)] font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm">{member.bio}</p>
+                    <p className="text-brand font-medium mb-3">{member.role}</p>
+                    <p className="text-muted-foreground text-sm">{member.bio}</p>
                     <div className="mt-4 flex gap-3">
-                      <a href="#" className="text-gray-400 hover:text-[var(--primary-color)] transition-colors">
+                      <a href="#" className="text-muted-foreground hover:text-brand transition-colors">
                         <i className="fab fa-linkedin text-lg"></i>
                       </a>
-                      <a href="#" className="text-gray-400 hover:text-[var(--primary-color)] transition-colors">
+                      <a href="#" className="text-muted-foreground hover:text-brand transition-colors">
                         <i className="fab fa-twitter text-lg"></i>
                       </a>
                     </div>
@@ -321,19 +322,20 @@ export default function AboutUs() {
 
             {/* Unirse al equipo */}
             <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold mb-4">¿Quieres unirte a nuestro equipo?</h3>
-              <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+              <h3 className="text-2xl font-bold mb-4 font-heading">¿Quieres unirte a nuestro equipo?</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
                 Siempre estamos buscando talentos apasionados para unirse a nuestra familia. Si te apasionan los medios
                 digitales y quieres formar parte de algo grande, ¡contáctanos!
               </p>
-              <a
-                href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20unirme%20al%20equipo%20de%20CafeClub%20TV"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold rounded-lg transition-all duration-300 ease-in-out"
-              >
-                Enviar mi CV
-              </a>
+              <Button variant="brand" asChild>
+                <a
+                  href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20unirme%20al%20equipo%20de%20CafeClub%20TV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Enviar mi CV
+                </a>
+              </Button>
             </div>
           </div>
         )}
