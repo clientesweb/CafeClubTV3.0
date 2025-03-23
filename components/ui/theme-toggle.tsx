@@ -6,13 +6,18 @@ import { Button } from "./button"
 import { useEffect, useState } from "react"
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   // Evitar hidratación incorrecta
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const toggleTheme = () => {
+    console.log("Current theme:", theme)
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
 
   if (!mounted) {
     return (
@@ -27,10 +32,10 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      aria-label={resolvedTheme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+      onClick={toggleTheme}
+      aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
     >
-      {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
       <span className="sr-only">Cambiar tema</span>
     </Button>
   )
