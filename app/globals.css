@@ -91,7 +91,7 @@
     @apply border-gray-200 dark:border-gray-800;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1,
@@ -212,7 +212,7 @@
 /* Scrollbar styles */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: hsl(var(--brand)) rgba(0, 0, 0, 0.1);
+  scrollbar-color: #b01e23 rgba(0, 0, 0, 0.1);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -226,7 +226,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--brand));
+  background-color: #b01e23;
   border-radius: 3px;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .focus-visible:focus {
-  outline: 2px solid hsl(var(--brand));
+  outline: 2px solid #b01e23;
   outline-offset: 2px;
 }
 
@@ -253,7 +253,7 @@
   position: absolute;
   top: -40px;
   left: 0;
-  background: hsl(var(--brand));
+  background: #b01e23;
   color: white;
   padding: 8px;
   z-index: 100;
@@ -294,18 +294,18 @@
 
 /* Modern card styles */
 .modern-card {
-  @apply bg-white dark:bg-secondary-brand rounded-xl shadow-lg transition-all duration-300 overflow-hidden border border-transparent hover:border-brand/20 hover:shadow-xl;
+  @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg transition-all duration-300 overflow-hidden border border-transparent hover:border-cafe-red/20 hover:shadow-xl;
   backdrop-filter: blur(10px);
 }
 
 /* Gradient text */
 .gradient-text {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-brand to-brand-light;
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-cafe-red to-red-500;
 }
 
 /* Elegant buttons */
 .btn-elegant {
-  @apply px-6 py-3 bg-brand text-white rounded-lg transition-all duration-300 hover:bg-brand-dark hover:shadow-lg transform hover:-translate-y-1;
+  @apply px-6 py-3 bg-cafe-red text-white rounded-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-1;
 }
 
 /* Glass effect */
