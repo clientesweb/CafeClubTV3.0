@@ -17,7 +17,7 @@ export const metadata = {
     siteName: "CafeClubTV",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+        url: "/images/og-image-cafeclubtv.jpg",
         width: 1200,
         height: 630,
         alt: "GanaCash - Gana premios en efectivo | CafeClubTV",
@@ -32,7 +32,7 @@ export const metadata = {
     title: "GanaCash - Gana premios en efectivo | CafeClubTV",
     description:
       "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg"],
+    images: ["/images/og-image-cafeclubtv.jpg"],
   },
   alternates: {
     canonical: "/ganacash",
