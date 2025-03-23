@@ -33,18 +33,6 @@
     --ring: 0 0% 10%;
 
     --radius: 0.5rem;
-
-    /* Brand colors */
-    --brand: 357 86% 34%;
-    --brand-dark: 357 86% 25%;
-    --brand-light: 357 86% 45%;
-    --brand-foreground: 0 0% 100%;
-
-    --gold: 36 100% 50%;
-    --gold-dark: 36 100% 40%;
-
-    --secondary-brand: 0 0% 13%;
-    --secondary-brand-foreground: 0 0% 100%;
   }
 
   .dark {
@@ -75,14 +63,6 @@
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 0 0% 83.9%;
-
-    /* Brand colors in dark mode */
-    --brand: 357 86% 45%;
-    --brand-dark: 357 86% 35%;
-    --brand-light: 357 86% 55%;
-
-    --gold: 36 100% 55%;
-    --gold-dark: 36 100% 45%;
   }
 }
 
@@ -305,7 +285,7 @@
 
 /* Elegant buttons */
 .btn-elegant {
-  @apply px-6 py-3 bg-red-600 text-white rounded-lg transition-all duration-300 hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-1;
+  @apply px-6 py-3 bg-[#B01E23] text-white rounded-lg transition-all duration-300 hover:bg-[#8B0000] hover:shadow-lg transform hover:-translate-y-1;
 }
 
 /* Glass effect */
