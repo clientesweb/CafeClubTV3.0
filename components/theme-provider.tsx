@@ -8,10 +8,27 @@ interface ThemeProviderProps {
   attribute?: string
   defaultTheme?: string
   enableSystem?: boolean
-  disableTransitionOnChange?: boolean
+  storageKey?: string
 }
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+export function ThemeProvider({
+  children,
+  attribute = "class",
+  defaultTheme = "system",
+  enableSystem = true,
+  storageKey = "theme",
+  ...props
+}: ThemeProviderProps) {
+  return (
+    <NextThemesProvider
+      attribute={attribute}
+      defaultTheme={defaultTheme}
+      enableSystem={enableSystem}
+      storageKey={storageKey}
+      {...props}
+    >
+      {children}
+    </NextThemesProvider>
+  )
 }
 
