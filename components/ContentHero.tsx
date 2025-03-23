@@ -1,12 +1,13 @@
 "use client"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 
 export default function ContentHero() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
       {/* Fondo con efecto de gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#8B0000] to-black z-0">
+      <div className="absolute inset-0 bg-gradient-to-r from-brand to-secondary-brand z-0">
         {/* Patrón de puntos superpuesto */}
         <div
           className="absolute inset-0 opacity-10"
@@ -25,8 +26,8 @@ export default function ContentHero() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-            Descubre Nuestra <span className="text-yellow-400">Programación</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight font-heading">
+            Descubre Nuestra <span className="text-gold">Programación</span>
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
@@ -34,23 +35,17 @@ export default function ContentHero() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <motion.a
-              href="#featured-programs"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-white text-[#8B0000] font-bold rounded-full text-lg shadow-lg hover:bg-gray-100 transition-all duration-300"
-            >
-              Ver Programas
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button variant="default" size="lg" asChild>
+                <a href="#featured-programs">Ver Programas</a>
+              </Button>
+            </motion.div>
 
-            <motion.a
-              href="#shorts"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full text-lg hover:bg-white/10 transition-all duration-300"
-            >
-              Ver Shorts
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button variant="outline" size="lg" asChild>
+                <a href="#shorts">Ver Shorts</a>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -80,7 +75,7 @@ export default function ContentHero() {
             rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
             y: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
           }}
-          className="w-full h-full bg-yellow-400 rounded-lg"
+          className="w-full h-full bg-gold rounded-lg"
         />
       </div>
 
@@ -92,7 +87,7 @@ export default function ContentHero() {
         className="absolute bottom-0 right-0 w-full md:w-1/2 h-full pointer-events-none"
       >
         <Image
-          src="/images/Icon512x512.png"
+          src="/images/logo.png"
           alt="CafeClub TV Logo"
           fill
           style={{ objectFit: "contain", objectPosition: "right bottom" }}
