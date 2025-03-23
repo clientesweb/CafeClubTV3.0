@@ -27,13 +27,13 @@ export const metadata = {
     title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
     description: "Disfruta de entretenimiento de calidad con nuestros videos y playlists",
     url: "https://www.cafeclubtv.com",
-    site_name: "CafeClubTV",
+    siteName: "CafeClubTV",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
-        width: 512,
-        height: 512,
-        alt: "CafeClubTV",
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-og-image-9Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CafeClubTV - Entretenimiento de calidad",
       },
     ],
     locale: "es_ES",
@@ -45,9 +45,16 @@ export const metadata = {
     title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
     description:
       "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-og-image-9Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg"],
   },
   metadataBase: new URL("https://www.cafeclubtv.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "es-ES": "/es",
+      "en-US": "/en",
+    },
+  },
   icons: {
     icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
     apple: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
