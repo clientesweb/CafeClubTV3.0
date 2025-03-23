@@ -47,7 +47,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-screen max-h-[1080px] overflow-hidden">
       {/* Background gradient overlay for consistent branding */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand/30 to-transparent z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-cafe-red/80 to-black/50 z-10"></div>
 
       {/* Slides */}
       <AnimatePresence initial={false} mode="wait">
@@ -68,7 +68,7 @@ export default function Hero() {
             style={{
               objectFit: "cover",
             }}
-            className="brightness-[0.7] transition-transform duration-10000 transform scale-105"
+            className="brightness-[0.6] transition-transform duration-10000 transform scale-105"
           />
         </motion.div>
       </AnimatePresence>
@@ -86,25 +86,30 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.span
-                  className="inline-block px-4 py-1 mb-4 text-sm font-medium rounded-full bg-brand/90 text-white"
+                  className="inline-block px-4 py-1 mb-4 text-sm font-medium rounded-full bg-white text-cafe-red"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   CaféClub TV
                 </motion.span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-heading">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-heading drop-shadow-md">
                   {currentSlideContent.title}
                 </h1>
                 <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl">{currentSlideContent.description}</p>
                 <div className="flex flex-wrap gap-4">
-                  <Button variant="brand" size="lg" asChild>
+                  <Button variant="brand" size="lg" asChild className="shadow-lg hover:scale-105 transition-transform">
                     <a href={currentSlideContent.buttonLink}>
                       {currentSlideContent.buttonText}
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
-                  <Button variant="brand-outline" size="lg" asChild>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    asChild
+                    className="bg-white/10 backdrop-blur-sm border-white hover:bg-white/20 text-white"
+                  >
                     <a href="/contenido">Ver Programación</a>
                   </Button>
                 </div>
@@ -120,7 +125,7 @@ export default function Hero() {
           <button
             key={index}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-brand w-8" : "bg-white/50 hover:bg-white/80"
+              index === currentSlide ? "bg-white w-8" : "bg-white/50 hover:bg-white/80"
             }`}
             onClick={() => setCurrentSlide(index)}
             aria-label={`Ir a la diapositiva ${index + 1}`}
