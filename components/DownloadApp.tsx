@@ -65,11 +65,11 @@ export default function DownloadApp() {
                 className="max-w-full h-auto rounded-3xl shadow-2xl"
                 priority
               />
-              <div className="absolute -top-4 -right-4 bg-brand text-white font-bold py-2 px-4 rounded-full transform rotate-12">
+              <div className="absolute -top-4 -right-4 bg-[#B01E23] text-white font-bold py-2 px-4 rounded-full transform rotate-12">
                 ¡Nuevo!
               </div>
             </div>
-            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-brand/20 to-gold/20 rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-[#B01E23]/20 to-[#FFD700]/20 rounded-full opacity-20 blur-3xl"></div>
           </div>
         </div>
       </div>
