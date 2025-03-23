@@ -1,18 +1,13 @@
 import type React from "react"
 import "./globals.css"
-import { Inter, Playfair_Display } from "next/font/google"
+import { Poppins } from "next/font/google"
 import Script from "next/script"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 })
 
@@ -136,7 +131,7 @@ export default function RootLayout({
         />
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col`}>
+      <body className={`${poppins.variable} font-sans min-h-screen flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme={undefined}>
           {children}
         </ThemeProvider>
