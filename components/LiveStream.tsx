@@ -150,6 +150,26 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
           </div>
         ) : (
           <div className={`grid ${showPlaylist ? "grid-cols-1 lg:grid-cols-3" : "grid-cols-1"} gap-8`}>
+            {/* Estado de transmisión en vivo (ahora fuera del video) */}
+            {isLive && (
+              <div className={`${showPlaylist ? "lg:col-span-2" : ""} flex items-center gap-3 mb-3`}>
+                <div className="flex items-center gap-2 bg-red-600 text-white px-3 py-1.5 rounded-full text-sm font-medium live-pulse">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                  </span>
+                  EN VIVO
+                </div>
+
+                {viewerCount && (
+                  <div className="flex items-center text-sm bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full text-white">
+                    <Users className="h-4 w-4 mr-2" />
+                    <span>{viewerCount} espectadores</span>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Video principal */}
             <div
               ref={videoContainerRef}
@@ -157,23 +177,6 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
                 showPlaylist ? "lg:col-span-2" : ""
               } relative overflow-hidden bg-black rounded-xl shadow-xl`}
             >
-              {/* Estado de transmisión en vivo */}
-              {isLive && (
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-                  </span>
-                  EN VIVO
-                  {viewerCount && (
-                    <span className="flex items-center text-xs ml-2 bg-black/30 px-2 py-0.5 rounded-full">
-                      <Users className="h-3 w-3 mr-1" />
-                      {viewerCount}
-                    </span>
-                  )}
-                </div>
-              )}
-
               {/* Reproductor de video */}
               <div className="aspect-video w-full">
                 {mainVideoId && (
