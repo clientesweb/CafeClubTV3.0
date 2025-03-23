@@ -62,6 +62,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--gold))",
           dark: "hsl(var(--gold-dark))",
         },
+        "cafe-red": "#B01E23", // Direct hex value for your brand red
       },
       borderRadius: {
         lg: "var(--radius)",
