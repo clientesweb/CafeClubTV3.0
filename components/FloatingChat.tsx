@@ -36,12 +36,12 @@ export default function FloatingChat() {
             initial={{ opacity: 0, y: 50, scale: 0.3 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-            className="bg-white dark:bg-secondary-brand rounded-lg shadow-lg p-4 mb-2 max-w-xs border border-cafe-red/20"
+            className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-2 max-w-xs border border-red-200"
           >
             <p className="text-sm font-medium">Próximamente disfrutarás de los mejores premios</p>
             <button
               onClick={() => setShowNotification(false)}
-              className="absolute top-1 right-1 text-muted-foreground hover:text-foreground"
+              className="absolute top-1 right-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
               aria-label="Cerrar notificación"
             >
               &times;
@@ -52,7 +52,7 @@ export default function FloatingChat() {
 
       <Link
         href="/ganacash"
-        className="relative bg-cafe-red hover:bg-cafe-red/90 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
+        className="relative bg-red-600 hover:bg-red-700 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
       >
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
@@ -74,7 +74,7 @@ export default function FloatingChat() {
         href="https://wa.me/593978606269"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-cafe-red hover:bg-cafe-red/90 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
+        className="bg-red-600 hover:bg-red-700 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
       >
         <i className="fab fa-whatsapp text-xl"></i>
         <span className="sr-only">Chat en WhatsApp</span>
