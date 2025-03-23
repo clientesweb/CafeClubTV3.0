@@ -7,7 +7,7 @@ interface MetadataProps {
   image?: string
   url?: string
   keywords?: string
-  type?: "website" | "article" | "video" | "profile"
+  type?: "website" | "article" | "profile" // Eliminamos "video" ya que no es compatible con Next.js Metadata
   publishedTime?: string
   authors?: string[]
 }
@@ -45,7 +45,7 @@ export function getMetadata({
         },
       ],
       locale: "es_ES",
-      type,
+      type, // Aquí está la línea 48 que causa el error
     },
     twitter: {
       card: "summary_large_image",
