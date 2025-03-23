@@ -6,7 +6,7 @@ import { Facebook, Twitter, Instagram, Youtube, Mail, MapPin, Phone } from "luci
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-cafe-red text-white pt-16 pb-8">
+    <footer id="contact" className="bg-[#B01E23] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Sección Acerca de */}
@@ -155,7 +155,7 @@ export default function Footer() {
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
                   aria-label="Tu correo electrónico"
                 />
-                <Button variant="default" type="submit" className="bg-white text-cafe-red hover:bg-white/90">
+                <Button variant="default" type="submit" className="bg-white text-[#B01E23] hover:bg-white/90">
                   Suscribirse
                 </Button>
               </div>
