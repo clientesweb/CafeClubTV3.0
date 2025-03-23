@@ -47,7 +47,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-screen max-h-[1080px] overflow-hidden">
       {/* Background gradient overlay for consistent branding */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cafe-red/80 to-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50 z-10"></div>
 
       {/* Slides */}
       <AnimatePresence initial={false} mode="wait">
@@ -86,7 +86,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.span
-                  className="inline-block px-4 py-1 mb-4 text-sm font-medium rounded-full bg-white text-cafe-red"
+                  className="inline-block px-4 py-1 mb-4 text-sm font-medium rounded-full bg-white text-[#B01E23]"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -98,7 +98,12 @@ export default function Hero() {
                 </h1>
                 <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl">{currentSlideContent.description}</p>
                 <div className="flex flex-wrap gap-4">
-                  <Button variant="brand" size="lg" asChild className="shadow-lg hover:scale-105 transition-transform">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    asChild
+                    className="bg-[#B01E23] text-white hover:bg-[#8B0000] shadow-lg hover:scale-105 transition-transform"
+                  >
                     <a href={currentSlideContent.buttonLink}>
                       {currentSlideContent.buttonText}
                       <ChevronRight className="ml-2 h-4 w-4" />
