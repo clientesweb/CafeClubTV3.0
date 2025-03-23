@@ -20,7 +20,7 @@ export const metadata = {
     siteName: "CafeClubTV",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-contenido-og-Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+        url: "/images/og-image-cafeclubtv.jpg",
         width: 1200,
         height: 630,
         alt: "Programación y Contenido | CafeClubTV",
@@ -35,7 +35,7 @@ export const metadata = {
     title: "Programación y Contenido | CafeClubTV",
     description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
     images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-contenido-og-Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+      "/images/og-image-cafeclubtv.jpg",
     ],
   },
   alternates: {
