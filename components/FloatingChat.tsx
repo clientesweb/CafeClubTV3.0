@@ -52,7 +52,7 @@ export default function FloatingChat() {
 
       <Link
         href="/ganacash"
-        className="relative bg-red-600 hover:bg-red-700 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
+        className="relative bg-[#B01E23] hover:bg-[#8B0000] text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
       >
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
@@ -74,7 +74,7 @@ export default function FloatingChat() {
         href="https://wa.me/593978606269"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-red-600 hover:bg-red-700 text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
+        className="bg-[#B01E23] hover:bg-[#8B0000] text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
       >
         <i className="fab fa-whatsapp text-xl"></i>
         <span className="sr-only">Chat en WhatsApp</span>
