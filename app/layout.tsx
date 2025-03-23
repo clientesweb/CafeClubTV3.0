@@ -130,7 +130,7 @@ export default function RootLayout({
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true} storageKey="cafeclubtv-theme">
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme={undefined}>
           {children}
         </ThemeProvider>
       </body>
