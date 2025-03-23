@@ -12,6 +12,8 @@ import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
 import Link from "next/link"
 
+// Definimos los metadatos directamente en layout.tsx, así que no necesitamos importar nada aquí
+
 export default function Home() {
   return (
     <>
