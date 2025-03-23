@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 const programs = [
   {
@@ -48,15 +49,15 @@ const programs = [
 
 export default function FeaturedPrograms() {
   return (
-    <section id="featured-programs" className="py-8 sm:py-12 md:py-16 bg-gray-100">
+    <section id="featured-programs" className="py-8 sm:py-12 md:py-16 bg-accent">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Parrilla de Programas</h2>
-        <div className="program-scroll-container overflow-x-auto">
-          <div className="flex space-x-4 gap-4 md:gap-8">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center font-heading">Parrilla de Programas</h2>
+        <div className="overflow-x-auto custom-scrollbar">
+          <div className="flex space-x-4 gap-4 md:gap-8 pb-4">
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-white shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"
+                className="flex-shrink-0 w-64 sm:w-80 md:w-96 rounded-xl bg-card shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <Image
                   src={program.image || "/placeholder.svg"}
@@ -67,15 +68,13 @@ export default function FeaturedPrograms() {
                   loading="lazy"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2 text-[var(--primary-color)]">{program.title}</h3>
-                  <p className="text-gray-700 text-sm sm:text-base mb-2">{program.schedule}</p>
-                  <Link
-                    href={program.link}
-                    className="inline-block bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base transition-all duration-200 ease-in-out"
-                    aria-label={`Ver programa ${program.title}`}
-                  >
-                    Ver programa
-                  </Link>
+                  <h3 className="font-semibold text-lg sm:text-xl mb-2 text-brand">{program.title}</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base mb-2">{program.schedule}</p>
+                  <Button variant="brand" asChild>
+                    <Link href={program.link} aria-label={`Ver programa ${program.title}`}>
+                      Ver programa
+                    </Link>
+                  </Button>
                 </div>
               </div>
             ))}
