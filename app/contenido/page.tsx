@@ -34,9 +34,7 @@ export const metadata = {
     site: "@CafeClub_Lat",
     title: "Programación y Contenido | CafeClubTV",
     description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
-    images: [
-      "/images/og-image-cafeclubtv.jpg",
-    ],
+    images: ["/images/og-image-cafeclubtv.jpg"],
   },
   alternates: {
     canonical: "/contenido",
