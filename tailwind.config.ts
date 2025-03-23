@@ -52,16 +52,12 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        brand: {
-          DEFAULT: "hsl(var(--brand))",
-          dark: "hsl(var(--brand-dark))",
-          light: "hsl(var(--brand-light))",
-          foreground: "hsl(var(--brand-foreground))",
-        },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          dark: "hsl(var(--gold-dark))",
-        },
+        // Define brand colors directly with hex values for better compatibility
+        brand: "#B01E23",
+        "brand-dark": "#8B0000",
+        "brand-light": "#D32F2F",
+        gold: "#FFD700",
+        "gold-dark": "#DAA520",
         "cafe-red": "#B01E23", // Direct hex value for your brand red
       },
       borderRadius: {
