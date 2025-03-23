@@ -30,9 +30,9 @@ export const metadata = {
     site_name: "CafeClubTV",
     images: [
       {
-        url: "/images/cafeclubtv-og.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+        width: 512,
+        height: 512,
         alt: "CafeClubTV",
       },
     ],
@@ -45,9 +45,13 @@ export const metadata = {
     title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
     description:
       "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-    image: "/images/cafeclubtv-og.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
   },
   metadataBase: new URL("https://www.cafeclubtv.com"),
+  icons: {
+    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+    apple: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+  },
 }
 
 export default function RootLayout({
@@ -60,11 +64,18 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#9D0208" />
-        <meta name="msapplication-navbutton-color" content="#9D0208" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#9D0208" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#B01E23" />
+        <meta name="msapplication-navbutton-color" content="#B01E23" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#B01E23" />
+        <link
+          rel="icon"
+          href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
+          sizes="any"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
+        />
         <link rel="manifest" href="/manifest.json" />
         <meta
           name="description"
@@ -86,7 +97,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "CafeClubTV",
               "url": "https://www.cafeclubtv.com",
-              "logo": "https://www.cafeclubtv.com/images/logo.png",
+              "logo": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+593978606269",
