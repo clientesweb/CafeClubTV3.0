@@ -59,7 +59,7 @@ export default function Header() {
 
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-background/95 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
+          isScrolled ? "bg-white/95 dark:bg-secondary-brand/95 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
         }`}
       >
         <div className="container mx-auto px-4">
@@ -69,7 +69,7 @@ export default function Header() {
               <div className="flex items-center gap-2">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12">
                   <Image
-                    src="/images/logo.png"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
                     alt="CafeClub TV Logo"
                     width={48}
                     height={48}
@@ -78,7 +78,7 @@ export default function Header() {
                   />
                 </div>
                 <div className="hidden sm:block">
-                  <span className="font-heading text-xl font-bold text-brand">CaféClub</span>
+                  <span className="font-heading text-xl font-bold text-cafe-red">CaféClub</span>
                   <span className="font-heading text-xl font-bold ml-1">TV</span>
                 </div>
               </div>
@@ -86,14 +86,17 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1">
-              <Link href="/" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors">
+              <Link
+                href="/"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-brand/10 hover:text-brand transition-colors"
+              >
                 Inicio
               </Link>
 
               <div className="relative">
                 <button
                   onClick={toggleDropdown}
-                  className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors flex items-center"
+                  className="px-3 py-2 text-sm font-medium rounded-md hover:bg-brand/10 hover:text-brand transition-colors flex items-center"
                   aria-expanded={isDropdownOpen}
                   aria-haspopup="true"
                 >
@@ -108,7 +111,7 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-1 w-48 rounded-md bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="absolute left-0 mt-1 w-48 rounded-md bg-white dark:bg-secondary-brand shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       tabIndex={-1}
@@ -116,7 +119,7 @@ export default function Header() {
                       <div className="py-1" role="none">
                         <Link
                           href="/contenido"
-                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-brand/10 hover:text-brand transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -124,7 +127,7 @@ export default function Header() {
                         </Link>
                         <Link
                           href="/contenido#live-stream"
-                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-brand/10 hover:text-brand transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -132,7 +135,7 @@ export default function Header() {
                         </Link>
                         <Link
                           href="/contenido#shorts"
-                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-brand/10 hover:text-brand transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -146,14 +149,14 @@ export default function Header() {
 
               <Link
                 href="/ganacash"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-brand/10 hover:text-brand transition-colors"
               >
                 GanaCash
               </Link>
 
               <Link
                 href="#contact"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-brand/10 hover:text-brand transition-colors"
               >
                 Contacto
               </Link>
@@ -201,33 +204,33 @@ export default function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-background border-t"
+              className="md:hidden bg-white dark:bg-secondary-brand border-t dark:border-white/10"
             >
               <div className="container mx-auto px-4 py-4 space-y-1">
                 <Link
                   href="/"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand/10 hover:text-brand transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Inicio
                 </Link>
                 <Link
                   href="/contenido"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand/10 hover:text-brand transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contenido
                 </Link>
                 <Link
                   href="/ganacash"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand/10 hover:text-brand transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   GanaCash
                 </Link>
                 <Link
                   href="#contact"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-brand/10 hover:text-brand transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contacto
@@ -241,7 +244,7 @@ export default function Header() {
                 )}
 
                 {/* Social links */}
-                <div className="pt-4 border-t border-border mt-4">
+                <div className="pt-4 border-t border-gray-200 dark:border-white/10 mt-4">
                   <p className="text-sm text-muted-foreground mb-2">Síguenos en:</p>
                   <div className="flex space-x-4">
                     <a
@@ -249,32 +252,36 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
+                      className="text-brand hover:text-brand-dark transition-colors"
                     >
-                      <i className="fab fa-facebook-f text-lg hover:text-brand transition-colors"></i>
+                      <i className="fab fa-facebook-f text-lg"></i>
                     </a>
                     <a
                       href="https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
+                      className="text-brand hover:text-brand-dark transition-colors"
                     >
-                      <i className="fab fa-instagram text-lg hover:text-brand transition-colors"></i>
+                      <i className="fab fa-instagram text-lg"></i>
                     </a>
                     <a
                       href="https://twitter.com/CafeClub_Lat?s=08"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Twitter"
+                      className="text-brand hover:text-brand-dark transition-colors"
                     >
-                      <i className="fab fa-twitter text-lg hover:text-brand transition-colors"></i>
+                      <i className="fab fa-twitter text-lg"></i>
                     </a>
                     <a
                       href="https://youtube.com/c/CafeClubCanalTv"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Youtube"
+                      className="text-brand hover:text-brand-dark transition-colors"
                     >
-                      <i className="fab fa-youtube text-lg hover:text-brand transition-colors"></i>
+                      <i className="fab fa-youtube text-lg"></i>
                     </a>
                   </div>
                 </div>
