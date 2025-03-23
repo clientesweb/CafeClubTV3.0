@@ -8,7 +8,6 @@ import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
 import ContentHero from "@/components/ContentHero"
 import AdBanner from "@/components/AdBanner"
-import { absoluteUrl } from "@/lib/utils"
 
 export const metadata = {
   title: "Programación y Contenido | CafeClubTV",
@@ -17,7 +16,7 @@ export const metadata = {
   openGraph: {
     title: "Programación y Contenido | CafeClubTV",
     description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
-    url: absoluteUrl("/contenido"),
+    url: "https://www.cafeclubtv.com/contenido",
     siteName: "CafeClubTV",
     images: [
       {
