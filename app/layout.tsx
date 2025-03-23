@@ -25,7 +25,7 @@ export const metadata = {
     siteName: "CafeClubTV",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-og-image-9Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+        url: "/images/og-image-cafeclubtv.jpg",
         width: 1200,
         height: 630,
         alt: "CafeClubTV - Entretenimiento de calidad",
@@ -40,7 +40,7 @@ export const metadata = {
     title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
     description:
       "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-og-image-9Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg"],
+    images: ["/images/og-image-cafeclubtv.jpg"],
   },
   metadataBase: new URL("https://www.cafeclubtv.com"),
   alternates: {
