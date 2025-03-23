@@ -3,6 +3,16 @@ import Image from "next/image"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
+import { getMetadata } from "@/lib/get-metadata"
+
+export const metadata = getMetadata({
+  title: "GanaCash - Gana premios en efectivo | CafeClubTV",
+  description:
+    "Acumula minutos viendo CaféClub TV y participa para ganar dinero en efectivo. ¡Convierte tu tiempo en recompensas reales!",
+  url: "/ganacash",
+  image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-ganacash-og-Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
+  keywords: "premios, dinero en efectivo, ruleta, juegos, recompensas, CafeClubTV, ganar dinero",
+})
 
 export default function GanaCashPage() {
   return (
