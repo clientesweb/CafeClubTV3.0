@@ -7,7 +7,7 @@ export default function ContentHero() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
       {/* Fondo con efecto de gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand to-secondary-brand z-0">
+      <div className="absolute inset-0 bg-gradient-to-r from-cafe-red to-cafe-red/70 z-0">
         {/* Patrón de puntos superpuesto */}
         <div
           className="absolute inset-0 opacity-10"
@@ -36,13 +36,13 @@ export default function ContentHero() {
 
           <div className="flex flex-wrap justify-center gap-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="default" size="lg" asChild>
+              <Button variant="default" size="lg" asChild className="bg-white text-cafe-red hover:bg-white/90">
                 <a href="#featured-programs">Ver Programas</a>
               </Button>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
                 <a href="#shorts">Ver Shorts</a>
               </Button>
             </motion.div>
@@ -87,7 +87,7 @@ export default function ContentHero() {
         className="absolute bottom-0 right-0 w-full md:w-1/2 h-full pointer-events-none"
       >
         <Image
-          src="/images/logo.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
           alt="CafeClub TV Logo"
           fill
           style={{ objectFit: "contain", objectPosition: "right bottom" }}
