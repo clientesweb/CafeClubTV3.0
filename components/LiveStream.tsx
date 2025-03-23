@@ -16,11 +16,15 @@ interface PlaylistItem {
     resourceId: {
       videoId: string
     }
-    publishedAt: string // Añadimos esta propiedad para ordenar por fecha
+    publishedAt: string
   }
 }
 
-export default function LiveStream() {
+interface LiveStreamProps {
+  showPlaylist?: boolean
+}
+
+export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
   const [playlistItems, setPlaylistItems] = useState<PlaylistItem[]>([])
   const [mainVideoId, setMainVideoId] = useState("")
 
@@ -59,11 +63,16 @@ export default function LiveStream() {
   }, [fetchPlaylist])
 
   return (
-    <section id="live-stream" className="py-8 sm:py-12 md:py-16 bg-[var(--primary-color)] text-white">
+    <section
+      id="live-stream"
+      className={showPlaylist ? "py-8 sm:py-12 md:py-16 bg-[var(--primary-color)] text-white" : ""}
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">Transmisión en Vivo</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 aspect-video bg-black w-full rounded-lg shadow-xl">
+        {showPlaylist && (
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">Transmisión en Vivo</h2>
+        )}
+        <div className={`grid ${showPlaylist ? "grid-cols-1 lg:grid-cols-3" : "grid-cols-1"} gap-6`}>
+          <div className={`${showPlaylist ? "lg:col-span-2" : ""} aspect-video bg-black w-full rounded-lg shadow-xl`}>
             {mainVideoId && (
               <iframe
                 title="Live Stream"
@@ -76,28 +85,30 @@ export default function LiveStream() {
               ></iframe>
             )}
           </div>
-          <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-4 sm:space-y-6">
-            {playlistItems.map((item, index) => (
-              <div
-                key={item.snippet.resourceId.videoId}
-                className={`playlist-video flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-3 rounded-lg transition-all ${
-                  item.snippet.resourceId.videoId === mainVideoId ? "bg-gray-700" : ""
-                }`}
-                onClick={() => setMainVideoId(item.snippet.resourceId.videoId)}
-                aria-label={`Ver video: ${item.snippet.title}`}
-              >
-                <img
-                  src={item.snippet.thumbnails.medium.url || "/placeholder.svg"}
-                  alt={item.snippet.title}
-                  className="w-16 h-16 object-cover rounded-md"
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
-                  <p className="text-xs text-gray-400">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
+          {showPlaylist && (
+            <div className="lg:col-span-1 overflow-y-auto max-h-[400px] space-y-4 sm:space-y-6">
+              {playlistItems.map((item, index) => (
+                <div
+                  key={item.snippet.resourceId.videoId}
+                  className={`playlist-video flex items-center space-x-4 cursor-pointer hover:bg-gray-700 p-3 rounded-lg transition-all ${
+                    item.snippet.resourceId.videoId === mainVideoId ? "bg-gray-700" : ""
+                  }`}
+                  onClick={() => setMainVideoId(item.snippet.resourceId.videoId)}
+                  aria-label={`Ver video: ${item.snippet.title}`}
+                >
+                  <img
+                    src={item.snippet.thumbnails.medium.url || "/placeholder.svg"}
+                    alt={item.snippet.title}
+                    className="w-16 h-16 object-cover rounded-md"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-300 truncate">{item.snippet.title}</p>
+                    <p className="text-xs text-gray-400">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
