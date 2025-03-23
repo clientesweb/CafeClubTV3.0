@@ -10,7 +10,6 @@ import CommercialProposals from "@/components/CommercialProposals"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
-import ThemeTest from "./theme-test"
 import Link from "next/link"
 
 export default function Home() {
@@ -62,7 +61,6 @@ export default function Home() {
       <Footer />
       <BottomNav activeItem="home" />
       <FloatingChat />
-      <ThemeTest />
     </>
   )
 }
