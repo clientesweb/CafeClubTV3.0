@@ -1,78 +1,82 @@
 import Link from "next/link"
+import { Home, Tv, Radio, Film, Mail } from "lucide-react"
 
 interface BottomNavProps {
-  activeItem?: "home" | "contenido" | "live" | "shorts" | "sponsors" | "contact"
+  activeItem?: "home" | "contenido" | "live" | "shorts" | "contact"
 }
 
 export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
   return (
-    <nav id="bottom-nav" className="fixed bottom-0 left-0 right-0 bg-white border-t py-3 sm:py-4 shadow-lg">
+    <nav
+      id="bottom-nav"
+      className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-md border-t py-3 shadow-lg z-40"
+      aria-label="Navegación móvil"
+    >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center space-x-6">
+        <div className="flex justify-between items-center">
           {/* Inicio */}
           <Link
             href="/"
             className={`flex flex-col items-center gap-1 transition-all duration-200 ease-in-out ${
-              activeItem === "home" ? "text-[var(--primary-color)]" : "text-gray-600 hover:text-[var(--primary-color)]"
+              activeItem === "home" ? "text-brand" : "text-muted-foreground hover:text-foreground"
             }`}
             aria-label="Ir a Inicio"
+            aria-current={activeItem === "home" ? "page" : undefined}
           >
-            <i className="fas fa-home text-2xl sm:text-3xl"></i>
-            <span className="text-xs sm:text-sm font-semibold">Inicio</span>
+            <Home className="w-5 h-5" />
+            <span className="text-xs font-medium">Inicio</span>
           </Link>
 
           {/* Contenido */}
           <Link
             href="/contenido"
             className={`flex flex-col items-center gap-1 transition-all duration-200 ease-in-out ${
-              activeItem === "contenido"
-                ? "text-[var(--primary-color)]"
-                : "text-gray-600 hover:text-[var(--primary-color)]"
+              activeItem === "contenido" ? "text-brand" : "text-muted-foreground hover:text-foreground"
             }`}
             aria-label="Ver Contenido"
+            aria-current={activeItem === "contenido" ? "page" : undefined}
           >
-            <i className="fas fa-tv text-2xl sm:text-3xl"></i>
-            <span className="text-xs sm:text-sm font-semibold">Contenido</span>
+            <Tv className="w-5 h-5" />
+            <span className="text-xs font-medium">Contenido</span>
           </Link>
 
           {/* En Vivo */}
           <Link
             href="/contenido#live-stream"
             className={`flex flex-col items-center gap-1 transition-all duration-200 ease-in-out ${
-              activeItem === "live" ? "text-[var(--primary-color)]" : "text-gray-600 hover:text-[var(--primary-color)]"
+              activeItem === "live" ? "text-brand" : "text-muted-foreground hover:text-foreground"
             }`}
             aria-label="Ver En Vivo"
+            aria-current={activeItem === "live" ? "page" : undefined}
           >
-            <i className="fas fa-broadcast-tower text-2xl sm:text-3xl"></i>
-            <span className="text-xs sm:text-sm font-semibold">En Vivo</span>
+            <Radio className="w-5 h-5" />
+            <span className="text-xs font-medium">En Vivo</span>
           </Link>
 
           {/* Shorts */}
           <Link
             href="/contenido#shorts"
             className={`flex flex-col items-center gap-1 transition-all duration-200 ease-in-out ${
-              activeItem === "shorts"
-                ? "text-[var(--primary-color)]"
-                : "text-gray-600 hover:text-[var(--primary-color)]"
+              activeItem === "shorts" ? "text-brand" : "text-muted-foreground hover:text-foreground"
             }`}
             aria-label="Ver Shorts"
+            aria-current={activeItem === "shorts" ? "page" : undefined}
           >
-            <i className="fas fa-film text-2xl sm:text-3xl"></i>
-            <span className="text-xs sm:text-sm font-semibold">Shorts</span>
+            <Film className="w-5 h-5" />
+            <span className="text-xs font-medium">Shorts</span>
           </Link>
 
           {/* Contacto */}
           <Link
             href="#contact"
             className={`flex flex-col items-center gap-1 transition-all duration-200 ease-in-out ${
-              activeItem === "contact"
-                ? "text-[var(--primary-color)]"
-                : "text-gray-600 hover:text-[var(--primary-color)]"
+              activeItem === "contact" ? "text-brand" : "text-muted-foreground hover:text-foreground"
             }`}
             aria-label="Ir a Contacto"
+            aria-current={activeItem === "contact" ? "page" : undefined}
           >
-            <i className="fas fa-envelope text-2xl sm:text-3xl"></i>
-            <span className="text-xs sm:text-sm font-semibold">Contacto</span>
+            <Mail className="w-5 h-5" />
+            <span className="text-xs font-medium">Contacto</span>
           </Link>
         </div>
       </div>
