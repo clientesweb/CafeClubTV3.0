@@ -76,7 +76,7 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
   }, [fetchPlaylist])
 
   return (
-    <section id="live-stream" className={showPlaylist ? "py-8 sm:py-12 md:py-16 bg-brand text-white" : ""}>
+    <section id="live-stream" className={showPlaylist ? "py-8 sm:py-12 md:py-16 bg-cafe-red text-white" : ""}>
       <div className="container mx-auto px-4">
         {showPlaylist && (
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center font-heading">Transmisión en Vivo</h2>
@@ -87,11 +87,11 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
           </div>
         ) : error ? (
-          <div className="text-center p-6 bg-red-500/10 rounded-lg">
+          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
             <p>{error}</p>
             <button
               onClick={fetchPlaylist}
-              className="mt-4 px-4 py-2 bg-white text-brand rounded-md hover:bg-gray-100 transition-colors"
+              className="mt-4 px-4 py-2 bg-white text-cafe-red rounded-md hover:bg-white/90 transition-colors"
             >
               Reintentar
             </button>
@@ -132,7 +132,7 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
                     />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white truncate">{item.snippet.title}</p>
-                      <p className="text-xs text-gray-300">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
+                      <p className="text-xs text-white/70">{new Date(item.snippet.publishedAt).toLocaleDateString()}</p>
                     </div>
                   </div>
                 ))}
