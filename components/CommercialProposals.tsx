@@ -186,7 +186,7 @@ export default function CommercialProposals() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-brand text-white shadow-lg"
+                    ? "bg-[#B01E23] text-white shadow-lg"
                     : "bg-accent text-foreground hover:bg-accent/80"
                 }`}
               >
@@ -228,7 +228,7 @@ export default function CommercialProposals() {
             <div className="grid grid-cols-2 gap-4 mb-8">
               {content.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                  <div className="w-10 h-10 rounded-full bg-[#B01E23]/10 flex items-center justify-center text-[#B01E23]">
                     {feature.icon}
                   </div>
                   <span className="font-medium">{feature.text}</span>
@@ -245,20 +245,20 @@ export default function CommercialProposals() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   className={`border rounded-xl p-4 relative ${
-                    plan.popular ? "border-brand shadow-lg" : "border-border"
+                    plan.popular ? "border-[#B01E23] shadow-lg" : "border-border"
                   }`}
                 >
                   {plan.popular && (
-                    <span className="absolute -top-3 right-4 bg-brand text-white text-xs px-3 py-1 rounded-full">
+                    <span className="absolute -top-3 right-4 bg-[#B01E23] text-white text-xs px-3 py-1 rounded-full">
                       Popular
                     </span>
                   )}
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h4 className="font-bold text-lg">{plan.name}</h4>
-                      <p className="text-2xl font-bold text-brand">{plan.price}</p>
+                      <p className="text-2xl font-bold text-[#B01E23]">{plan.price}</p>
                     </div>
-                    <button className="text-brand hover:text-brand-dark transition-colors">
+                    <button className="text-[#B01E23] hover:text-[#8B0000] transition-colors">
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
@@ -276,7 +276,7 @@ export default function CommercialProposals() {
 
             {/* CTA */}
             <div className="mt-8 text-center">
-              <Button variant="brand" asChild>
+              <Button variant="default" asChild className="bg-[#B01E23] hover:bg-[#8B0000] text-white">
                 <a
                   href="https://wa.me/593978606269?text=Hola,%20me%20interesa%20saber%20más%20sobre%20las%20propuestas%20comerciales"
                   target="_blank"
