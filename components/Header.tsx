@@ -78,7 +78,7 @@ export default function Header() {
                   />
                 </div>
                 <div className="hidden sm:block">
-                  <span className="font-heading text-xl font-bold text-cafe-red">CaféClub</span>
+                  <span className="font-heading text-xl font-bold text-red-600">CaféClub</span>
                   <span className="font-heading text-xl font-bold ml-1">TV</span>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function Header() {
             <nav className="hidden md:flex items-center space-x-1">
               <Link
                 href="/"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-red-600 transition-colors"
               >
                 Inicio
               </Link>
@@ -96,7 +96,7 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={toggleDropdown}
-                  className="px-3 py-2 text-sm font-medium rounded-md hover:bg-cafe-red/10 hover:text-cafe-red transition-colors flex items-center"
+                  className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-red-600 transition-colors flex items-center"
                   aria-expanded={isDropdownOpen}
                   aria-haspopup="true"
                 >
@@ -119,7 +119,7 @@ export default function Header() {
                       <div className="py-1" role="none">
                         <Link
                           href="/contenido"
-                          className="block px-4 py-2 text-sm hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -127,7 +127,7 @@ export default function Header() {
                         </Link>
                         <Link
                           href="/contenido#live-stream"
-                          className="block px-4 py-2 text-sm hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -135,7 +135,7 @@ export default function Header() {
                         </Link>
                         <Link
                           href="/contenido#shorts"
-                          className="block px-4 py-2 text-sm hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-red-50 hover:text-red-600 transition-colors"
                           role="menuitem"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -149,14 +149,14 @@ export default function Header() {
 
               <Link
                 href="/ganacash"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-red-600 transition-colors"
               >
                 GanaCash
               </Link>
 
               <Link
                 href="#contact"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-red-600 transition-colors"
               >
                 Contacto
               </Link>
@@ -209,28 +209,28 @@ export default function Header() {
               <div className="container mx-auto px-4 py-4 space-y-1">
                 <Link
                   href="/"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-red-50 hover:text-red-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Inicio
                 </Link>
                 <Link
                   href="/contenido"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-red-50 hover:text-red-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contenido
                 </Link>
                 <Link
                   href="/ganacash"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-red-50 hover:text-red-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   GanaCash
                 </Link>
                 <Link
                   href="#contact"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-red/10 hover:text-cafe-red transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-red-50 hover:text-red-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contacto
@@ -252,7 +252,7 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
-                      className="text-cafe-red hover:text-red-700 transition-colors"
+                      className="text-red-600 hover:text-red-700 transition-colors"
                     >
                       <i className="fab fa-facebook-f text-lg"></i>
                     </a>
@@ -261,7 +261,7 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="text-cafe-red hover:text-red-700 transition-colors"
+                      className="text-red-600 hover:text-red-700 transition-colors"
                     >
                       <i className="fab fa-instagram text-lg"></i>
                     </a>
@@ -270,7 +270,7 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Twitter"
-                      className="text-cafe-red hover:text-red-700 transition-colors"
+                      className="text-red-600 hover:text-red-700 transition-colors"
                     >
                       <i className="fab fa-twitter text-lg"></i>
                     </a>
@@ -279,7 +279,7 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Youtube"
-                      className="text-cafe-red hover:text-red-700 transition-colors"
+                      className="text-red-600 hover:text-red-700 transition-colors"
                     >
                       <i className="fab fa-youtube text-lg"></i>
                     </a>
