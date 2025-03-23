@@ -7,7 +7,7 @@ export default function ContentHero() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
       {/* Fondo con efecto de gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cafe-red to-cafe-red/70 z-0">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23] to-[#B01E23]/70 z-0">
         {/* Patrón de puntos superpuesto */}
         <div
           className="absolute inset-0 opacity-10"
@@ -27,7 +27,7 @@ export default function ContentHero() {
           className="text-center max-w-4xl"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight font-heading">
-            Descubre Nuestra <span className="text-gold">Programación</span>
+            Descubre Nuestra <span className="text-[#FFD700]">Programación</span>
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
@@ -36,7 +36,7 @@ export default function ContentHero() {
 
           <div className="flex flex-wrap justify-center gap-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="default" size="lg" asChild className="bg-white text-cafe-red hover:bg-white/90">
+              <Button variant="default" size="lg" asChild className="bg-white text-[#B01E23] hover:bg-white/90">
                 <a href="#featured-programs">Ver Programas</a>
               </Button>
             </motion.div>
@@ -75,7 +75,7 @@ export default function ContentHero() {
             rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
             y: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
           }}
-          className="w-full h-full bg-gold rounded-lg"
+          className="w-full h-full bg-[#FFD700] rounded-lg"
         />
       </div>
 
