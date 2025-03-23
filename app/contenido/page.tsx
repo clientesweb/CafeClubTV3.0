@@ -16,6 +16,7 @@ export const metadata = getMetadata({
   url: "/contenido",
   image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cafeclubtv-contenido-og-Hs2Nt0Ik5Ux3Wd7Lp4Qr6.jpg",
   keywords: "programas de TV, contenido digital, transmisión en vivo, shorts, CafeClubTV, entretenimiento",
+  type: "website", // Aseguramos que sea un tipo válido
 })
 
 export default function ContenidoPage() {
