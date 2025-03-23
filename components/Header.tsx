@@ -159,9 +159,6 @@ export default function Header() {
                 className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-[#B01E23] dark:hover:bg-gray-800 dark:hover:text-[#B01E23] transition-colors"
               >
                 Contacto
-              </Link>  transition-colors"
-              >
-                Contacto
               </Link>
             </nav>
 
@@ -240,10 +237,10 @@ export default function Header() {
                 </Link>
 
                 {deferredPrompt && (
-                  <Button 
-                    variant="default" 
-                    onClick={installPWA} 
-                    className="w-full mt-4 bg-[#B01E23] hover:bg-[#8B0000] text-white" 
+                  <Button
+                    variant="default"
+                    onClick={installPWA}
+                    className="w-full mt-4 bg-[#B01E23] hover:bg-[#8B0000] text-white"
                     aria-label="Instalar aplicación"
                   >
                     <i className="fas fa-download mr-2"></i>
@@ -298,7 +295,7 @@ export default function Header() {
           )}
         </AnimatePresence>
       </header>
-  </>
+    </>
   )
 }
 
