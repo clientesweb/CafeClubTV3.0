@@ -3,10 +3,16 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Menu, X, ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Header() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -14,10 +20,16 @@ export default function Header() {
       setDeferredPrompt(e)
     }
 
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt)
+    window.addEventListener("scroll", handleScroll)
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt)
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
@@ -34,130 +46,244 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
   return (
-    <header className="container mx-auto px-4 py-4">
-      <div className="flex justify-between items-center">
-        {/* Botón de instalar PWA */}
-        <button
-          id="installButton"
-          onClick={installPWA}
-          className="bg-[var(--primary-color)] hover:bg-[var(--secondary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm sm:text-base flex items-center gap-2 transition-all duration-300 ease-in-out"
-          aria-label="Instalar la aplicación"
-        >
-          <i className="fas fa-download text-lg sm:text-xl"></i>
-          Instalar
-        </button>
+    <>
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" className="skip-to-content">
+        Saltar al contenido principal
+      </a>
 
-        {/* Logo centrado con enlace a inicio */}
-        <Link href="/" className="flex justify-center">
-          <Image
-            src="/images/Icon512x512.png"
-            alt="CafeClub TV Logo"
-            width={64}
-            height={64}
-            className="w-12 h-12 sm:w-16 sm:h-16"
-          />
-        </Link>
-
-        {/* Menú de navegación en pantallas grandes */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/"
-            className="text-gray-600 hover:text-[var(--primary-color)] font-medium transition-colors duration-300"
-          >
-            Inicio
-          </Link>
-          <Link
-            href="/contenido"
-            className="text-gray-600 hover:text-[var(--primary-color)] font-medium transition-colors duration-300"
-          >
-            Contenido
-          </Link>
-          <Link
-            href="/ganacash"
-            className="text-gray-600 hover:text-[var(--primary-color)] font-medium transition-colors duration-300"
-          >
-            GanaCash
-          </Link>
-        </div>
-
-        {/* Botón de menú en pantallas pequeñas */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={toggleMenu}
-            className="text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"
-            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          >
-            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-          </button>
-        </div>
-      </div>
-
-      {/* Menú móvil desplegable */}
-      {isMenuOpen && (
-        <div className="md:hidden mt-4 bg-white rounded-lg shadow-lg p-4 absolute left-0 right-0 z-50">
-          <div className="flex flex-col space-y-3">
-            <Link
-              href="/"
-              className="text-gray-600 hover:text-[var(--primary-color)] font-medium py-2 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Inicio
-            </Link>
-            <Link
-              href="/contenido"
-              className="text-gray-600 hover:text-[var(--primary-color)] font-medium py-2 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contenido
-            </Link>
-            <Link
-              href="/ganacash"
-              className="text-gray-600 hover:text-[var(--primary-color)] font-medium py-2 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              GanaCash
+      <header
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled ? "bg-background/95 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="relative z-10">
+              <div className="flex items-center gap-2">
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12">
+                  <Image
+                    src="/images/logo.png"
+                    alt="CafeClub TV Logo"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                </div>
+                <div className="hidden sm:block">
+                  <span className="font-heading text-xl font-bold text-brand">CaféClub</span>
+                  <span className="font-heading text-xl font-bold ml-1">TV</span>
+                </div>
+              </div>
             </Link>
 
-            {/* Redes sociales */}
-            <div className="flex gap-4 pt-2 border-t border-gray-200">
-              <Link
-                href="https://www.facebook.com/CafeClubRadio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              >
-                <i className="fab fa-facebook-f text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-1">
+              <Link href="/" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors">
+                Inicio
               </Link>
+
+              <div className="relative">
+                <button
+                  onClick={toggleDropdown}
+                  className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors flex items-center"
+                  aria-expanded={isDropdownOpen}
+                  aria-haspopup="true"
+                >
+                  Contenido
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 mt-1 w-48 rounded-md bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      role="menu"
+                      aria-orientation="vertical"
+                      tabIndex={-1}
+                    >
+                      <div className="py-1" role="none">
+                        <Link
+                          href="/contenido"
+                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          role="menuitem"
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          Todos los Programas
+                        </Link>
+                        <Link
+                          href="/contenido#live-stream"
+                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          role="menuitem"
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          En Vivo
+                        </Link>
+                        <Link
+                          href="/contenido#shorts"
+                          className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                          role="menuitem"
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          Shorts
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <Link
-                href="https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
+                href="/ganacash"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors"
               >
-                <i className="fab fa-instagram text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+                GanaCash
               </Link>
+
               <Link
-                href="https://twitter.com/CafeClub_Lat?s=08"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
+                href="#contact"
+                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent transition-colors"
               >
-                <i className="fab fa-twitter text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
+                Contacto
               </Link>
-              <Link
-                href="https://youtube.com/c/CafeClubCanalTv"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Youtube"
+            </nav>
+
+            {/* Right side actions */}
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+
+              {deferredPrompt && (
+                <Button
+                  variant="brand"
+                  size="sm"
+                  onClick={installPWA}
+                  className="hidden sm:flex"
+                  aria-label="Instalar aplicación"
+                >
+                  <i className="fas fa-download mr-2"></i>
+                  Instalar
+                </Button>
+              )}
+
+              {/* Mobile menu button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleMenu}
+                className="md:hidden"
+                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
-                <i className="fab fa-youtube text-gray-600 hover:text-[var(--primary-color)] transition-colors duration-300"></i>
-              </Link>
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
             </div>
           </div>
         </div>
-      )}
-    </header>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              id="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-background border-t"
+            >
+              <div className="container mx-auto px-4 py-4 space-y-1">
+                <Link
+                  href="/"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Inicio
+                </Link>
+                <Link
+                  href="/contenido"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contenido
+                </Link>
+                <Link
+                  href="/ganacash"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  GanaCash
+                </Link>
+                <Link
+                  href="#contact"
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contacto
+                </Link>
+
+                {deferredPrompt && (
+                  <Button variant="brand" onClick={installPWA} className="w-full mt-4" aria-label="Instalar aplicación">
+                    <i className="fas fa-download mr-2"></i>
+                    Instalar Aplicación
+                  </Button>
+                )}
+
+                {/* Social links */}
+                <div className="pt-4 border-t border-border mt-4">
+                  <p className="text-sm text-muted-foreground mb-2">Síguenos en:</p>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://www.facebook.com/CafeClubRadio/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <i className="fab fa-facebook-f text-lg hover:text-brand transition-colors"></i>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <i className="fab fa-instagram text-lg hover:text-brand transition-colors"></i>
+                    </a>
+                    <a
+                      href="https://twitter.com/CafeClub_Lat?s=08"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Twitter"
+                    >
+                      <i className="fab fa-twitter text-lg hover:text-brand transition-colors"></i>
+                    </a>
+                    <a
+                      href="https://youtube.com/c/CafeClubCanalTv"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Youtube"
+                    >
+                      <i className="fab fa-youtube text-lg hover:text-brand transition-colors"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   )
 }
 
