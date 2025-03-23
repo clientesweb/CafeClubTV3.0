@@ -92,35 +92,35 @@ export default function RootLayout({
         {/* Datos estructurados de SEO local */}
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "CafeClubTV",
-              "url": "https://www.cafeclubtv.com",
-              "logo": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+593978606269",
-                "contactType": "Customer Service",
-                "areaServed": "EC",
-                "availableLanguage": "Spanish"
-              },
-              "sameAs": [
-                "https://www.facebook.com/CafeClubRadio/",
-                "https://twitter.com/CafeClub_Lat?s=08",
-                "https://www.instagram.com/@cafeclubtv",
-                "https://youtube.com/c/CafeClubCanalTv"
-              ],
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Mystic Pointe Drive",
-                "addressLocality": "Miami/Aventura",
-                "addressRegion": "FL",
-                "postalCode": "33180",
-                "addressCountry": "US"
-              }
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "CafeClubTV",
+            "url": "https://www.cafeclubtv.com",
+            "logo": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+593978606269",
+              "contactType": "Customer Service",
+              "areaServed": "EC",
+              "availableLanguage": "Spanish"
+            },
+            "sameAs": [
+              "https://www.facebook.com/CafeClubRadio/",
+              "https://twitter.com/CafeClub_Lat?s=08",
+              "https://www.instagram.com/@cafeclubtv",
+              "https://youtube.com/c/CafeClubCanalTv"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Mystic Pointe Drive",
+              "addressLocality": "Miami/Aventura",
+              "addressRegion": "FL",
+              "postalCode": "33180",
+              "addressCountry": "US"
             }
-          `}
+          }
+        `}
         </script>
 
         <Script
@@ -130,7 +130,7 @@ export default function RootLayout({
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans min-h-screen flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>
       </body>
