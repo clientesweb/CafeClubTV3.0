@@ -9,12 +9,12 @@ import { ChevronLeft, ChevronRight, Play, Calendar, Clock, ExternalLink } from "
 
 const programs = [
   {
-    title: "DE LEY!",
+    title: "DE LEY! con María Paula",
     image: "/images/programa1.jpg",
     schedule: "Jueves 20:00 PM",
     description: "Análisis legal de temas de actualidad con expertos invitados",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjEXDXovYZECqH1qxi8ymnTe&si=VKIYygF-jj2_PJ3l",
-    host: "Carlos Sánchez",
+    host: "María Paula Delgado",
     category: "Actualidad",
   },
   {
@@ -23,7 +23,7 @@ const programs = [
     schedule: "Miércoles 12:00 PM",
     description: "Entrevistas y conversaciones con personalidades destacadas",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGamAX8f5SVv451mwHq_bQq&si=VA--l8LRYg8dvxbW",
-    host: "María Gutiérrez",
+    host: "Karyna Arteaga y Kary Abad",
     category: "Entrevistas",
   },
   {
@@ -41,7 +41,7 @@ const programs = [
     schedule: "Lunes y Miércoles 10:00 AM",
     description: "Noticias y actualidad del mundo del café y gastronomía",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGGJD55fn6RP4lNo1sZZSEP&si=3ZphX4i3eR8abpes",
-    host: "Ana Gómez",
+    host: "Pablo Valdivieso, Julius Grunauer y Nicole Fontaine",
     category: "Gastronomía",
   },
   {
@@ -50,11 +50,11 @@ const programs = [
     schedule: "Miércoles 22:00 PM",
     description: "Conversaciones sobre bienestar, meditación y vida saludable",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjEU5H15CbmplsuGxtY66OwJ&si=lZFY_KZ5mNvz3SoH",
-    host: "Laura Paz",
+    host: "Sonnia Valverde",
     category: "Bienestar",
   },
   {
-    title: "Café COACHING con Miriam Rojas",
+    title: "Café COACHING",
     image: "/images/programa5.jpg",
     schedule: "Lunes 20:00 PM",
     description: "Desarrollo personal y profesional con técnicas de coaching",
@@ -68,8 +68,26 @@ const programs = [
     schedule: "Lunes 16:00 PM",
     description: "Cultura, tradiciones y actualidad hispana en un formato dinámico",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGcaIqVFVvXDoHSCQyXwTYh&si=Twc6ZBj-bLWgW57N",
-    host: "José Martínez",
+    host: "Sylvia Ángel Eyes",
     category: "Cultura",
+  },
+  {
+    title: "Tech Capital",
+    image: "/images/tech-capital.png",
+    schedule: "Lunes 19:00 PM",
+    description: "Análisis de mercados financieros, inversiones y tecnología",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGQRHb9b3FSBw4oKiG2zDrh&si=bRgaPHzHBxROI2vR",
+    host: "Héctor Bermúdez",
+    category: "Finanzas",
+  },
+  {
+    title: "El Búho COMUNICA",
+    image: "/images/programa8.jpg",
+    schedule: "Viernes 18:00 PM",
+    description: "Comunicación efectiva y estrategias para conectar con audiencias",
+    link: "#",
+    host: "Karina Arteaga",
+    category: "Comunicación",
   },
 ]
 
