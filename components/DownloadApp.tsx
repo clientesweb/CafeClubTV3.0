@@ -71,7 +71,7 @@ export default function DownloadApp() {
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <motion.a
-                href="https://clientesweb.github.io/CafeClubTv/CafeClubTV.apk"
+                href="CafeClubTv/CafeClubTV.apk"
                 className="group inline-flex items-center justify-center gap-2 bg-[#B01E23] hover:bg-[#8B0000] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300"
                 aria-label="Descargar APK de CafeClub TV"
                 role="button"
