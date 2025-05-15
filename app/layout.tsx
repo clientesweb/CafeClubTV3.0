@@ -12,23 +12,24 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
+  title: "CafeClub TV - Canal Internacional 100% Digital | Programas Variados y Entretenimiento",
   description:
-    "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
+    "CafeClub TV ofrece programas variados sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas. Disfruta de contenido de calidad en español desde Miami y Ecuador para todo el mundo.",
   keywords:
-    "videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador",
+    "CafeClub TV, canal digital, programas en español, transmisión en vivo, entretenimiento latino, Miami, Ecuador, entrevistas, deportes, salud, negocios, belleza, viajes",
   robots: "index, follow",
   openGraph: {
-    title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
-    description: "Disfruta de entretenimiento de calidad con nuestros videos y playlists",
+    title: "CafeClub TV - Canal Internacional 100% Digital | Programas Variados y Entretenimiento",
+    description:
+      "Disfruta de programas variados sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas en español.",
     url: "https://www.cafeclubtv.com",
-    siteName: "CafeClubTV",
+    siteName: "CafeClub TV",
     images: [
       {
         url: "/images/og-image-cafeclubtv.jpg",
         width: 1200,
         height: 630,
-        alt: "CafeClubTV - Entretenimiento de calidad",
+        alt: "CafeClub TV - Canal Internacional 100% Digital",
       },
     ],
     locale: "es_ES",
@@ -37,9 +38,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@CafeClub_Lat",
-    title: "CafeClubTV - Tu lugar para disfrutar de los mejores videos y playlists",
+    title: "CafeClub TV - Canal Internacional 100% Digital | Programas Variados",
     description:
-      "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad.",
+      "Programas variados sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas en español desde Miami y Ecuador.",
     images: ["/images/og-image-cafeclubtv.jpg"],
   },
   metadataBase: new URL("https://www.cafeclubtv.com"),
@@ -54,6 +55,10 @@ export const metadata = {
     icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
     apple: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
   },
+  verification: {
+    google: "verificación-google-aquí", // Reemplazar con el código real de verificación de Google
+  },
+  category: "entertainment",
 }
 
 export default function RootLayout({
@@ -79,17 +84,12 @@ export default function RootLayout({
           href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
         />
         <link rel="manifest" href="/manifest.json" />
-        <meta
-          name="description"
-          content="Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos, playlists y entretenimiento de calidad."
-        />
-        <meta name="author" content="CafeClubTV" />
-        <meta name="publisher" content="CafeClubTV" />
-        <meta
-          name="keywords"
-          content="videos, playlists, entretenimiento, música, CafeClubTV, videos en línea, streaming, Guayaquil, Miami, Ecuador"
-        />
-        <meta name="robots" content="index, follow" />
+        <meta name="author" content="CafeClub TV" />
+        <meta name="publisher" content="CafeClub TV" />
+        <meta name="format-detection" content="telephone=yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="CafeClub TV" />
+        <meta name="application-name" content="CafeClub TV" />
 
         {/* Datos estructurados de SEO local */}
         <script type="application/ld+json">
@@ -97,20 +97,20 @@ export default function RootLayout({
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "CafeClubTV",
+            "name": "CafeClub TV",
             "url": "https://www.cafeclubtv.com",
             "logo": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+593978606269",
               "contactType": "Customer Service",
-              "areaServed": "EC",
+              "areaServed": ["EC", "US", "LATAM"],
               "availableLanguage": "Spanish"
             },
             "sameAs": [
               "https://www.facebook.com/CafeClubRadio/",
               "https://twitter.com/CafeClub_Lat?s=08",
-              "https://www.instagram.com/@cafeclubtv",
+              "https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep",
               "https://youtube.com/c/CafeClubCanalTv"
             ],
             "address": {
@@ -125,11 +125,53 @@ export default function RootLayout({
         `}
         </script>
 
+        {/* Datos estructurados para VideoObject */}
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BroadcastChannel",
+            "name": "CafeClub TV",
+            "broadcastChannelId": "CafeClubCanalTv",
+            "broadcastServiceTier": "Digital",
+            "inBroadcastLineup": {
+              "@type": "CableOrSatelliteService",
+              "name": "Internet Streaming"
+            },
+            "providesBroadcastService": {
+              "@type": "BroadcastService",
+              "name": "CafeClub TV Online",
+              "broadcastDisplayName": "CafeClub TV",
+              "broadcaster": {
+                "@type": "Organization",
+                "name": "CafeClub TV"
+              },
+              "videoFormat": ["HD"]
+            }
+          }
+        `}
+        </script>
+
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
           strategy="afterInteractive"
         />
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
+        <Script id="register-sw" strategy="afterInteractive">
+          {`
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                  .then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                  })
+                  .catch(error => {
+                    console.log('ServiceWorker registration failed: ', error);
+                  });
+              });
+            }
+          `}
+        </Script>
       </head>
       <body className={`${poppins.variable} font-sans min-h-screen flex flex-col`}>
         <a
