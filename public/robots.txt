@@ -3,5 +3,16 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.cerettimanagement.com/sitemap.xml
+# Bloquear acceso a páginas de administración
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /login
+Disallow: /dashboard
 
+# Permitir a todos los rastreadores acceder a recursos estáticos
+Allow: /images/
+Allow: /static/
+Allow: /public/
+
+# Sitemap
+Sitemap: https://www.cafeclubtv.com/sitemap.xml
