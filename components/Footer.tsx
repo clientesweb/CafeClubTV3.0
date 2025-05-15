@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -34,37 +36,37 @@ export default function Footer() {
                 href="https://www.facebook.com/CafeClubRadio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                aria-label="Síguenos en Facebook"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#B01E23]"
               >
-                <Facebook size={18} />
+                <Facebook size={18} aria-hidden="true" />
               </a>
               <a
                 href="https://twitter.com/CafeClub_Lat?s=08"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Twitter"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                aria-label="Síguenos en Twitter"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#B01E23]"
               >
-                <Twitter size={18} />
+                <Twitter size={18} aria-hidden="true" />
               </a>
               <a
                 href="https://www.instagram.com/invites/contact/?i=1qricgcqleosj&utm_content=1imi4ep"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                aria-label="Síguenos en Instagram"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#B01E23]"
               >
-                <Instagram size={18} />
+                <Instagram size={18} aria-hidden="true" />
               </a>
               <a
                 href="https://youtube.com/c/CafeClubCanalTv"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Youtube"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                aria-label="Síguenos en Youtube"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#B01E23]"
               >
-                <Youtube size={18} />
+                <Youtube size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -138,15 +140,24 @@ export default function Footer() {
             <p className="text-white/80 mb-4">
               Recibe nuestras últimas noticias y actualizaciones directamente en tu bandeja de entrada.
             </p>
-            <form className="space-y-3">
+            <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-labelledby="newsletter-heading">
               <div className="flex flex-col space-y-2">
+                <label htmlFor="email-input" className="sr-only">
+                  Tu correo electrónico
+                </label>
                 <Input
+                  id="email-input"
                   type="email"
                   placeholder="Tu correo electrónico"
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
                   aria-label="Tu correo electrónico"
+                  aria-required="true"
                 />
-                <Button variant="default" type="submit" className="bg-white text-[#B01E23] hover:bg-white/90">
+                <Button
+                  variant="default"
+                  type="submit"
+                  className="bg-white text-[#B01E23] hover:bg-white/90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#B01E23]"
+                >
                   Suscribirse
                 </Button>
               </div>
