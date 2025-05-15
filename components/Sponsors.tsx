@@ -156,7 +156,7 @@ export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="py-16 sm:py-20 relative overflow-hidden bg-accent/50 dark:bg-gray-900/50"
+      className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-accent/50 dark:bg-gray-900/50"
       ref={containerRef}
     >
       {/* Fondo con efecto de malla */}
@@ -212,7 +212,7 @@ export default function Sponsors() {
           {/* Contenedor del carrusel */}
           <div
             ref={carouselRef}
-            className="overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50"
+            className="overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50 py-8 sm:py-10 md:py-12"
           >
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -231,11 +231,11 @@ export default function Sponsors() {
                     href={sponsor.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block relative aspect-[4/3] w-full h-full flex items-center justify-center"
+                    className="group block relative w-full h-[120px] sm:h-[140px] md:h-[160px] flex items-center justify-center"
                     aria-label={`Visitar sitio web de ${sponsor.name}`}
                   >
                     <div className="relative w-full h-full flex items-center justify-center">
-                      <div className="relative w-full max-w-[300px] mx-auto aspect-[4/3] flex items-center justify-center">
+                      <div className="relative w-full max-w-[180px] sm:max-w-[200px] md:max-w-[240px] mx-auto h-full flex items-center justify-center">
                         <Image
                           src={sponsor.src || "/placeholder.svg"}
                           alt={sponsor.name}
