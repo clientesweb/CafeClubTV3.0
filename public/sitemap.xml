@@ -1,70 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Página principal -->
   <url>
-    <loc>https://www.cerettimanagement.com/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.cafeclubtv.com/</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.cafeclubtv.com/images/og-image-cafeclubtv.jpg</image:loc>
+      <image:title>CafeClub TV - Canal Internacional 100% Digital</image:title>
+    </image:image>
   </url>
+  
+  <!-- Página de contenido -->
   <url>
-    <loc>https://www.cerettimanagement.com/shop</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.cafeclubtv.com/contenido</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.cafeclubtv.com/images/hero2.png</image:loc>
+      <image:title>Programación y Contenido de CafeClub TV</image:title>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.cafeclubtv.com/images/programa1.jpg</video:thumbnail_loc>
+      <video:title>Programas de CafeClub TV</video:title>
+      <video:description>Explora nuestra colección de programas exclusivos, transmisiones en vivo y shorts.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RRex2MDqVZ8</video:player_loc>
+      <video:duration>120</video:duration>
+      <video:publication_date>2025-05-01T19:20:30+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
   </url>
+  
+  <!-- Transmisión en vivo (ancla) -->
   <url>
-    <loc>https://www.cerettimanagement.com/blog</loc>
-    <lastmod>2025-03-23</lastmod>
+    <loc>https://www.cafeclubtv.com/contenido#live-stream</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Shorts (ancla) -->
+  <url>
+    <loc>https://www.cafeclubtv.com/contenido#shorts</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Programas destacados (ancla) -->
+  <url>
+    <loc>https://www.cafeclubtv.com/contenido#featured-programs</loc>
+    <lastmod>2025-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Contacto (ancla) -->
   <url>
-    <loc>https://www.cerettimanagement.com/portfolio</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/paquetes</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/checkout</loc>
-    <lastmod>2025-03-23</lastmod>
+    <loc>https://www.cafeclubtv.com/#contact</loc>
+    <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <!-- Propuestas comerciales (ancla) -->
   <url>
-    <loc>https://www.cerettimanagement.com/shop/product/1/seguidores-instagram-premium</loc>
-    <lastmod>2025-03-23</lastmod>
+    <loc>https://www.cafeclubtv.com/#commercial-proposals</loc>
+    <lastmod>2025-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/shop/product/2/likes-instagram</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/shop/product/9/suscriptores-youtube</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/blog/1</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.cerettimanagement.com/blog/2</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>
-
