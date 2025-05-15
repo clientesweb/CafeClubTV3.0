@@ -49,19 +49,19 @@ export default function ContenidoPage() {
       <TopBanner />
       <Header />
       <main id="main-content" className="flex-grow">
-        {/* Nuevo Hero con la imagen de BONOGOL TV */}
+        {/* Hero con contenido sobre la programación */}
         <section className="relative h-[70vh] overflow-hidden">
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <Image
-              src="/images/bonogol-tv-banner.jpg"
-              alt="BONOGOL TV - Locos por ganar"
+              src="/images/hero2.png"
+              alt="CafeClub TV Programación"
               fill
               style={{ objectFit: "cover" }}
               priority
-              className="brightness-[0.8]"
+              className="brightness-[0.7]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50"></div>
           </div>
 
           {/* Contenido del hero */}
@@ -92,9 +92,9 @@ export default function ContenidoPage() {
                 asChild
                 className="bg-white/10 backdrop-blur-sm border-white hover:bg-white/20 text-white"
               >
-                <a href="https://youtube.com/@bonogoltv?si=49TwYsAMqnmc29F2" target="_blank" rel="noopener noreferrer">
+                <a href="#live-stream">
                   <Play className="mr-2 h-5 w-5" />
-                  Ver BONOGOL TV
+                  Ver En Vivo
                 </a>
               </Button>
             </div>
@@ -103,13 +103,18 @@ export default function ContenidoPage() {
 
         <FeaturedPrograms />
 
-        {/* Banner publicitario antes del LiveStream */}
+        {/* Banner de BONOGOL TV antes del LiveStream */}
         <section className="my-8 sm:my-12 container mx-auto px-4">
-          <Link href="https://www.latinostvny.com" target="_blank" rel="noopener noreferrer" className="block">
+          <Link
+            href="https://youtube.com/@bonogoltv?si=49TwYsAMqnmc29F2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
             <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Image
-                src="/images/banner-latinos-partner.jpg"
-                alt="Latinos TV NY Partner"
+                src="/images/bonogol-tv-banner.jpg"
+                alt="BONOGOL TV - Locos por ganar"
                 fill
                 style={{ objectFit: "cover" }}
                 className="transition-transform duration-500 hover:scale-105"
