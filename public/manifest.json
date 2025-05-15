@@ -1,28 +1,78 @@
 {
-  "name": "Cafe Club TV - Entretenimiento",
+  "name": "CafeClub TV - Canal Internacional 100% Digital",
   "short_name": "CafeClubTV",
-  "description": "Bienvenido a CafeClubTV, tu destino para disfrutar de los mejores videos y playlists de entretenimiento de calidad.",
+  "description": "Canal internacional 100% digital con programación variada sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#B01E23",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "id": "https://www.cafeclubtv.com/",
   "lang": "es",
   "dir": "ltr",
-  "orientation": "portrait",
-  "categories": ["entertainment", "video", "media"]
+  "categories": ["entertainment", "video", "media", "news"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Página principal de CafeClub TV"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Programación de CafeClub TV"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://www.cafeclubtv.com"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Ver Programación",
+      "short_name": "Programación",
+      "description": "Ver la programación completa",
+      "url": "/contenido",
+      "icons": [
+        {
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ver En Vivo",
+      "short_name": "En Vivo",
+      "description": "Ver transmisión en vivo",
+      "url": "/contenido#live-stream",
+      "icons": [
+        {
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
-
