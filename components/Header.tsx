@@ -65,7 +65,7 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="relative z-10">
+            <Link href="/" className="relative z-10" aria-label="CafeClub TV - Ir a la página principal">
               <div className="flex items-center gap-2">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12">
                   <Image
@@ -182,7 +182,11 @@ export default function Header() {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="h-6 w-6" aria-hidden="true" />
+                )}
               </Button>
             </div>
           </div>
