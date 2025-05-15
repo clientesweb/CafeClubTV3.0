@@ -168,7 +168,17 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-white/60">&copy; {new Date().getFullYear()} CafeClub TV. Todos los derechos reservados.</p>
-          <p className="text-white/60 mt-2 mb-4 md:mb-0">Powered by Duality Domain</p>
+          <p className="text-white/60 mt-2 mb-4 md:mb-0">
+            Sitio desarrollado y patrocinado por{" "}
+            <a
+              href="https://www.dualitydomain.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors underline"
+            >
+              Duality Domain
+            </a>
+          </p>
         </div>
       </div>
     </footer>
