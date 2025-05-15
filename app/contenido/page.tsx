@@ -12,20 +12,23 @@ import { Button } from "@/components/ui/button"
 import { ChevronRight, Play } from "lucide-react"
 
 export const metadata = {
-  title: "Programación y Contenido | CafeClubTV",
-  description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
-  keywords: "programas de TV, contenido digital, transmisión en vivo, shorts, CafeClubTV, entretenimiento",
+  title: "Programación y Contenido | CafeClub TV - Programas Variados en Español",
+  description:
+    "Explora nuestra colección de programas exclusivos, transmisiones en vivo y shorts. Contenido variado sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas.",
+  keywords:
+    "programas de TV, contenido digital, transmisión en vivo, shorts, CafeClubTV, entretenimiento latino, programas en español",
   openGraph: {
-    title: "Programación y Contenido | CafeClubTV",
-    description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
+    title: "Programación y Contenido | CafeClub TV - Programas Variados en Español",
+    description:
+      "Explora nuestra colección de programas exclusivos, transmisiones en vivo y shorts. Contenido variado sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas.",
     url: "https://www.cafeclubtv.com/contenido",
-    siteName: "CafeClubTV",
+    siteName: "CafeClub TV",
     images: [
       {
         url: "/images/og-image-cafeclubtv.jpg",
         width: 1200,
         height: 630,
-        alt: "Programación y Contenido | CafeClubTV",
+        alt: "Programación y Contenido | CafeClub TV",
       },
     ],
     locale: "es_ES",
@@ -34,8 +37,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@CafeClub_Lat",
-    title: "Programación y Contenido | CafeClubTV",
-    description: "Explora nuestra colección de programas exclusivos, shorts y contenido premium creado para ti.",
+    title: "Programación y Contenido | CafeClub TV - Programas Variados en Español",
+    description:
+      "Explora nuestra colección de programas exclusivos, transmisiones en vivo y shorts. Contenido variado sobre salud, negocios, deportes, belleza, viajes y entrevistas exclusivas.",
     images: ["/images/og-image-cafeclubtv.jpg"],
   },
   alternates: {
