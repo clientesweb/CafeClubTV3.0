@@ -8,7 +8,7 @@ import { Facebook, Twitter, Instagram, Youtube, Mail, MapPin, Phone } from "luci
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#B01E23] text-white pt-16 pb-8">
+    <footer id="contact" className="bg-[#B01E23] text-white pt-16 pb-28 sm:pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Sección Acerca de */}
@@ -168,7 +168,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-white/60">&copy; {new Date().getFullYear()} CafeClub TV. Todos los derechos reservados.</p>
-          <p className="text-white/60 mt-2">Powered by Duality Domain</p>
+          <p className="text-white/60 mt-2 mb-4 md:mb-0">Powered by Duality Domain</p>
         </div>
       </div>
     </footer>
