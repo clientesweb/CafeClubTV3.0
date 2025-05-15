@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -38,7 +37,7 @@ export default function FloatingChat() {
             exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
             className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 mb-2 max-w-xs border border-red-200"
           >
-            <p className="text-sm font-medium">Próximamente disfrutarás de los mejores premios</p>
+            <p className="text-sm font-medium">¿Necesitas ayuda? Contáctanos por WhatsApp</p>
             <button
               onClick={() => setShowNotification(false)}
               className="absolute top-1 right-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
@@ -49,26 +48,6 @@ export default function FloatingChat() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Link
-        href="/ganacash"
-        className="relative bg-[#B01E23] hover:bg-[#8B0000] text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
-      >
-        <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Icon512x512-nsu8n2y0ISqY7bXqShRC4hi8Qno7df.png"
-          alt="Gana Cash Logo"
-          width={40}
-          height={40}
-          className="w-10 h-10"
-        />
-        <span className="sr-only">Ir a GanaCash</span>
-        {showNotification && (
-          <span className="absolute top-0 right-0 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
-          </span>
-        )}
-      </Link>
 
       <Link
         href="https://wa.me/593978606269"
@@ -82,4 +61,3 @@ export default function FloatingChat() {
     </div>
   )
 }
-
