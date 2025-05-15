@@ -62,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning className="scroll-smooth">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -132,6 +132,12 @@ export default function RootLayout({
         <Script src="https://www.youtube.com/iframe_api" strategy="afterInteractive" />
       </head>
       <body className={`${poppins.variable} font-sans min-h-screen flex flex-col`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#B01E23] focus:text-white"
+        >
+          Saltar al contenido principal
+        </a>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme={undefined}>
           {children}
         </ThemeProvider>
@@ -139,4 +145,3 @@ export default function RootLayout({
     </html>
   )
 }
-
