@@ -9,7 +9,7 @@ export default function BottomNav({ activeItem = "home" }: BottomNavProps) {
   return (
     <nav
       id="bottom-nav"
-      className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-md border-t py-3 shadow-lg z-40"
+      className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-md border-t py-2 shadow-lg z-40"
       aria-label="Navegación móvil"
     >
       <div className="container mx-auto px-4">
