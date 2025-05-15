@@ -148,13 +148,6 @@ export default function Header() {
               </div>
 
               <Link
-                href="/ganacash"
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-[#B01E23] dark:hover:bg-gray-800 dark:hover:text-[#B01E23] transition-colors"
-              >
-                GanaCash
-              </Link>
-
-              <Link
                 href="#contact"
                 className="px-3 py-2 text-sm font-medium rounded-md hover:bg-red-50 hover:text-[#B01E23] dark:hover:bg-gray-800 dark:hover:text-[#B01E23] transition-colors"
               >
@@ -220,13 +213,6 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contenido
-                </Link>
-                <Link
-                  href="/ganacash"
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-red-50 hover:text-[#B01E23] dark:hover:bg-gray-800 dark:hover:text-[#B01E23] transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  GanaCash
                 </Link>
                 <Link
                   href="#contact"
@@ -298,4 +284,3 @@ export default function Header() {
     </>
   )
 }
-
