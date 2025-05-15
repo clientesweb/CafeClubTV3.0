@@ -106,15 +106,6 @@ export default function Footer() {
                   Shorts
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/ganacash"
-                  className="text-white/80 hover:text-white transition-colors inline-flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 bg-white rounded-full mr-2"></span>
-                  GanaCash
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -172,4 +163,3 @@ export default function Footer() {
     </footer>
   )
 }
-
