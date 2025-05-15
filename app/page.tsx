@@ -1,7 +1,6 @@
 import TopBanner from "@/components/TopBanner"
 import Header from "@/components/Header"
 import Hero from "@/components/Hero"
-import AboutUs from "@/components/AboutUs"
 import LiveStream from "@/components/LiveStream"
 import Sponsors from "@/components/Sponsors"
 import AdBanner from "@/components/AdBanner"
@@ -21,12 +20,19 @@ export default function Home() {
       <Header />
       <main id="main-content" className="flex-grow">
         <Hero />
-        <AboutUs />
+
+        {/* Reemplazamos AboutUs con LiveStream */}
+        <section className="py-16 bg-background overflow-hidden">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center font-heading">Transmisión en Vivo</h2>
+            <LiveStream showPlaylist={true} />
+          </div>
+        </section>
 
         {/* Contenedor grande para LiveStream */}
         <section className="py-8 sm:py-12 md:py-16 bg-accent dark:bg-gray-800">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center font-heading">En Vivo</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center font-heading">Programación</h2>
             <div className="max-w-5xl mx-auto">
               <LiveStream showPlaylist={false} />
 
@@ -66,4 +72,3 @@ export default function Home() {
     </>
   )
 }
-
