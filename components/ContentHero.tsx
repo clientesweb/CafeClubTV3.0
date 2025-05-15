@@ -1,175 +1,140 @@
 "use client"
-import { useState, useEffect } from "react"
+
+import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
-// Modificar los anuncios para eliminar referencias a GanaCash
-
-// Anuncios para rotación automática
-const heroAds = [
+const slides = [
   {
-    title: "¡Promociona tu Negocio con Nosotros!",
-    description: "Llega a miles de espectadores y aumenta la visibilidad de tu marca",
-    buttonText: "Más Información",
+    image: "/images/hero1.png",
+    title: "Tu programa de TV",
+    description: "Con CaféClub TV, transforma tus ideas en un programa único y alcanza una audiencia global.",
+    buttonText: "Promociones",
     buttonLink: "#commercial-proposals",
-    imageSrc: "/images/ad-business.jpg",
-    imageAlt: "Banner publicitario para promocionar tu negocio",
   },
   {
-    title: "¡Crea tu Propio Programa de TV!",
-    description: "Convierte tus ideas en un programa profesional y alcanza una audiencia global",
-    buttonText: "Empieza Ahora",
+    image: "/images/hero2.png",
+    title: "Productos y servicios al mundo",
+    description: "Promociona tu negocio internacionalmente y atrae más clientes.",
+    buttonText: "Inscríbete Ahora",
     buttonLink: "#commercial-proposals",
-    imageSrc: "/images/ad-program.jpg",
-    imageAlt: "Banner publicitario para crear tu propio programa de TV",
   },
   {
-    title: "¡Descarga Nuestra App!",
-    description: "Disfruta de contenido exclusivo y notificaciones de transmisiones en vivo",
-    buttonText: "Descargar",
-    buttonLink: "https://clientesweb.github.io/CafeClubTv/CafeClubTV.apk",
-    imageSrc: "/images/ad-app.jpg",
-    imageAlt: "Banner publicitario para descargar la aplicación",
+    image: "/images/hero3.png",
+    title: "Franquicia CafeClubTV®",
+    description: "¡Ahora puedes tener tu propia franquicia con una App exclusiva y contenido personalizado!",
+    buttonText: "Contáctanos",
+    buttonLink: "#contact",
   },
 ]
 
-export default function ContentHero() {
-  const [currentAdIndex, setCurrentAdIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
+export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  // Rotación automática de anuncios
   useEffect(() => {
-    if (isHovered) return
-
+    setIsLoaded(true)
     const interval = setInterval(() => {
-      setCurrentAdIndex((prev) => (prev + 1) % heroAds.length)
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 6000)
-
     return () => clearInterval(interval)
-  }, [isHovered])
+  }, [])
 
-  const currentAd = heroAds[currentAdIndex]
+  const currentSlideContent = useMemo(() => slides[currentSlide], [currentSlide])
 
   return (
-    <section
-      className="relative h-[70vh] md:h-[80vh] overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Fondo con imagen y overlay */}
-      <AnimatePresence mode="wait">
+    <section id="hero" className="relative h-[60vh] sm:h-[70vh] overflow-hidden">
+      {/* Background gradient overlay for consistent branding */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50 z-10"></div>
+
+      {/* Slides */}
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
-          key={currentAdIndex}
+          key={currentSlide}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1 }}
           className="absolute inset-0"
         >
           <Image
-            src={currentAd.imageSrc || "/placeholder.svg"}
-            alt={currentAd.imageAlt}
+            src={currentSlideContent.image || "/placeholder.svg"}
+            alt={currentSlideContent.title}
             fill
-            style={{ objectFit: "cover" }}
+            sizes="100vw"
             priority
-            className="brightness-[0.6]"
+            style={{
+              objectFit: "cover",
+            }}
+            className="brightness-[0.6] transition-transform duration-10000 transform scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50"></div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Elementos decorativos */}
-      <div className="absolute top-1/4 left-10 md:left-20 w-20 h-20 md:w-32 md:h-32 opacity-20">
-        <motion.div
-          animate={{
-            rotate: 360,
-            y: [0, 15, 0],
-          }}
-          transition={{
-            rotate: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-            y: { duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-          }}
-          className="w-full h-full rounded-full border-4 border-white"
-        />
-      </div>
-
-      <div className="absolute bottom-1/4 right-10 md:right-20 w-16 h-16 md:w-24 md:h-24 opacity-20">
-        <motion.div
-          animate={{
-            rotate: -360,
-            y: [0, -20, 0],
-          }}
-          transition={{
-            rotate: { duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-            y: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-          }}
-          className="w-full h-full bg-[#FFD700] rounded-lg"
-        />
-      </div>
-
-      {/* Contenido principal */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`content-${currentAdIndex}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            {/* Etiqueta de anuncio */}
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-white/20 text-white backdrop-blur-sm"
-            >
-              Anuncio Destacado
-            </motion.span>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight font-heading text-white">
-              {currentAd.title}
-            </h1>
-
-            <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-2xl">{currentAd.description}</p>
-
-            <div className="flex flex-wrap gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="default" size="lg" asChild className="bg-white text-[#B01E23] hover:bg-white/90 group">
-                  <a href={currentAd.buttonLink}>
-                    {currentAd.buttonText}
-                    <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
+      {/* Content */}
+      <div className="absolute inset-0 flex items-center z-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`content-${currentSlide}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <motion.span
+                  className="inline-block px-4 py-1 mb-4 text-sm font-medium rounded-full bg-white text-[#B01E23]"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  CaféClub TV
+                </motion.span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-heading drop-shadow-md">
+                  {currentSlideContent.title}
+                </h1>
+                <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl">{currentSlideContent.description}</p>
+                <div className="flex flex-wrap gap-4">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    asChild
+                    className="bg-[#B01E23] text-white hover:bg-[#8B0000] shadow-lg hover:scale-105 transition-transform"
+                  >
+                    <a href={currentSlideContent.buttonLink}>
+                      {currentSlideContent.buttonText}
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    asChild
+                    className="bg-white/10 backdrop-blur-sm border-white hover:bg-white/20 text-white"
+                  >
+                    <a href="/contenido">Ver Programación</a>
+                  </Button>
+                </div>
               </motion.div>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
-                  <a href="#featured-programs">
-                    Ver Programas
-                    <ChevronDown className="ml-2 h-5 w-5" />
-                  </a>
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
-      {/* Indicadores de navegación */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
-        {heroAds.map((_, index) => (
+      {/* Slide indicators */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-20">
+        {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentAdIndex(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-              currentAdIndex === index ? "bg-white w-8" : "bg-white/50 hover:bg-white/80"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-white w-8" : "bg-white/50 hover:bg-white/80"
             }`}
-            aria-label={`Ver anuncio ${index + 1}`}
-          />
+            onClick={() => setCurrentSlide(index)}
+            aria-label={`Ir a la diapositiva ${index + 1}`}
+          ></button>
         ))}
       </div>
     </section>
