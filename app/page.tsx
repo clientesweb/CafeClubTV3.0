@@ -11,7 +11,16 @@ import FloatingChat from "@/components/FloatingChat"
 import Image from "next/image"
 import Link from "next/link"
 
-// Definimos los metadatos directamente en layout.tsx, así que no necesitamos importar nada aquí
+export const metadata = {
+  title: "CafeClub TV - Canal Internacional 100% Digital | Inicio",
+  description:
+    "CafeClub TV, tu canal internacional 100% digital con programación variada desde Miami y Ecuador. Disfruta de nuestros programas en vivo, shorts y contenido exclusivo.",
+  keywords:
+    "CafeClub TV, canal digital, programas en español, transmisión en vivo, entretenimiento latino, Miami, Ecuador",
+  alternates: {
+    canonical: "/",
+  },
+}
 
 export default function Home() {
   return (
