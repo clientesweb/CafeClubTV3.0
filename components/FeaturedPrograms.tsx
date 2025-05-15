@@ -227,10 +227,7 @@ export default function FeaturedPrograms() {
 
                     <div className="mt-auto space-y-3">
                       {/* Presentador */}
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full mr-2"></div>
-                        {program.host}
-                      </div>
+                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">{program.host}</div>
 
                       {/* Horario */}
                       <div className="flex items-center gap-4">
@@ -276,25 +273,7 @@ export default function FeaturedPrograms() {
             <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
           </button>
         </div>
-
-        {/* Botón para ver todos los programas */}
-        <div className="text-center mt-10">
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="border-[#B01E23] text-[#B01E23] hover:bg-[#B01E23]/10 dark:text-white dark:border-white"
-            >
-              <Link href="/contenido">
-                Ver toda la programación
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
       </div>
     </section>
   )
 }
-
