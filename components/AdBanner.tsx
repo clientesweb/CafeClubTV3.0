@@ -20,14 +20,6 @@ interface AdBannerProps {
 // Anuncios predefinidos para rotación automática
 const predefinedAds = [
   {
-    title: "¡Gana Cash Jugando a la Ruleta!",
-    description: "¡Participa ahora y haz girar la rueda para ganar grandes premios en efectivo!",
-    buttonText: "Juega Ahora",
-    buttonLink: "/ganacash",
-    imageSrc: "/images/banner.jpg",
-    imageAlt: "Banner publicitario para ganar dinero jugando a la ruleta",
-  },
-  {
     title: "¡Promociona tu Negocio con Nosotros!",
     description: "Llega a miles de espectadores y aumenta la visibilidad de tu marca",
     buttonText: "Más Información",
@@ -200,4 +192,3 @@ export default function AdBanner({
     </section>
   )
 }
-
