@@ -98,7 +98,11 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
   const currentVideo = playlistItems.find((item) => item.snippet.resourceId.videoId === mainVideoId)
 
   return (
-    <section id="live-stream" className={`relative ${showPlaylist ? "py-12 sm:py-16 md:py-20 bg-[#B01E23]" : ""}`}>
+    <section
+      id="live-stream"
+      className={`relative ${showPlaylist ? "py-8 sm:py-12 md:py-16 bg-[#B01E23]" : ""}`}
+      aria-labelledby="live-stream-title"
+    >
       {/* Fondo con efecto de patrón para la versión con playlist */}
       {showPlaylist && (
         <div
@@ -107,6 +111,7 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
             backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
             backgroundSize: "20px 20px",
           }}
+          aria-hidden="true"
         ></div>
       )}
 
@@ -117,24 +122,37 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-10"
+            className="text-center mb-6 sm:mb-10"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white font-heading">Transmisión en Vivo</h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
+            <h2
+              id="live-stream-title"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white font-heading"
+            >
+              Transmisión en Vivo
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg">
               Disfruta de nuestras transmisiones en vivo y contenido reciente. ¡No te pierdas ningún momento!
             </p>
           </motion.div>
         )}
 
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center min-h-[300px] gap-4">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+          <div
+            className="flex flex-col items-center justify-center min-h-[300px] gap-4"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white" role="status"></div>
             <p className={`text-sm ${showPlaylist ? "text-white/80" : "text-muted-foreground"}`}>
               Cargando transmisión...
             </p>
+            <span className="sr-only">Cargando transmisión en vivo, por favor espere</span>
           </div>
         ) : error ? (
-          <div className={`text-center p-8 rounded-xl ${showPlaylist ? "bg-white/10 backdrop-blur-sm" : "bg-accent"}`}>
+          <div
+            className={`text-center p-8 rounded-xl ${showPlaylist ? "bg-white/10 backdrop-blur-sm" : "bg-accent"}`}
+            aria-live="assertive"
+          >
             <p className={showPlaylist ? "text-white" : "text-foreground"}>{error}</p>
             <Button
               onClick={fetchPlaylist}
@@ -143,8 +161,9 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
                   ? "bg-white text-[#B01E23] hover:bg-white/90"
                   : "bg-[#B01E23] text-white hover:bg-[#8B0000]"
               } transition-colors`}
+              aria-label="Intentar cargar la transmisión nuevamente"
             >
-              <RefreshCw className="mr-2 h-4 w-4" />
+              <RefreshCw className="mr-2 h-4 w-4" aria-hidden="true" />
               Reintentar
             </Button>
           </div>
@@ -317,4 +336,3 @@ export default function LiveStream({ showPlaylist = true }: LiveStreamProps) {
     </section>
   )
 }
-
