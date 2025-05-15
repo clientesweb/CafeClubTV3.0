@@ -45,7 +45,7 @@ export default function Hero() {
   const currentSlideContent = useMemo(() => slides[currentSlide], [currentSlide])
 
   return (
-    <section id="hero" className="relative h-screen max-h-[1080px] overflow-hidden">
+    <section id="hero" className="relative h-[60vh] sm:h-[70vh] overflow-hidden">
       {/* Background gradient overlay for consistent branding */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50 z-10"></div>
 
@@ -140,4 +140,3 @@ export default function Hero() {
     </section>
   )
 }
-
