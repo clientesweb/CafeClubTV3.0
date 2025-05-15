@@ -6,7 +6,10 @@ import Shorts from "@/components/Shorts"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
-import ContentHero from "@/components/ContentHero"
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ChevronRight, Play } from "lucide-react"
 
 export const metadata = {
   title: "Programación y Contenido | CafeClubTV",
@@ -46,8 +49,76 @@ export default function ContenidoPage() {
       <TopBanner />
       <Header />
       <main id="main-content" className="flex-grow">
-        <ContentHero />
+        {/* Nuevo Hero con la imagen de BONOGOL TV */}
+        <section className="relative h-[70vh] overflow-hidden">
+          {/* Imagen de fondo */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/bonogol-tv-banner.jpg"
+              alt="BONOGOL TV - Locos por ganar"
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+              className="brightness-[0.8]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+          </div>
+
+          {/* Contenido del hero */}
+          <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white font-heading drop-shadow-lg">
+              Disfruta Nuestro Contenido
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl drop-shadow-md">
+              Descubre la variedad de nuestra programación con shows exclusivos para todos los gustos
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button
+                variant="default"
+                size="lg"
+                asChild
+                className="bg-[#B01E23] hover:bg-[#8B0000] text-white shadow-lg group"
+              >
+                <a href="#featured-programs">
+                  Ver Programación
+                  <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="bg-white/10 backdrop-blur-sm border-white hover:bg-white/20 text-white"
+              >
+                <a href="https://youtube.com/@bonogoltv?si=49TwYsAMqnmc29F2" target="_blank" rel="noopener noreferrer">
+                  <Play className="mr-2 h-5 w-5" />
+                  Ver BONOGOL TV
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         <FeaturedPrograms />
+
+        {/* Banner publicitario antes del LiveStream */}
+        <section className="my-8 sm:my-12 container mx-auto px-4">
+          <Link href="https://www.latinostvny.com" target="_blank" rel="noopener noreferrer" className="block">
+            <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Image
+                src="/images/banner-latinos-partner.jpg"
+                alt="Latinos TV NY Partner"
+                fill
+                style={{ objectFit: "cover" }}
+                className="transition-transform duration-500 hover:scale-105"
+                priority
+              />
+            </div>
+          </Link>
+        </section>
+
         <LiveStream showPlaylist={true} />
         <Shorts />
       </main>
