@@ -45,7 +45,7 @@ export default function Hero() {
   const currentSlideContent = useMemo(() => slides[currentSlide], [currentSlide])
 
   return (
-    <section id="hero" className="relative h-[60vh] sm:h-[70vh] overflow-hidden">
+    <section id="hero" className="relative h-[60vh] sm:h-[70vh] overflow-hidden" style={{ maxHeight: "70vh" }}>
       {/* Background gradient overlay for consistent branding */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#B01E23]/80 to-black/50 z-10"></div>
 
@@ -76,7 +76,7 @@ export default function Hero() {
       {/* Content */}
       <div className="absolute inset-0 flex items-center z-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl">
+          <div className="max-w-full sm:max-w-2xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`content-${currentSlide}`}
@@ -93,10 +93,12 @@ export default function Hero() {
                 >
                   CaféClub TV
                 </motion.span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-heading drop-shadow-md">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 font-heading drop-shadow-md">
                   {currentSlideContent.title}
                 </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl">{currentSlideContent.description}</p>
+                <p className="text-base md:text-xl text-white/90 mb-4 sm:mb-6 max-w-full sm:max-w-xl">
+                  {currentSlideContent.description}
+                </p>
                 <div className="flex flex-wrap gap-4">
                   <Button
                     variant="default"
