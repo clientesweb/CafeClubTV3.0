@@ -117,6 +117,10 @@ export default function Sponsors() {
   useEffect(() => {
     if (isInView) {
       controls.start("visible")
+      // Asegurarse de que el primer conjunto de logos sea visible
+      if (carouselRef.current) {
+        setActiveIndex(0)
+      }
     }
   }, [isInView, controls])
 
@@ -212,7 +216,7 @@ export default function Sponsors() {
           {/* Contenedor del carrusel */}
           <div
             ref={carouselRef}
-            className="overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50 py-8 sm:py-10 md:py-12"
+            className="overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50"
           >
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -231,17 +235,17 @@ export default function Sponsors() {
                     href={sponsor.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block relative w-full h-[120px] sm:h-[140px] md:h-[160px] flex items-center justify-center"
+                    className="group block relative w-full h-[100px] sm:h-[120px] md:h-[140px] flex items-center justify-center"
                     aria-label={`Visitar sitio web de ${sponsor.name}`}
                   >
                     <div className="relative w-full h-full flex items-center justify-center">
-                      <div className="relative w-full max-w-[180px] sm:max-w-[200px] md:max-w-[240px] mx-auto h-full flex items-center justify-center">
+                      <div className="relative w-full max-w-[120px] sm:max-w-[160px] md:max-w-[200px] mx-auto h-full flex items-center justify-center">
                         <Image
                           src={sponsor.src || "/placeholder.svg"}
                           alt={sponsor.name}
                           width={sponsor.width}
                           height={sponsor.height}
-                          className="object-contain max-h-full max-w-full transition-all duration-300 group-hover:scale-105"
+                          className="object-contain max-h-[80px] sm:max-h-[100px] md:max-h-[120px] max-w-full transition-all duration-300 group-hover:scale-105"
                         />
                       </div>
 
