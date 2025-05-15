@@ -3,23 +3,115 @@
 import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import { motion, useAnimation, useInView } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+// Datos actualizados de patrocinadores con URLs y dimensiones
 const sponsors = [
-  { id: 1, src: "/images/sponsor.png", alt: "Sponsor 1", url: "#" },
-  { id: 2, src: "/images/sponsor2.png", alt: "Sponsor 2", url: "#" },
-  { id: 3, src: "/images/sponsor3.png", alt: "Sponsor 3", url: "#" },
-  { id: 4, src: "/images/sponsor4.png", alt: "Sponsor 4", url: "#" },
-  { id: 5, src: "/images/sponsor7.png", alt: "Sponsor 5", url: "#" },
+  {
+    id: 1,
+    name: "Comunicar Group",
+    src: "/images/sponsors/comunicar-group.png",
+    url: "https://comunicargroup.com",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 2,
+    name: "Teatro Sánchez Aguilar",
+    src: "/images/sponsors/teatro-sanchez-aguilar.png",
+    url: "https://teatrosanchezaguilar.org",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 3,
+    name: "Roku",
+    src: "/images/sponsors/roku.png",
+    url: "https://www.roku.com",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 4,
+    name: "ITB Fitness Center",
+    src: "/images/sponsors/itb-fitness.png",
+    url: "https://itbfitness.com",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 5,
+    name: "Arts Yoga Institute",
+    src: "/images/sponsors/yoga-institute.png",
+    url: "https://artsyogainstitute.edu",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 6,
+    name: "Latinos TV NY",
+    src: "/images/sponsors/latinos-tv-ny.png",
+    url: "https://www.latinostvny.com",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 7,
+    name: "Venus Films",
+    src: "/images/sponsors/venus-films.png",
+    url: "https://venusfilms.com",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 8,
+    name: "LexPro",
+    src: "/images/sponsors/lexpro.png",
+    url: "https://lexpro.legal",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 9,
+    name: "Duality Domain",
+    src: "/images/sponsors/duality-domain.png",
+    url: "https://www.dualitydomain.com",
+    width: 800,
+    height: 600,
+  },
 ]
 
 export default function Sponsors() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
+  const [visibleSponsors, setVisibleSponsors] = useState(1)
   const containerRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: false, amount: 0.3 })
   const controls = useAnimation()
+
+  // Determinar cuántos patrocinadores mostrar según el ancho de la pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleSponsors(1)
+      } else if (window.innerWidth < 1024) {
+        setVisibleSponsors(2)
+      } else if (window.innerWidth < 1280) {
+        setVisibleSponsors(3)
+      } else {
+        setVisibleSponsors(4)
+      }
+    }
+
+    // Inicializar
+    handleResize()
+
+    // Agregar listener para cambios de tamaño
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   // Iniciar animación cuando el componente está en vista
   useEffect(() => {
@@ -34,21 +126,23 @@ export default function Sponsors() {
 
     if (autoplay) {
       interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % sponsors.length)
+        const maxIndex = sponsors.length - visibleSponsors
+        setActiveIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
       }, 3000)
     }
 
     return () => clearInterval(interval)
-  }, [autoplay])
+  }, [autoplay, visibleSponsors])
 
   const handlePrev = () => {
     setAutoplay(false)
-    setActiveIndex((prev) => (prev - 1 + sponsors.length) % sponsors.length)
+    setActiveIndex((prev) => (prev <= 0 ? sponsors.length - visibleSponsors : prev - 1))
   }
 
   const handleNext = () => {
     setAutoplay(false)
-    setActiveIndex((prev) => (prev + 1) % sponsors.length)
+    const maxIndex = sponsors.length - visibleSponsors
+    setActiveIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
   }
 
   const goToSlide = (index: number) => {
@@ -56,10 +150,13 @@ export default function Sponsors() {
     setActiveIndex(index)
   }
 
+  // Calcular el número máximo de indicadores
+  const maxIndicators = sponsors.length - visibleSponsors + 1
+
   return (
     <section
       id="sponsors"
-      className="py-20 relative overflow-hidden bg-accent/50 dark:bg-gray-900/50"
+      className="py-16 sm:py-20 relative overflow-hidden bg-accent/50 dark:bg-gray-900/50"
       ref={containerRef}
     >
       {/* Fondo con efecto de malla */}
@@ -86,7 +183,7 @@ export default function Sponsors() {
         </motion.div>
 
         {/* Carrusel de patrocinadores */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           {/* Controles de navegación */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 -ml-4 sm:-ml-6">
             <Button
@@ -112,51 +209,65 @@ export default function Sponsors() {
             </Button>
           </div>
 
-          {/* Carrusel principal */}
-          <div className="relative h-[200px] sm:h-[250px] overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50">
-            {sponsors.map((sponsor, index) => (
-              <motion.div
-                key={sponsor.id}
-                className="absolute inset-0 flex items-center justify-center p-8"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                  opacity: activeIndex === index ? 1 : 0,
-                  scale: activeIndex === index ? 1 : 0.8,
-                  zIndex: activeIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <a
-                  href={sponsor.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative w-full h-full flex items-center justify-center group"
+          {/* Contenedor del carrusel */}
+          <div
+            ref={carouselRef}
+            className="overflow-hidden rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg border border-border/50"
+          >
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${activeIndex * (100 / visibleSponsors)}%)`,
+                width: `${sponsors.length * (100 / visibleSponsors)}%`,
+              }}
+            >
+              {sponsors.map((sponsor) => (
+                <div
+                  key={sponsor.id}
+                  className="relative flex-shrink-0 p-4 sm:p-6 md:p-8"
+                  style={{ width: `${100 / visibleSponsors}%` }}
                 >
-                  <div className="relative w-[200px] h-[100px] sm:w-[250px] sm:h-[125px]">
-                    <Image
-                      src={sponsor.src || "/placeholder.svg"}
-                      alt={sponsor.alt}
-                      fill
-                      style={{ objectFit: "contain" }}
-                      className="transition-all duration-300 group-hover:scale-105 drop-shadow-md"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-[#B01E23]/0 group-hover:bg-[#B01E23]/5 transition-colors duration-300 rounded-lg"></div>
-                </a>
-              </motion.div>
-            ))}
+                  <a
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block relative aspect-[4/3] w-full h-full flex items-center justify-center"
+                    aria-label={`Visitar sitio web de ${sponsor.name}`}
+                  >
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <div className="relative w-full max-w-[300px] mx-auto aspect-[4/3] flex items-center justify-center">
+                        <Image
+                          src={sponsor.src || "/placeholder.svg"}
+                          alt={sponsor.name}
+                          width={sponsor.width}
+                          height={sponsor.height}
+                          className="object-contain max-h-full max-w-full transition-all duration-300 group-hover:scale-105"
+                        />
+                      </div>
+
+                      {/* Overlay con efecto hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-black/5 dark:bg-white/5 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                        <span className="text-[#B01E23] dark:text-white text-sm font-medium flex items-center">
+                          Visitar <ExternalLink className="ml-1 w-3 h-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Indicadores */}
           <div className="flex justify-center mt-6 space-x-2">
-            {sponsors.map((_, index) => (
+            {Array.from({ length: maxIndicators }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   activeIndex === index ? "bg-[#B01E23] w-8" : "bg-[#B01E23]/30 hover:bg-[#B01E23]/50"
                 }`}
-                aria-label={`Ir al patrocinador ${index + 1}`}
+                aria-label={`Ir al grupo de patrocinadores ${index + 1}`}
               />
             ))}
           </div>
@@ -183,4 +294,3 @@ export default function Sponsors() {
     </section>
   )
 }
-
