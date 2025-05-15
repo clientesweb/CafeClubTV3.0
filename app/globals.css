@@ -315,3 +315,10 @@
   animation: livePulse 2s infinite;
 }
 
+/* Eliminar cualquier estilo específico que pueda estar afectando al hero en móviles */
+@media (max-width: 640px) {
+  #hero {
+    height: 60vh !important;
+    max-height: 60vh !important;
+  }
+}
