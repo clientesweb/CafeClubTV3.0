@@ -142,24 +142,25 @@ export default function Sponsors() {
           </Button>
 
           {/* Contenedor de logos */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 border border-gray-200 dark:border-gray-700">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 sm:p-8 border border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {currentSponsors.map((sponsor) => (
                 <a
                   key={sponsor.id}
                   href={sponsor.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center h-24 bg-gray-50 dark:bg-gray-900 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
+                  className="flex items-center justify-center h-28 bg-gray-50 dark:bg-gray-900 rounded-lg p-3 hover:shadow-md transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   aria-label={`Visitar sitio web de ${sponsor.name}`}
                 >
-                  <div className="relative w-full h-full">
+                  <div className="relative w-full h-full flex items-center justify-center">
                     <Image
                       src={sponsor.src || "/placeholder.svg"}
                       alt={sponsor.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: "contain", objectPosition: "center" }}
+                      className="max-w-[85%] max-h-[85%]"
                     />
                   </div>
                 </a>
