@@ -172,6 +172,9 @@ export default function RootLayout({
             }
           `}
         </Script>
+
+        {/* Script para JotForm */}
+        <Script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js" strategy="lazyOnload" />
       </head>
       <body className={`${poppins.variable} font-sans min-h-screen flex flex-col`}>
         <a
