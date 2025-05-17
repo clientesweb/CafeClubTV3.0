@@ -22,7 +22,7 @@ export default function AmelieChat() {
   }
 
   return (
-    <div className="fixed right-4 bottom-24 z-40 flex flex-col items-end">
+    <div className="fixed right-4 bottom-36 z-40 flex flex-col items-end">
       <AnimatePresence>
         {isOpen && (
           <motion.div
