@@ -6,10 +6,11 @@ import Shorts from "@/components/Shorts"
 import Footer from "@/components/Footer"
 import BottomNav from "@/components/BottomNav"
 import FloatingChat from "@/components/FloatingChat"
+import BannerLink from "@/components/BannerLink"
 import Image from "next/image"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Play } from "lucide-react"
+import "../banner-styles.css"
 
 export const metadata = {
   title: "Programación y Contenido | CafeClub TV - Programas Variados en Español",
@@ -112,34 +113,12 @@ export default function ContenidoPage() {
         <FeaturedPrograms />
 
         {/* Banner de BONOGOL TV antes del LiveStream */}
-        <section className="my-8 sm:my-12 container mx-auto px-4" aria-labelledby="bonogol-tv-title">
-          <h2 id="bonogol-tv-title" className="sr-only">
-            BONOGOL TV
-          </h2>
-          <Link
-            href="https://youtube.com/@bonogoltv?si=49TwYsAMqnmc29F2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B01E23] rounded-xl"
-            aria-label="Visitar canal de BONOGOL TV en YouTube"
-          >
-            <div className="relative w-full h-[180px] sm:h-[240px] md:h-[320px] lg:h-[400px] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <Image
-                src="/images/bonogol-tv-banner.jpg"
-                alt="BONOGOL TV - Locos por ganar - Canal de deportes y fútbol"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px"
-                style={{ objectFit: "cover" }}
-                className="transition-transform duration-500 hover:scale-105"
-                loading="eager"
-              />
-              <div
-                className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300"
-                aria-hidden="true"
-              ></div>
-            </div>
-          </Link>
-        </section>
+        <BannerLink
+          href="https://youtube.com/@bonogoltv?si=49TwYsAMqnmc29F2"
+          imageSrc="/images/bonogol-tv-banner.jpg"
+          imageAlt="BONOGOL TV - Locos por ganar - Canal de deportes y fútbol"
+          title="BONOGOL TV"
+        />
 
         <LiveStream showPlaylist={true} />
         <Shorts />
