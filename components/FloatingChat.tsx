@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import AmelieChat from "./AmelieChat"
 
 export default function FloatingChat() {
   const [showNotification, setShowNotification] = useState(false)
@@ -28,7 +29,10 @@ export default function FloatingChat() {
   }, [showNotification])
 
   return (
-    <div id="floating-chat" className="fixed right-4 bottom-24 flex flex-col gap-2 items-end z-40">
+    <div id="floating-chat" className="fixed right-4 bottom-4 flex flex-col gap-2 items-end z-40">
+      {/* Amelie Chat se coloca antes del botón de WhatsApp */}
+      <AmelieChat />
+
       <AnimatePresence>
         {showNotification && (
           <motion.div
@@ -53,7 +57,7 @@ export default function FloatingChat() {
         href="https://wa.me/593978606269"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[#B01E23] hover:bg-[#8B0000] text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
+        className="bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-3 flex items-center justify-center w-14 h-14 transition-colors duration-300 shadow-lg"
       >
         <i className="fab fa-whatsapp text-xl"></i>
         <span className="sr-only">Chat en WhatsApp</span>
