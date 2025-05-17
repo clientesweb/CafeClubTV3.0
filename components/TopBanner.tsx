@@ -21,7 +21,7 @@ export default function TopBanner() {
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 flex-grow">
             <AlertCircle className="h-4 w-4 flex-shrink-0" />
-            <p className="text-sm">¡Bienvenido a CafeClub TV! Disfruta de nuestra programación en vivo.</p>
+            <p className="text-sm">¡Bienvenidos a Café Club Tv!</p>
           </div>
           <div className="flex items-center gap-2">
             <Link
