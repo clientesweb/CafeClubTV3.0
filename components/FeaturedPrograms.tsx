@@ -65,7 +65,7 @@ const programs = [
   {
     title: "Café Ole",
     image: "/images/programa6.jpg",
-    schedule: "Lunes 16:00 PM",
+    schedule: "Miércoles 10:00 AM",
     description: "Cultura, tradiciones y actualidad hispana en un formato dinámico",
     link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjGcaIqVFVvXDoHSCQyXwTYh&si=Twc6ZBj-bLWgW57N",
     host: "Sylvia Ángel Eyes",
@@ -83,7 +83,7 @@ const programs = [
   {
     title: "El Búho COMUNICA",
     image: "/images/programa8.jpg",
-    schedule: "Viernes 18:00 PM",
+    schedule: "Miercoles 17:00 PM",
     description: "Comunicación efectiva y estrategias para conectar con audiencias",
     link: "#",
     host: "Karina Arteaga",
