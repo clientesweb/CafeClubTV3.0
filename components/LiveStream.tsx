@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Play, RefreshCw, Calendar, Clock, Users, Tv } from "lucide-react"
 
-const livePlaylistId = "PLZ_v3bWMqpjHgBO9YXQroGPRsCoaxjZ0S"
+const livePlaylistId = "PLZ_v3bWMqpjGDSj2We9PJYHZdwzeIdpXy"
 const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
 
 interface PlaylistItem {
