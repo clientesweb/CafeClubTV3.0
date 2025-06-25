@@ -1,10 +1,21 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Check, ArrowRight, Tv, Globe, Video, Users, Star, Zap, Crown, Building, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+interface Plan {
+  name: string
+  price: string
+  subtitle?: string
+  features: string[]
+  popular: boolean
+  icon?: React.ReactNode
+}
 
 export default function CommercialProposals() {
   const [activeTab, setActiveTab] = useState("publicidad")
@@ -36,6 +47,7 @@ export default function CommercialProposals() {
             "Reporte de alcance",
           ],
           popular: false,
+          icon: undefined,
         },
         {
           name: "Premium",
@@ -48,6 +60,7 @@ export default function CommercialProposals() {
             "Reporte detallado de métricas",
           ],
           popular: true,
+          icon: undefined,
         },
         {
           name: "Empresarial",
@@ -61,6 +74,7 @@ export default function CommercialProposals() {
             "Análisis completo de resultados",
           ],
           popular: false,
+          icon: undefined,
         },
       ],
       image: "/images/hero1.png",
@@ -85,6 +99,7 @@ export default function CommercialProposals() {
             "Promoción en redes sociales",
           ],
           popular: false,
+          icon: undefined,
         },
         {
           name: "Profesional",
@@ -97,6 +112,7 @@ export default function CommercialProposals() {
             "Monetización compartida",
           ],
           popular: true,
+          icon: undefined,
         },
         {
           name: "Corporativo",
@@ -110,6 +126,7 @@ export default function CommercialProposals() {
             "Análisis de audiencia",
           ],
           popular: false,
+          icon: undefined,
         },
       ],
       image: "/images/hero2.png",
