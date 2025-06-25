@@ -1,21 +1,10 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Check, ArrowRight, Tv, Globe, Video, Users, Star, Zap, Crown, Building, MapPin } from "lucide-react"
+import { Check, ArrowRight, Tv, Globe, Video, Users, Star, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-interface Plan {
-  name: string
-  price: string
-  subtitle?: string
-  features: string[]
-  popular: boolean
-  icon?: React.ReactNode
-}
 
 export default function CommercialProposals() {
   const [activeTab, setActiveTab] = useState("publicidad")
@@ -47,7 +36,6 @@ export default function CommercialProposals() {
             "Reporte de alcance",
           ],
           popular: false,
-          icon: undefined,
         },
         {
           name: "Premium",
@@ -60,7 +48,6 @@ export default function CommercialProposals() {
             "Reporte detallado de métricas",
           ],
           popular: true,
-          icon: undefined,
         },
         {
           name: "Empresarial",
@@ -74,7 +61,6 @@ export default function CommercialProposals() {
             "Análisis completo de resultados",
           ],
           popular: false,
-          icon: undefined,
         },
       ],
       image: "/images/hero1.png",
@@ -99,7 +85,6 @@ export default function CommercialProposals() {
             "Promoción en redes sociales",
           ],
           popular: false,
-          icon: undefined,
         },
         {
           name: "Profesional",
@@ -112,7 +97,6 @@ export default function CommercialProposals() {
             "Monetización compartida",
           ],
           popular: true,
-          icon: undefined,
         },
         {
           name: "Corporativo",
@@ -126,69 +110,60 @@ export default function CommercialProposals() {
             "Análisis de audiencia",
           ],
           popular: false,
-          icon: undefined,
         },
       ],
       image: "/images/hero2.png",
     },
     franquicia: {
       title: "Franquicia CafeClub TV",
-      description:
-        "Lleva nuestra marca a tu ciudad o país y desarrolla un negocio de medios exitoso con identidad local.",
+      description: "Lleva nuestra marca a tu país o región y desarrolla un negocio de medios exitoso.",
       features: [
-        { icon: <MapPin className="w-5 h-5" />, text: "Exclusividad territorial" },
-        { icon: <Tv className="w-5 h-5" />, text: "Canal propio personalizado" },
-        { icon: <Zap className="w-5 h-5" />, text: "Capacitación completa" },
-        { icon: <Star className="w-5 h-5" />, text: "Soporte continuo" },
+        { icon: <Globe className="w-5 h-5" />, text: "Exclusividad territorial" },
+        { icon: <Tv className="w-5 h-5" />, text: "Contenido personalizado" },
+        { icon: <Zap className="w-5 h-5" />, text: "Tecnología propietaria" },
+        { icon: <Star className="w-5 h-5" />, text: "Modelo de negocio probado" },
       ],
       plans: [
         {
-          name: "Franquicia Ciudad",
-          price: "$1,500 USD",
-          subtitle: "Mantenimiento: $499/mes",
+          name: "Regional",
+          price: "Desde $9,999",
           features: [
-            "Licencia exclusiva de transmisión local",
-            "Uso oficial de la marca CaféClub",
-            "Canal propio con identidad local",
-            "Capacitación personalizada completa",
-            "Promoción mensual en redes",
-            "Acceso a comunidad de creadores",
-            "Libertad para comercializar espacios",
-            "Participación en transmisiones globales",
-            "Soporte técnico y editorial continuo",
+            "Exclusividad en una región",
+            "Plataforma personalizada",
+            "Capacitación inicial",
+            "Soporte técnico",
+            "Contenido compartido",
           ],
           popular: false,
-          icon: <Building className="w-6 h-6" />,
         },
         {
-          name: "Franquicia País",
-          price: "$4,999 USD",
-          subtitle: "Mantenimiento: $599/mes",
+          name: "Nacional",
+          price: "Desde $24,999",
           features: [
-            "Licencia exclusiva nacional",
-            "Crear subfranquicias de ciudad",
-            "Revender franquicias urbanas",
-            "Canal Nacional CaféClub propio",
-            "Apoyo para montar estudio central",
-            "Representante exclusivo en web oficial",
-            "Alianzas internacionales",
-            "Red de ingresos compartidos",
-            "Retransmisión destacada internacional",
-            "Entrenamiento avanzado en IA y monetización",
-            "Presencia en consejo de crecimiento",
+            "Exclusividad nacional",
+            "Plataforma completa",
+            "Capacitación continua",
+            "Soporte premium",
+            "Contenido exclusivo",
+            "Marketing territorial",
           ],
           popular: true,
-          icon: <Crown className="w-6 h-6" />,
+        },
+        {
+          name: "Master",
+          price: "Consultar",
+          features: [
+            "Derechos multinacionales",
+            "Plataforma avanzada",
+            "Capacitación ejecutiva",
+            "Soporte dedicado 24/7",
+            "Producción de contenido",
+            "Estrategia de expansión",
+          ],
+          popular: false,
         },
       ],
       image: "/images/hero3.png",
-      philosophy: "Contamos historias que unen, transforman y despiertan. Somos comunicación con alma.",
-      targetAudience: [
-        "Comunicadores, periodistas y creadores digitales",
-        "Líderes culturales, gestores sociales o comunitarios",
-        "Agencias de medios locales",
-        "Emprendedores apasionados por la transformación digital",
-      ],
     },
   }
 
@@ -279,17 +254,9 @@ export default function CommercialProposals() {
                     </span>
                   )}
                   <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-3">
-                      {plan.icon && (
-                        <div className="w-10 h-10 rounded-full bg-[#B01E23]/10 flex items-center justify-center text-[#B01E23]">
-                          {plan.icon}
-                        </div>
-                      )}
-                      <div>
-                        <h4 className="font-bold text-lg">{plan.name}</h4>
-                        <p className="text-2xl font-bold text-[#B01E23]">{plan.price}</p>
-                        {plan.subtitle && <p className="text-sm text-muted-foreground">{plan.subtitle}</p>}
-                      </div>
+                    <div>
+                      <h4 className="font-bold text-lg">{plan.name}</h4>
+                      <p className="text-2xl font-bold text-[#B01E23]">{plan.price}</p>
                     </div>
                     <button className="text-[#B01E23] hover:text-[#8B0000] transition-colors">
                       <ArrowRight className="w-5 h-5" />
@@ -306,51 +273,6 @@ export default function CommercialProposals() {
                 </motion.div>
               ))}
             </div>
-
-            {/* Información adicional para franquicias */}
-            {activeTab === "franquicia" && (
-              <div className="mt-8 space-y-6">
-                {/* Filosofía */}
-                <div className="bg-[#B01E23]/5 rounded-lg p-4">
-                  <h4 className="font-bold text-[#B01E23] mb-2">🌟 Filosofía CaféClub:</h4>
-                  <p className="text-sm italic">"{content.philosophy}"</p>
-                </div>
-
-                {/* Audiencia objetivo */}
-                <div>
-                  <h4 className="font-bold mb-3">🧭 ¿Quién puede ser franquiciado?</h4>
-                  <ul className="space-y-2">
-                    {content.targetAudience?.map((audience, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Star className="w-4 h-4 text-[#B01E23] flex-shrink-0 mt-1" />
-                        <span className="text-sm">{audience}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Proceso */}
-                <div>
-                  <h4 className="font-bold mb-3">📲 ¿Cómo funciona?</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {[
-                      "1. Eliges tu nivel de franquicia",
-                      "2. Firmas tu contrato de representación",
-                      "3. Recibes tu kit de activación",
-                      "4. Comienzas tu operación local/nacional",
-                      "5. Recibes apoyo mensual continuo",
-                    ].map((step, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-[#B01E23] text-white text-xs flex items-center justify-center font-bold">
-                          {idx + 1}
-                        </div>
-                        <span className="text-sm">{step.substring(2)}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
 
             {/* CTA */}
             <div className="mt-8 text-center">
