@@ -41,7 +41,7 @@ export default function Home() {
         {/* Banner de Dona Un Café */}
         <BannerLink
           href="https://wa.me/593978606269?text=Hola,%20me%20gustaría%20hacer%20una%20donación%20para%20apoyar%20el%20canal"
-          imageSrc="/images/dona-un-cafe-banner.jpg"
+          imageSrc="/images/IMG-20250603-WA0002.jpg"
           imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
           title="Dona Un Café"
         />
