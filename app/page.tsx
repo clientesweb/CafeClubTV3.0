@@ -38,6 +38,14 @@ export default function Home() {
           title="Latinos TV NY Partner"
         />
 
+        {/* Banner de Dona Un Café */}
+        <BannerLink
+          href="https://wa.me/593978606269?text=Hola,%20me%20gustaría%20hacer%20una%20donación%20para%20apoyar%20el%20canal"
+          imageSrc="/images/dona-un-cafe-banner.jpg"
+          imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
+          title="Dona Un Café"
+        />
+
         {/* LiveStream con el mismo estilo que en la página de contenido */}
         <section className="py-8 sm:py-12 md:py-16 bg-[#B01E23]">
           <LiveStream showPlaylist={true} />
