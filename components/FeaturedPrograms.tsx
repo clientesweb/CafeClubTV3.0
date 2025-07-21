@@ -89,6 +89,15 @@ const programs = [
     host: "Karina Arteaga",
     category: "Comunicación",
   },
+  {
+    title: "Consultorio en Linea",
+    image: "/images/programa9.jpg",
+    schedule: "Sábados 10:00 AM",
+    description: "",
+    link: "#",
+    host: "Lorena Jacome",
+    category: "Comunicación",
+  },
 ]
 
 // Categorías únicas para filtrado
