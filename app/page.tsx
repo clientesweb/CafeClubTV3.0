@@ -40,8 +40,8 @@ export default function Home() {
 
         {/* Banner de Dona Un Café */}
         <BannerLink
-          href="https://payp.page.link/zrkX"
-          imageSrc="/images/banner-dona-cafe.jpg"
+          href=https://www.ticketshow.com.ec/evento/Beto-Cuevas-Quito"
+          imageSrc="/images/BANNER_MASTER_FACE_BETO_CUEVAS_2025.webp"
           imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
           title="Dona Un Café"
         />
