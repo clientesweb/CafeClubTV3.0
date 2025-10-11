@@ -40,8 +40,8 @@ export default function Home() {
 
         {/* Banner de Dona Un Café */}
         <BannerLink
-          href="https://www.ticketshow.com.ec/evento/Beto-Cuevas-Quito"
-          imageSrc="/images/BANNER_MASTER_FACE_BETO_CUEVAS_2025.webp"
+          href="https://www.dikatickets.com/home/categorias/68084ed604c4a65937c8d763/eventos/68538cd30b2d3059f730aa37"
+          imageSrc="/images/marko-en-guayaquil.jpg"
           imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
           title="Dona Un Café"
         />
