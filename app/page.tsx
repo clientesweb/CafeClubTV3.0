@@ -40,8 +40,8 @@ export default function Home() {
 
         {/* Banner de Dona Un Café */}
         <BannerLink
-          href="https://www.dikatickets.com/home/categorias/68084ed604c4a65937c8d763/eventos/68538cd30b2d3059f730aa37"
-          imageSrc="/images/marko-en-guayaquil.jpg"
+          href="https://buenplan.com.ec/edsheeran"
+          imageSrc="/images/1001808576.png"
           imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
           title="Dona Un Café"
         />
