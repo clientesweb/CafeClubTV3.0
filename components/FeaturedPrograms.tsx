@@ -49,7 +49,7 @@ const programs = [
     image: "/images/programa4.jpg",
     schedule: "Miércoles 22:00 PM",
     description: "Conversaciones sobre bienestar, meditación y vida saludable",
-    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjEU5H15CbmplsuGxtY66OwJ&si=lZFY_KZ5mNvz3SoH",
+    link: "https://youtube.com/playlist?list=PLZ_v3bWMqpjFVU_J1dCG-cq90uaCdlUr9&si=_EMY0tNfpenadlxI",
     host: "Sonnia Valverde",
     category: "Bienestar",
   },
