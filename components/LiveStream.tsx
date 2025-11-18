@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Play, RefreshCw, Calendar, Clock, Users, Tv } from "lucide-react"
 
 const livePlaylistId = "PLZ_v3bWMqpjG5eOYKsCMxj0kFeICiAwwl"
-const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "AIzaSyAQVEpl-DY2c1BWmD-4Jmm64tFYXzXrIBA"
+const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "AIzaSyBcNo4pMTbFhTs8RKujYFfNSo_HbIP9f7E"
 
 interface PlaylistItem {
   snippet: {
