@@ -5,7 +5,7 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
-const shortsPlaylistId = "PLZ_v3bWMqpjFa0xI11mahmOCxPk_1TK2s"
+const shortsPlaylistId = "PLZ_v3bWMqpjHuyknxSe_uj_7_xZ7q8Em2"
 const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "AIzaSyB4HGg2WVC-Sq3Qyj9T9Z9aBBGbET1oGs0"
 
 interface Short {
