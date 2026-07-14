@@ -30,22 +30,6 @@ export default function Home() {
       <main id="main-content" className="flex-grow">
         <Hero />
 
-        {/* Banner de Latinos Partner */}
-        <BannerLink
-          href="https://www.latinostvny.com"
-          imageSrc="/images/banner-latinos-partner.jpg"
-          imageAlt="Latinos TV NY Partner - Colaboración con CafeClub TV"
-          title="Latinos TV NY Partner"
-        />
-
-        {/* Banner de Dona Un Café */}
-        <BannerLink
-          href="https://buenplan.com.ec/edsheeran"
-          imageSrc="/images/1001808576.png"
-          imageAlt="Dona Un Café - Apoya a CafeClub TV con tu donación"
-          title="Dona Un Café"
-        />
-
         {/* LiveStream con el mismo estilo que en la página de contenido */}
         <section className="py-8 sm:py-12 md:py-16 bg-[#B01E23]">
           <LiveStream showPlaylist={true} />
